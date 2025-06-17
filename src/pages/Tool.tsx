@@ -1,11 +1,9 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Code, Copy, Zap, CheckCircle, ArrowLeft, Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import ToolNavigation from "@/components/ToolNavigation";
+import CodeConfiguration from "@/components/CodeConfiguration";
+import ExamplePrompts from "@/components/ExamplePrompts";
+import CodeOutput from "@/components/CodeOutput";
 
 const Tool = () => {
   const [isDark, setIsDark] = useState(true);
@@ -571,22 +569,7 @@ int main() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              <span className="text-xl font-bold font-mono text-gray-900 dark:text-white">CodeBoost</span>
-            </Link>
-            
-            <Button variant="ghost" size="sm" onClick={toggleTheme}>
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <ToolNavigation isDark={isDark} onToggleTheme={toggleTheme} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center mb-8">
@@ -601,120 +584,25 @@ int main() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Input Section */}
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Configuration
-              </h2>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Programming Language
-                  </label>
-                  <Select value={language} onValueChange={setLanguage}>
-                    <SelectTrigger className="w-full text-white">
-                      <SelectValue placeholder="Select a language" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="html">HTML</SelectItem>
-                      <SelectItem value="css">CSS</SelectItem>
-                      <SelectItem value="javascript">JavaScript</SelectItem>
-                      <SelectItem value="python">Python</SelectItem>
-                      <SelectItem value="java">Java</SelectItem>
-                      <SelectItem value="cpp">C++</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+            <CodeConfiguration
+              language={language}
+              description={description}
+              isGenerating={isGenerating}
+              onLanguageChange={setLanguage}
+              onDescriptionChange={setDescription}
+              onGenerateCode={generateCode}
+            />
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Description
-                  </label>
-                  <Textarea
-                    placeholder="Describe what you want to build... (e.g., 'a login form with email and password fields', 'a to-do list app', 'a calculator function')"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    className="min-h-[120px] text-white placeholder:text-gray-400"
-                  />
-                </div>
-
-                <Button 
-                  onClick={generateCode}
-                  disabled={isGenerating || !language || !description}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  size="lg"
-                >
-                  {isGenerating ? (
-                    <>
-                      <Zap className="mr-2 h-4 w-4 animate-spin" />
-                      Generating Code...
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="mr-2 h-4 w-4" />
-                      Generate Code
-                    </>
-                  )}
-                </Button>
-              </div>
-            </div>
-
-            {/* Examples */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                Example Prompts
-              </h3>
-              <div className="space-y-2 text-sm">
-                <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <span className="font-mono text-blue-600 dark:text-blue-400">HTML:</span> "a responsive login form with validation"
-                </div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <span className="font-mono text-green-600 dark:text-green-400">Python:</span> "a calculator class with basic operations"
-                </div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <span className="font-mono text-purple-600 dark:text-purple-400">JavaScript:</span> "a to-do list with add/remove functionality"
-                </div>
-              </div>
-            </div>
+            <ExamplePrompts />
           </div>
 
           {/* Output Section */}
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Generated Code
-                </h2>
-                {generatedCode && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={copyToClipboard}
-                    className="flex items-center space-x-2"
-                  >
-                    {copied ? (
-                      <CheckCircle className="h-4 w-4 text-green-600" />
-                    ) : (
-                      <Copy className="h-4 w-4" />
-                    )}
-                    <span>{copied ? 'Copied!' : 'Copy'}</span>
-                  </Button>
-                )}
-              </div>
-              
-              <div className="p-4">
-                {generatedCode ? (
-                  <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto text-sm font-mono">
-                    <code className="text-white">{generatedCode}</code>
-                  </pre>
-                ) : (
-                  <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-                    <Code className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                    <p>Select a language and describe your code to get started</p>
-                  </div>
-                )}
-              </div>
-            </div>
+            <CodeOutput
+              generatedCode={generatedCode}
+              copied={copied}
+              onCopyToClipboard={copyToClipboard}
+            />
           </div>
         </div>
       </div>
