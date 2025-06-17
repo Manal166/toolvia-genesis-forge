@@ -34,8 +34,8 @@ const CodeOutput = ({ generatedCode, copied, onCopyToClipboard }: CodeOutputProp
       
       <div className="p-4">
         {generatedCode ? (
-          <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto text-sm font-mono">
-            <code className="text-white">{generatedCode}</code>
+          <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm font-mono">
+            <code style={{ color: '#ffffff' }}>{generatedCode}</code>
           </pre>
         ) : (
           <div className="text-center py-12 text-gray-500 dark:text-gray-400">
