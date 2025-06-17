@@ -20,7 +20,7 @@ const CodeOutput = ({ generatedCode, copied, onCopyToClipboard }: CodeOutputProp
             variant="outline"
             size="sm"
             onClick={onCopyToClipboard}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 text-white"
           >
             {copied ? (
               <CheckCircle className="h-4 w-4 text-green-600" />
@@ -35,7 +35,7 @@ const CodeOutput = ({ generatedCode, copied, onCopyToClipboard }: CodeOutputProp
       <div className="p-4">
         {generatedCode ? (
           <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm font-mono">
-            <code style={{ color: '#ffffff' }}>{generatedCode}</code>
+            <code>{generatedCode}</code>
           </pre>
         ) : (
           <div className="text-center py-12 text-gray-500 dark:text-gray-400">
