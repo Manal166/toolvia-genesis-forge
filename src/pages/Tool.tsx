@@ -612,7 +612,7 @@ int main() {
                     Programming Language
                   </label>
                   <Select value={language} onValueChange={setLanguage}>
-                    <SelectTrigger className="w-full">
+                    <SelectTrigger className="w-full text-white">
                       <SelectValue placeholder="Select a language" />
                     </SelectTrigger>
                     <SelectContent>
@@ -634,7 +634,7 @@ int main() {
                     placeholder="Describe what you want to build... (e.g., 'a login form with email and password fields', 'a to-do list app', 'a calculator function')"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="min-h-[120px]"
+                    className="min-h-[120px] text-white placeholder:text-gray-400"
                   />
                 </div>
 
@@ -704,8 +704,8 @@ int main() {
               
               <div className="p-4">
                 {generatedCode ? (
-                  <pre className="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm font-mono">
-                    <code>{generatedCode}</code>
+                  <pre className="bg-gray-900 text-white p-4 rounded-lg overflow-x-auto text-sm font-mono">
+                    <code className="text-white">{generatedCode}</code>
                   </pre>
                 ) : (
                   <div className="text-center py-12 text-gray-500 dark:text-gray-400">
