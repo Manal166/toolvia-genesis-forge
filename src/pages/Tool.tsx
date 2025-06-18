@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import ToolNavigation from "@/components/ToolNavigation";
-import CodeConfiguration from "@/components/CodeConfiguration";
-import ExamplePrompts from "@/components/ExamplePrompts";
-import CodeOutput from "@/components/CodeOutput";
+import { getToolById } from "@/config/tools.config";
+import ToolWrapper from "@/components/ToolWrapper";
+import ToolInputPanel from "@/components/ToolInputPanel";
+import ToolOutputPanel from "@/components/ToolOutputPanel";
+import ToolSection from "@/components/ToolSection";
 
 const Tool = () => {
   const [isDark, setIsDark] = useState(true);
@@ -14,11 +15,19 @@ const Tool = () => {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
+  // Get tool configuration - for now we use the AI Code Generator
+  const tool = getToolById('ai-code-generator');
+  
+  if (!tool) {
+    return <div>Tool not found</div>;
+  }
+
   const toggleTheme = () => {
     setIsDark(!isDark);
     document.documentElement.classList.toggle('dark');
   };
 
+  // Sample codes for different languages
   const sampleCodes = {
     html: `<!DOCTYPE html>
 <html lang="en">
@@ -524,6 +533,7 @@ int main() {
 }`
   };
 
+  // Function to generate code based on the selected language and description
   const generateCode = async () => {
     if (!language || !description) {
       toast({
@@ -549,6 +559,7 @@ int main() {
     }, 2000);
   };
 
+  // Function to copy generated code to clipboard
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(generatedCode);
@@ -568,45 +579,34 @@ int main() {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
-      <ToolNavigation isDark={isDark} onToggleTheme={toggleTheme} />
+    <ToolWrapper 
+      tool={tool} 
+      isDark={isDark} 
+      onToggleTheme={toggleTheme}
+    >
+      {/* Input Section */}
+      <ToolSection>
+        <ToolInputPanel
+          tool={tool}
+          language={language}
+          description={description}
+          isGenerating={isGenerating}
+          onLanguageChange={setLanguage}
+          onDescriptionChange={setDescription}
+          onGenerateCode={generateCode}
+        />
+      </ToolSection>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            AI Code Generator
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Describe what you want to build, and we'll generate the code for you.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Input Section */}
-          <div className="space-y-6">
-            <CodeConfiguration
-              language={language}
-              description={description}
-              isGenerating={isGenerating}
-              onLanguageChange={setLanguage}
-              onDescriptionChange={setDescription}
-              onGenerateCode={generateCode}
-            />
-
-            <ExamplePrompts />
-          </div>
-
-          {/* Output Section */}
-          <div className="space-y-6">
-            <CodeOutput
-              generatedCode={generatedCode}
-              copied={copied}
-              onCopyToClipboard={copyToClipboard}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+      {/* Output Section */}
+      <ToolSection>
+        <ToolOutputPanel
+          tool={tool}
+          generatedCode={generatedCode}
+          copied={copied}
+          onCopyToClipboard={copyToClipboard}
+        />
+      </ToolSection>
+    </ToolWrapper>
   );
 };
 
