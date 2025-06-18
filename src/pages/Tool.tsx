@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { getToolById } from "@/config/tools.config";
 import ToolWrapper from "@/components/ToolWrapper";
@@ -7,16 +8,17 @@ import ToolOutputPanel from "@/components/ToolOutputPanel";
 import ToolSection from "@/components/ToolSection";
 
 const Tool = () => {
+  const { toolId } = useParams();
   const [isDark, setIsDark] = useState(true);
   const [language, setLanguage] = useState("");
   const [description, setDescription] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [copied, setC] = useState(false);
   const { toast } = useToast();
 
-  // Get tool configuration - for now we use the AI Code Generator
-  const tool = getToolById('ai-code-generator');
+  // Get tool configuration - fallback to AI Code Generator if no toolId or tool not found
+  const tool = getToolById(toolId || 'ai-code-generator') || getToolById('ai-code-generator');
   
   if (!tool) {
     return <div>Tool not found</div>;

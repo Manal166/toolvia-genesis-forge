@@ -1,12 +1,16 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Code, Zap, Rocket, ArrowRight, Moon, Sun, Menu, X } from "lucide-react";
+import { Code, Zap, Rocket, ArrowRight, Moon, Sun, Menu, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { getFeaturedTools } from "@/config/tools.config";
+import ToolCard from "@/components/ToolCard";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const featuredTools = getFeaturedTools();
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -31,7 +35,7 @@ const Index = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
-              <Link to="/tool" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tool</Link>
+              <Link to="/tools" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tools</Link>
               <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</Link>
               <Link to="/blog" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</Link>
               <Link to="/contact" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</Link>
@@ -53,7 +57,7 @@ const Index = () => {
             <div className="md:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
                 <Link to="/" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Home</Link>
-                <Link to="/tool" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Tool</Link>
+                <Link to="/tools" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Tools</Link>
                 <Link to="/about" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</Link>
                 <Link to="/blog" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Blog</Link>
                 <Link to="/contact" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Contact</Link>
@@ -76,23 +80,22 @@ const Index = () => {
               <span className="font-mono">CodeBoost</span>
               <br />
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Instantly Generate Code
+                AI-Powered Dev Tools
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Turn your ideas into clean, ready-to-use code snippets in seconds. 
-              From simple functions to complete apps – let AI boost your development speed.
+              From code generation to debugging - accelerate your development workflow with intelligent AI tools designed for modern developers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/tool">
+              <Link to="/tools">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
-                  Start Generating Code
+                  Explore All Tools
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="/about">
+              <Link to="/tools/ai-code-generator">
                 <Button variant="outline" size="lg" className="border-blue-400 text-blue-100 hover:bg-blue-800/50 px-8 py-3 text-lg">
-                  Learn More
+                  Try Code Generator
                 </Button>
               </Link>
             </div>
@@ -100,8 +103,40 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Featured Tools Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center mb-4">
+              <Star className="h-6 w-6 text-yellow-500 mr-2" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                Featured Tools
+              </h2>
+            </div>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Start with these powerful tools to boost your development speed and code quality.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {featuredTools.map((tool) => (
+              <ToolCard key={tool.id} tool={tool} />
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/tools">
+              <Button size="lg" variant="outline" className="px-8 py-3">
+                View All Tools
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -113,7 +148,7 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <Zap className="h-12 w-12 text-blue-600 dark:text-blue-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Lightning Fast</h3>
               <p className="text-gray-600 dark:text-gray-300">
@@ -121,15 +156,15 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <Code className="h-12 w-12 text-green-600 dark:text-green-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Multi-Language</h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Support for HTML, CSS, JavaScript, Python, Java, C++ and more. One tool for all your coding needs.
+                Support for HTML, CSS, JavaScript, Python, Java, C++ and more. One platform for all your coding needs.
               </p>
             </div>
             
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
               <Rocket className="h-12 w-12 text-purple-600 dark:text-purple-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Production Ready</h3>
               <p className="text-gray-600 dark:text-gray-300">
@@ -150,34 +185,34 @@ const Index = () => {
                 <span className="text-lg font-bold font-mono">CodeBoost</span>
               </div>
               <p className="text-gray-400">
-                Instantly generate code from your ideas. Built for developers who want to move fast.
+                AI-powered development tools to accelerate your coding workflow and boost productivity.
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
+              <h4 className="font-semibold mb-4">Tools</h4>
               <div className="space-y-2">
-                <Link to="/tool" className="block text-gray-400 hover:text-white transition-colors">Code Generator</Link>
+                <Link to="/tools/ai-code-generator" className="block text-gray-400 hover:text-white transition-colors">Code Generator</Link>
+                <Link to="/tools/code-explainer" className="block text-gray-400 hover:text-white transition-colors">Code Explainer</Link>
+                <Link to="/tools/bug-detector" className="block text-gray-400 hover:text-white transition-colors">Bug Detector</Link>
+                <Link to="/tools" className="block text-gray-400 hover:text-white transition-colors">View All Tools</Link>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Company</h4>
+              <div className="space-y-2">
                 <Link to="/about" className="block text-gray-400 hover:text-white transition-colors">About</Link>
                 <Link to="/blog" className="block text-gray-400 hover:text-white transition-colors">Blog</Link>
+                <Link to="/contact" className="block text-gray-400 hover:text-white transition-colors">Contact</Link>
               </div>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
+              <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2">
-                <Link to="/contact" className="block text-gray-400 hover:text-white transition-colors">Contact Us</Link>
-                <Link to="/terms" className="block text-gray-400 hover:text-white transition-colors">Terms of Service</Link>
                 <Link to="/privacy" className="block text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <div className="space-y-2">
-                <a href="https://github.com" className="block text-gray-400 hover:text-white transition-colors">GitHub</a>
-                <a href="https://twitter.com" className="block text-gray-400 hover:text-white transition-colors">Twitter</a>
-                <a href="https://discord.com" className="block text-gray-400 hover:text-white transition-colors">Discord</a>
+                <Link to="/terms" className="block text-gray-400 hover:text-white transition-colors">Terms of Service</Link>
               </div>
             </div>
           </div>

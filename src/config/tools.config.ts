@@ -8,6 +8,8 @@ export interface ToolConfig {
   inputType: 'prompt' | 'code' | 'file';
   outputType: 'code' | 'text' | 'file';
   languages?: string[];
+  keywords?: string[];
+  featured?: boolean;
 }
 
 export const toolsConfig: ToolConfig[] = [
@@ -19,7 +21,68 @@ export const toolsConfig: ToolConfig[] = [
     category: 'Code Generation',
     inputType: 'prompt',
     outputType: 'code',
-    languages: ['html', 'css', 'javascript', 'python', 'java', 'cpp']
+    languages: ['html', 'css', 'javascript', 'python', 'java', 'cpp'],
+    keywords: ['generate', 'create', 'build', 'ai'],
+    featured: true
+  },
+  {
+    id: 'code-explainer',
+    name: 'Code Explainer',
+    description: 'Understand code line by line in plain language.',
+    icon: 'book-open',
+    category: 'Understanding',
+    inputType: 'code',
+    outputType: 'text',
+    languages: ['html', 'css', 'javascript', 'python', 'java', 'cpp'],
+    keywords: ['explain', 'understand', 'learn', 'breakdown'],
+    featured: true
+  },
+  {
+    id: 'bug-detector',
+    name: 'Bug Detector',
+    description: 'Find and fix bugs in your code automatically.',
+    icon: 'bug',
+    category: 'Debugging',
+    inputType: 'code',
+    outputType: 'text',
+    languages: ['javascript', 'python', 'java', 'cpp'],
+    keywords: ['debug', 'fix', 'error', 'issue'],
+    featured: true
+  },
+  {
+    id: 'code-optimizer',
+    name: 'Code Optimizer',
+    description: 'Improve your code performance and readability.',
+    icon: 'zap',
+    category: 'Optimization',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['javascript', 'python', 'java', 'cpp'],
+    keywords: ['optimize', 'improve', 'performance', 'clean'],
+    featured: false
+  },
+  {
+    id: 'regex-generator',
+    name: 'Regex Generator',
+    description: 'Generate regular expressions from plain language descriptions.',
+    icon: 'regex',
+    category: 'Utilities',
+    inputType: 'prompt',
+    outputType: 'text',
+    keywords: ['regex', 'pattern', 'match', 'validation'],
+    featured: false
+  },
+  {
+    id: 'api-documentation',
+    name: 'API Doc Generator',
+    description: 'Generate comprehensive API documentation from your code.',
+    icon: 'file-text',
+    category: 'Documentation',
+    inputType: 'code',
+    outputType: 'text',
+    languages: ['javascript', 'python', 'java'],
+    keywords: ['documentation', 'api', 'docs', 'swagger'],
+    featured: false
   }
 ];
 
@@ -31,6 +94,19 @@ export const getToolsByCategory = (category: string): ToolConfig[] => {
   return toolsConfig.filter(tool => tool.category === category);
 };
 
+export const getFeaturedTools = (): ToolConfig[] => {
+  return toolsConfig.filter(tool => tool.featured);
+};
+
 export const getAllCategories = (): string[] => {
   return [...new Set(toolsConfig.map(tool => tool.category))];
+};
+
+export const searchTools = (query: string): ToolConfig[] => {
+  const lowerQuery = query.toLowerCase();
+  return toolsConfig.filter(tool => 
+    tool.name.toLowerCase().includes(lowerQuery) ||
+    tool.description.toLowerCase().includes(lowerQuery) ||
+    tool.keywords?.some(keyword => keyword.toLowerCase().includes(lowerQuery))
+  );
 };
