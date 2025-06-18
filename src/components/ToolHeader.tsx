@@ -1,5 +1,5 @@
 
-import { Code, Zap, FileText, Bug, Tool, Regex } from "lucide-react";
+import { Code, Zap, FileText, Bug, Wrench, Regex } from "lucide-react";
 import { ToolConfig } from "@/config/tools.config";
 
 interface ToolHeaderProps {
@@ -12,7 +12,7 @@ const iconMap = {
   zap: Zap,
   'file-text': FileText,
   bug: Bug,
-  tool: Tool,
+  tool: Wrench,
   regex: Regex,
 };
 
