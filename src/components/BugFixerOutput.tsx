@@ -1,5 +1,4 @@
-
-import { CheckCircle, Copy, RefreshCw, Download } from "lucide-react";
+import { CheckCircle, Copy, RefreshCw, Download, Bug } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
