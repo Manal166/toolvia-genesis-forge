@@ -14,7 +14,7 @@ const Tool = () => {
   const [description, setDescription] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [copied, setC] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
   // Get tool configuration - fallback to AI Code Generator if no toolId or tool not found
