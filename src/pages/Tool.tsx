@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -6,6 +7,9 @@ import ToolWrapper from "@/components/ToolWrapper";
 import ToolInputPanel from "@/components/ToolInputPanel";
 import ToolOutputPanel from "@/components/ToolOutputPanel";
 import ToolSection from "@/components/ToolSection";
+import CodeExplainerInput from "@/components/CodeExplainerInput";
+import CodeExplanationOutput from "@/components/CodeExplanationOutput";
+import { explainCode } from "@/services/codeExplainerService";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -15,6 +19,13 @@ const Tool = () => {
   const [generatedCode, setGeneratedCode] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
+  
+  // Code Explainer specific state
+  const [codeToExplain, setCodeToExplain] = useState("");
+  const [codeLanguage, setCodeLanguage] = useState("javascript");
+  const [explanation, setExplanation] = useState("");
+  const [isExplaining, setIsExplaining] = useState(false);
+  
   const { toast } = useToast();
 
   // Get tool configuration - fallback to AI Code Generator if no toolId or tool not found
@@ -580,6 +591,77 @@ int main() {
     }
   };
 
+  // Code Explainer functionality
+  const handleExplainCode = async () => {
+    if (!codeToExplain.trim()) {
+      toast({
+        title: "No Code Provided",
+        description: "Please paste some code to explain.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsExplaining(true);
+    
+    try {
+      const result = await explainCode(codeToExplain, codeLanguage);
+      setExplanation(result);
+      
+      toast({
+        title: "Code Explained!",
+        description: "Your code explanation is ready.",
+      });
+    } catch (error) {
+      console.error('Error explaining code:', error);
+      toast({
+        title: "Explanation Failed",
+        description: "There was an error explaining your code. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsExplaining(false);
+    }
+  };
+
+  const handleRegenerateExplanation = async () => {
+    await handleExplainCode();
+  };
+
+  // Render Code Explainer tool
+  if (tool.id === 'code-explainer') {
+    return (
+      <ToolWrapper 
+        tool={tool} 
+        isDark={isDark} 
+        onToggleTheme={toggleTheme}
+      >
+        {/* Input Section */}
+        <ToolSection>
+          <CodeExplainerInput
+            code={codeToExplain}
+            language={codeLanguage}
+            isExplaining={isExplaining}
+            onCodeChange={setCodeToExplain}
+            onLanguageChange={setCodeLanguage}
+            onExplainCode={handleExplainCode}
+          />
+        </ToolSection>
+
+        {/* Output Section */}
+        <ToolSection>
+          <CodeExplanationOutput
+            explanation={explanation}
+            originalCode={codeToExplain}
+            language={codeLanguage}
+            onRegenerate={handleRegenerateExplanation}
+          />
+        </ToolSection>
+      </ToolWrapper>
+    );
+  }
+
+  // Default AI Code Generator tool
   return (
     <ToolWrapper 
       tool={tool} 
