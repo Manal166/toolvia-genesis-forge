@@ -38,15 +38,15 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
-    id: 'bug-detector',
-    name: 'Bug Detector',
-    description: 'Find and fix bugs in your code automatically.',
+    id: 'bug-fixer',
+    name: 'Bug Fixer',
+    description: 'Paste broken code and get instant AI-powered bug fixes and suggestions.',
     icon: 'bug',
-    category: 'Debugging',
+    category: 'Fixing & Optimization',
     inputType: 'code',
-    outputType: 'text',
-    languages: ['javascript', 'python', 'java', 'cpp'],
-    keywords: ['debug', 'fix', 'error', 'issue'],
+    outputType: 'code',
+    languages: ['html', 'css', 'javascript', 'python', 'java', 'cpp'],
+    keywords: ['fix', 'debug', 'error', 'bug', 'repair'],
     featured: true
   },
   {

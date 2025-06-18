@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getToolById } from "@/config/tools.config";
 import CodeExplainerTool from "@/tools/code-explainer/CodeExplainerTool";
 import AICodeGeneratorTool from "@/tools/ai-code-generator/AICodeGeneratorTool";
+import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
 import GenericTool from "@/components/GenericTool";
 
 const Tool = () => {
@@ -35,6 +36,14 @@ const Tool = () => {
     case 'ai-code-generator':
       return (
         <AICodeGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'bug-fixer':
+      return (
+        <BugFixerTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
