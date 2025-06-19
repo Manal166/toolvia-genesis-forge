@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -629,10 +630,10 @@ const Blog = () => {
                       {post.readTime}
                     </div>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-blue-400 transition-colors text-white">
+                  <CardTitle className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
                     {post.title}
                   </CardTitle>
-                  <CardDescription className="text-sm text-gray-300">
+                  <CardDescription className="text-sm text-gray-300 leading-relaxed">
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
@@ -684,10 +685,10 @@ const Blog = () => {
                         {post.category}
                       </Badge>
                     </div>
-                    <CardTitle className="text-2xl group-hover:text-blue-400 transition-colors text-white">
+                    <CardTitle className="text-2xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
                       {post.title}
                     </CardTitle>
-                    <CardDescription className="text-base text-gray-300">
+                    <CardDescription className="text-base text-gray-300 leading-relaxed">
                       {post.excerpt}
                     </CardDescription>
                   </CardHeader>
