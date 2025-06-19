@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Copy, Download, RefreshCw, CheckCircle } from "lucide-react";
+import { Copy, Download, RefreshCw, CheckCircle, Languages } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface CodeTranslatorOutputProps {
