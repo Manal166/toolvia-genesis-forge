@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,6 +16,7 @@ interface BlogPost {
   readTime: string;
   category: string;
   tags: string[];
+  featuredImage: string;
 }
 
 const blogPosts: BlogPost[] = [
@@ -22,67 +24,531 @@ const blogPosts: BlogPost[] = [
     id: '1',
     title: 'Getting Started with AI-Powered Code Generation',
     excerpt: 'Learn how artificial intelligence is revolutionizing the way we write and generate code, making development faster and more efficient.',
-    content: 'AI-powered code generation is transforming software development...',
+    content: `
+# Getting Started with AI-Powered Code Generation
+
+Artificial intelligence is fundamentally transforming the software development landscape. What once required hours of manual coding can now be accomplished in minutes with the right AI tools.
+
+## The Revolution is Here
+
+AI-powered code generation represents one of the most significant advances in programming since the introduction of high-level languages. These tools don't just autocomplete your code—they understand context, design patterns, and best practices to generate entire functions, classes, and even applications.
+
+## Key Benefits
+
+**Increased Productivity**: Developers report 40-60% faster development times when using AI assistants.
+
+**Reduced Errors**: AI tools catch common mistakes and suggest improvements in real-time.
+
+**Learning Accelerator**: Junior developers can learn from AI-generated examples and explanations.
+
+## Getting Started
+
+1. **Choose Your Tool**: GitHub Copilot, ChatGPT, Claude, or specialized platforms like Lovable
+2. **Start Small**: Begin with simple functions and gradually work up to complex features
+3. **Review Everything**: AI is powerful but not infallible—always review generated code
+4. **Learn the Prompts**: Effective prompting is a skill that dramatically improves results
+
+## Best Practices
+
+- Be specific in your requests
+- Provide context about your project
+- Ask for explanations along with code
+- Test thoroughly before deployment
+
+The future of coding is collaborative—human creativity paired with AI efficiency. Embrace these tools, and watch your productivity soar.
+    `,
     author: 'Sarah Johnson',
     publishDate: '2024-06-15',
     readTime: '5 min read',
     category: 'AI & Development',
-    tags: ['AI', 'Code Generation', 'Productivity']
+    tags: ['AI', 'Code Generation', 'Productivity'],
+    featuredImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop'
   },
   {
     id: '2',
     title: 'Best Practices for Code Documentation',
     excerpt: 'Discover essential techniques for writing clear, maintainable documentation that helps teams collaborate effectively.',
-    content: 'Good documentation is crucial for successful software projects...',
+    content: `
+# Best Practices for Code Documentation
+
+Good documentation is the bridge between complex code and human understanding. It's not just about explaining what your code does—it's about creating a roadmap for future developers, including your future self.
+
+## Why Documentation Matters
+
+Every developer has experienced the frustration of encountering undocumented code. Whether it's a function with cryptic parameters or a complex algorithm without explanation, poor documentation costs time and increases bugs.
+
+## The Documentation Pyramid
+
+**Level 1: Code Comments**
+- Explain the "why," not the "what"
+- Use comments for complex business logic
+- Keep comments up-to-date with code changes
+
+**Level 2: Function/Method Documentation**
+- Document parameters and return values
+- Include usage examples
+- Specify any side effects or exceptions
+
+**Level 3: Architecture Documentation**
+- Explain system design decisions
+- Document API endpoints and data flows
+- Maintain architectural decision records (ADRs)
+
+## Tools and Techniques
+
+**Documentation Generators**: Tools like JSDoc, Sphinx, or GitBook can automatically generate documentation from your code comments.
+
+**Living Documentation**: Keep documentation close to code—in README files, inline comments, or code annotation tools.
+
+**Examples and Tutorials**: Nothing beats working examples. Include sample code that developers can run immediately.
+
+## Writing Tips
+
+1. **Write for Your Audience**: Junior developers need more context than seniors
+2. **Use Clear Language**: Avoid jargon and overly technical language
+3. **Show, Don't Just Tell**: Include code examples whenever possible
+4. **Keep It Current**: Outdated documentation is worse than no documentation
+
+## Documentation Culture
+
+The best-documented codebases come from teams that value documentation as much as code quality. Make documentation reviews part of your code review process, and celebrate team members who write great docs.
+
+Remember: Code tells you how, documentation tells you why.
+    `,
     author: 'Michael Chen',
     publishDate: '2024-06-12',
     readTime: '7 min read',
     category: 'Development',
-    tags: ['Documentation', 'Best Practices', 'Team Collaboration']
+    tags: ['Documentation', 'Best Practices', 'Team Collaboration'],
+    featuredImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop'
   },
   {
     id: '3',
     title: 'Understanding Regular Expressions',
     excerpt: 'Master the art of pattern matching with regular expressions and learn how to use them effectively in your projects.',
-    content: 'Regular expressions are powerful tools for pattern matching...',
+    content: `
+# Understanding Regular Expressions
+
+Regular expressions (regex) are one of the most powerful tools in a developer's toolkit, yet they're often misunderstood and underutilized. Let's demystify regex and show you how to harness their power.
+
+## What Are Regular Expressions?
+
+Regular expressions are patterns that describe sets of strings. They're like a mini-language for describing text patterns, allowing you to search, match, and manipulate text with incredible precision.
+
+## Common Use Cases
+
+**Email Validation**: \`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$\`
+
+**Phone Number Formatting**: Extract and format phone numbers from text
+
+**Log File Analysis**: Parse server logs to extract specific information
+
+**Data Cleaning**: Remove unwanted characters or standardize formats
+
+## Building Blocks
+
+**Literals**: Most characters match themselves (a matches "a")
+
+**Character Classes**: [abc] matches any of a, b, or c
+
+**Quantifiers**: 
+- \`*\` means zero or more
+- \`+\` means one or more  
+- \`?\` means zero or one
+- \`{n,m}\` means between n and m times
+
+**Anchors**:
+- \`^\` matches start of string
+- \`$\` matches end of string
+
+## Practical Examples
+
+**Extracting URLs from Text**:
+\`\`\`regex
+https?://[^\s]+
+\`\`\`
+
+**Validating Strong Passwords**:
+\`\`\`regex
+^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+\`\`\`
+
+**Parsing CSV Data**:
+\`\`\`regex
+,(?=(?:[^"]*"[^"]*")*[^"]*$)
+\`\`\`
+
+## Best Practices
+
+1. **Start Simple**: Build complex patterns gradually
+2. **Test Thoroughly**: Use tools like RegexPal or regex101.com
+3. **Comment Complex Patterns**: Use verbose mode when available
+4. **Consider Performance**: Some patterns can be very slow on large texts
+5. **Know When Not to Use Regex**: For parsing HTML or complex nested structures, use proper parsers
+
+## Common Pitfalls
+
+- **Greedy vs Lazy Matching**: Understanding when \`.*\` captures too much
+- **Escaping Special Characters**: Remember to escape \`. + * ? ^ $ ( ) [ ] { } | \\\`
+- **Case Sensitivity**: Use flags like \`i\` for case-insensitive matching
+
+Regular expressions are incredibly powerful, but with great power comes great responsibility. Use them wisely, and they'll serve you well throughout your development career.
+    `,
     author: 'Emily Rodriguez',
     publishDate: '2024-06-10',
     readTime: '6 min read',
     category: 'Programming',
-    tags: ['Regex', 'Pattern Matching', 'Text Processing']
+    tags: ['Regex', 'Pattern Matching', 'Text Processing'],
+    featuredImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=400&fit=crop'
   },
   {
     id: '4',
     title: 'Debugging Techniques for Modern Developers',
     excerpt: 'Explore advanced debugging strategies and tools that can help you identify and fix issues in your code more efficiently.',
-    content: 'Effective debugging is a crucial skill for any developer...',
+    content: `
+# Debugging Techniques for Modern Developers
+
+Debugging is an essential skill that separates good developers from great ones. It's not just about fixing bugs—it's about understanding your code, your system, and developing a systematic approach to problem-solving.
+
+## The Debugging Mindset
+
+**Stay Calm**: Panic leads to poor decisions. Take a step back and approach the problem methodically.
+
+**Question Everything**: Don't assume anything. The bug might be in the last place you'd expect.
+
+**Reproduce Consistently**: If you can't reproduce it reliably, you can't fix it properly.
+
+## Essential Debugging Tools
+
+**Browser DevTools**: Chrome, Firefox, and Safari all offer powerful debugging capabilities:
+- Breakpoints and step-through debugging
+- Network tab for API calls
+- Performance profiling
+- Memory usage analysis
+
+**IDE Debuggers**: Modern IDEs like VSCode offer integrated debugging:
+- Set breakpoints directly in your code
+- Watch variables and expressions
+- Step through code execution
+- Inspect call stacks
+
+**Logging Libraries**: Strategic logging is often faster than debugging:
+- Use different log levels (debug, info, warn, error)
+- Include context in your log messages
+- Use structured logging for easier parsing
+
+## Debugging Strategies
+
+**The Scientific Method**:
+1. Observe the problem
+2. Form a hypothesis
+3. Test your hypothesis
+4. Analyze results
+5. Repeat until solved
+
+**Divide and Conquer**: Isolate the problem by:
+- Commenting out code sections
+- Using minimal test cases
+- Creating isolated reproductions
+
+**Rubber Duck Debugging**: Explain your code line-by-line to an inanimate object. You'll often spot the issue while explaining.
+
+## Advanced Techniques
+
+**Time Travel Debugging**: Tools like Redux DevTools let you step backward through state changes.
+
+**Remote Debugging**: Debug applications running on different devices or environments.
+
+**Performance Debugging**: 
+- Use profilers to identify bottlenecks
+- Analyze memory leaks
+- Optimize critical code paths
+
+## Common Bug Categories
+
+**Logic Errors**: The code runs but produces wrong results
+- Use assertions to verify assumptions
+- Add logging to trace execution flow
+
+**Runtime Errors**: The code crashes during execution
+- Check for null/undefined values
+- Validate input parameters
+- Handle exceptions gracefully
+
+**Integration Issues**: Problems when components interact
+- Mock dependencies for isolated testing
+- Use integration tests
+- Check API contracts and data formats
+
+## Preventing Bugs
+
+**Code Reviews**: Fresh eyes catch issues you might miss
+
+**Unit Testing**: Write tests before bugs occur
+
+**Type Systems**: Use TypeScript or similar tools to catch errors at compile time
+
+**Linting**: Use tools like ESLint to enforce code quality
+
+## When You're Stuck
+
+1. **Take a Break**: Sometimes the solution comes when you're not actively thinking about it
+2. **Ask for Help**: A colleague might spot something obvious you missed
+3. **Start Over**: Sometimes rewriting is faster than debugging
+4. **Document the Problem**: Writing it down often reveals the solution
+
+Remember: Every bug is an opportunity to learn something new about your system. Embrace the challenge, and you'll become a better developer with each problem you solve.
+    `,
     author: 'David Kim',
     publishDate: '2024-06-08',
     readTime: '8 min read',
     category: 'Development',
-    tags: ['Debugging', 'Tools', 'Problem Solving']
+    tags: ['Debugging', 'Tools', 'Problem Solving'],
+    featuredImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop'
   },
   {
     id: '5',
     title: 'The Future of Code Translation Tools',
     excerpt: 'Explore how AI-powered code translation is breaking down language barriers and enabling seamless migration between programming languages.',
-    content: 'Code translation tools are becoming increasingly sophisticated...',
+    content: `
+# The Future of Code Translation Tools
+
+The software development landscape is becoming increasingly diverse, with new programming languages and frameworks emerging regularly. Code translation tools are revolutionizing how we migrate between technologies, making it easier than ever to adapt and evolve our codebases.
+
+## The Translation Revolution
+
+Code translation isn't just about converting syntax—it's about understanding programming paradigms, design patterns, and idiomatic approaches across different languages. Modern AI-powered tools can translate not just the code, but the intent behind it.
+
+## Current State of the Art
+
+**Syntax Translation**: Tools like GitHub Copilot and specialized converters can handle basic syntax conversion between similar languages.
+
+**Framework Migration**: More sophisticated tools can translate between different frameworks while maintaining functionality.
+
+**Cross-Paradigm Translation**: Advanced AI can even help translate between different programming paradigms (procedural to object-oriented, synchronous to asynchronous).
+
+## Real-World Applications
+
+**Legacy System Modernization**: 
+- COBOL to Java migrations for financial institutions
+- VB.NET to C# conversions
+- Legacy JavaScript to modern TypeScript
+
+**Multi-Platform Development**:
+- Shared logic between web and mobile applications
+- Converting algorithms between different performance requirements
+- Adapting code for different deployment environments
+
+**Team Transitions**:
+- Helping teams adopt new technologies
+- Onboarding developers familiar with different languages
+- Standardizing codebases across multiple projects
+
+## The AI Advantage
+
+**Context Awareness**: Modern AI understands not just syntax, but the purpose and context of code blocks.
+
+**Pattern Recognition**: AI can identify and translate complex design patterns between languages.
+
+**Error Prevention**: Smart translation tools can identify potential issues and suggest better approaches in the target language.
+
+**Documentation Generation**: Along with translation, AI can generate documentation explaining the converted code.
+
+## Challenges and Limitations
+
+**Language-Specific Features**: Some features don't have direct equivalents in other languages.
+
+**Performance Considerations**: What's efficient in one language might not be in another.
+
+**Library Dependencies**: Translating code is one thing; finding equivalent libraries is another.
+
+**Testing Requirements**: Translated code needs comprehensive testing to ensure behavior is preserved.
+
+## Best Practices for Code Translation
+
+1. **Start with Tests**: Have comprehensive tests before translating
+2. **Translate in Chunks**: Don't try to translate everything at once
+3. **Review Everything**: Never trust automated translation completely
+4. **Understand Both Languages**: Know the idioms and best practices of both source and target languages
+5. **Plan for Refactoring**: Translation is often just the first step
+
+## Tools and Platforms
+
+**General Purpose**: GitHub Copilot, ChatGPT, Claude
+**Specialized**: Language-specific converters for Java to Kotlin, JavaScript to TypeScript
+**Enterprise**: Custom solutions for large-scale migrations
+
+## The Future Landscape
+
+We're moving toward a world where:
+- Language barriers in programming become minimal
+- Developers can work in their preferred language while contributing to polyglot projects
+- Legacy systems can be modernized more easily and cost-effectively
+- Cross-platform development becomes truly seamless
+
+## Getting Started
+
+1. **Experiment with Simple Projects**: Try translating small utilities between languages
+2. **Learn the Differences**: Understand what makes each language unique
+3. **Practice with AI Tools**: Get comfortable with AI-assisted translation
+4. **Join Communities**: Connect with others doing similar migrations
+
+The future of code translation is bright. As these tools become more sophisticated, the barriers between programming languages will continue to diminish, opening up new possibilities for developers and organizations alike.
+    `,
     author: 'Lisa Wang',
     publishDate: '2024-06-05',
     readTime: '4 min read',
     category: 'AI & Development',
-    tags: ['Code Translation', 'AI', 'Migration']
+    tags: ['Code Translation', 'AI', 'Migration'],
+    featuredImage: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop'
   },
   {
     id: '6',
     title: 'Building Scalable Web Applications',
     excerpt: 'Learn the key principles and patterns for creating web applications that can grow with your business needs.',
-    content: 'Scalability is a critical consideration in modern web development...',
+    content: `
+# Building Scalable Web Applications
+
+Scalability isn't just about handling more users—it's about building systems that can grow and evolve with your business needs while maintaining performance, reliability, and developer productivity.
+
+## What Is Scalability?
+
+Scalability refers to a system's ability to handle increased load gracefully. This includes:
+- **User Scalability**: Supporting more concurrent users
+- **Data Scalability**: Managing larger datasets efficiently
+- **Feature Scalability**: Adding new functionality without breaking existing systems
+- **Team Scalability**: Allowing larger development teams to work effectively
+
+## Architectural Principles
+
+**Separation of Concerns**: Keep different aspects of your application isolated:
+- Separate business logic from presentation
+- Isolate data access layers
+- Use microservices for different domains
+
+**Stateless Design**: Build components that don't rely on server-side state:
+- Use JWT tokens instead of sessions
+- Store state in databases or caches, not memory
+- Enable horizontal scaling
+
+**Caching Strategies**: Implement caching at multiple levels:
+- Browser caching for static assets
+- CDN for global content delivery
+- Application-level caching for expensive operations
+- Database query caching
+
+## Frontend Scalability
+
+**Code Splitting**: Load only what users need:
+\`\`\`javascript
+// Dynamic imports for route-based splitting
+const HomePage = lazy(() => import('./HomePage'));
+const DashboardPage = lazy(() => import('./DashboardPage'));
+\`\`\`
+
+**State Management**: Use appropriate tools for different scales:
+- Local state for simple components
+- Context API for moderate complexity
+- Redux/Zustand for complex state management
+
+**Performance Optimization**:
+- Virtual scrolling for large lists
+- Image lazy loading
+- Bundle optimization
+- Progressive web app features
+
+## Backend Scalability
+
+**Database Design**:
+- Proper indexing strategies
+- Database normalization/denormalization balance
+- Read replicas for read-heavy workloads
+- Sharding for write-heavy workloads
+
+**API Design**:
+- RESTful or GraphQL APIs
+- Pagination for large datasets
+- Rate limiting and throttling
+- Proper error handling and status codes
+
+**Infrastructure Patterns**:
+- Load balancing across multiple servers
+- Auto-scaling based on demand
+- Container orchestration with Kubernetes
+- Event-driven architectures
+
+## Performance Monitoring
+
+**Key Metrics**:
+- Response time and throughput
+- Error rates and availability
+- Resource utilization (CPU, memory, disk)
+- User experience metrics (Core Web Vitals)
+
+**Tools and Techniques**:
+- Application Performance Monitoring (APM)
+- Real User Monitoring (RUM)
+- Synthetic monitoring
+- Log aggregation and analysis
+
+## Development Practices
+
+**Testing Strategies**:
+- Unit tests for individual components
+- Integration tests for system interactions
+- Load testing for performance validation
+- End-to-end tests for user workflows
+
+**CI/CD Pipelines**:
+- Automated testing and deployment
+- Feature flags for gradual rollouts
+- Blue-green deployments
+- Rollback strategies
+
+**Code Organization**:
+- Modular architecture
+- Clear dependency management
+- Documentation and code standards
+- Regular refactoring
+
+## Common Scalability Patterns
+
+**Microservices**: Break large applications into smaller, independent services
+**Event Sourcing**: Store state changes as events for better auditability
+**CQRS**: Separate read and write operations for better performance
+**Circuit Breaker**: Prevent cascading failures in distributed systems
+
+## Scalability Anti-Patterns
+
+**Premature Optimization**: Don't optimize before you have data
+**Over-Engineering**: Start simple and scale when needed
+**Ignoring Monitoring**: You can't scale what you can't measure
+**Tight Coupling**: Avoid dependencies that prevent independent scaling
+
+## Planning for Scale
+
+1. **Start with Good Foundations**: Clean code and proper architecture
+2. **Measure Everything**: Implement monitoring from day one
+3. **Plan for Growth**: Anticipate bottlenecks before they happen
+4. **Iterate and Improve**: Scalability is an ongoing process
+
+## Real-World Examples
+
+**Netflix**: Microservices architecture handling millions of concurrent streams
+**Facebook**: Efficient data storage and retrieval for billions of users
+**Amazon**: Auto-scaling infrastructure that handles traffic spikes
+**Shopify**: Multi-tenant architecture supporting thousands of stores
+
+Building scalable applications is both an art and a science. It requires careful planning, continuous monitoring, and the willingness to refactor and improve as your application grows. Start with solid foundations, measure everything, and scale incrementally based on real data and user needs.
+
+Remember: the best architecture is the one that solves your current problems while preparing for future growth.
+    `,
     author: 'James Thompson',
     publishDate: '2024-06-03',
     readTime: '10 min read',
     category: 'Web Development',
-    tags: ['Scalability', 'Architecture', 'Performance']
+    tags: ['Scalability', 'Architecture', 'Performance'],
+    featuredImage: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop'
   }
 ];
 
@@ -104,14 +570,14 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
             Developer Blog
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Insights, tutorials, and best practices for modern software development
           </p>
         </div>
@@ -133,104 +599,122 @@ const Blog = () => {
         {/* Blog Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map((post) => (
-            <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="secondary" className="text-xs">
-                    {post.category}
-                  </Badge>
-                  <div className="flex items-center text-xs text-gray-500 dark:text-gray-400">
-                    <Clock className="w-3 h-3 mr-1" />
-                    {post.readTime}
-                  </div>
+            <Link key={post.id} to={`/blog/${post.id}`}>
+              <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-800 border-gray-700 hover:border-blue-500">
+                <div className="aspect-video overflow-hidden rounded-t-lg">
+                  <img 
+                    src={post.featuredImage} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-                <CardTitle className="text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {post.title}
-                </CardTitle>
-                <CardDescription className="text-sm">
-                  {post.excerpt}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-1 mb-4">
-                  {post.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <User className="w-4 h-4 mr-1" />
-                    <span className="mr-3">{post.author}</span>
-                    <Calendar className="w-4 h-4 mr-1" />
-                    <span>{formatDate(post.publishDate)}</span>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Featured Section */}
-        <div className="mt-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
-            Featured Articles
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {blogPosts.slice(0, 2).map((post) => (
-              <Card key={`featured-${post.id}`} className="group hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-                      Featured
-                    </Badge>
-                    <Badge variant="secondary">
+                    <Badge variant="secondary" className="text-xs">
                       {post.category}
                     </Badge>
+                    <div className="flex items-center text-xs text-gray-400">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {post.readTime}
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <CardTitle className="text-xl group-hover:text-blue-400 transition-colors text-white">
                     {post.title}
                   </CardTitle>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-sm text-gray-300">
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 mb-4">
                     {post.tags.map((tag) => (
-                      <Badge key={tag} variant="outline">
+                      <Badge key={tag} variant="outline" className="text-xs border-gray-600 text-gray-300">
                         {tag}
                       </Badge>
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center text-sm text-gray-400">
                       <User className="w-4 h-4 mr-1" />
-                      <span className="mr-4">{post.author}</span>
+                      <span className="mr-3">{post.author}</span>
                       <Calendar className="w-4 h-4 mr-1" />
-                      <span className="mr-4">{formatDate(post.publishDate)}</span>
-                      <Clock className="w-4 h-4 mr-1" />
-                      <span>{post.readTime}</span>
+                      <span>{formatDate(post.publishDate)}</span>
                     </div>
-                    <Button variant="ghost" size="sm" className="group-hover:bg-blue-50 dark:group-hover:bg-blue-900">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </Button>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
                   </div>
                 </CardContent>
               </Card>
+            </Link>
+          ))}
+        </div>
+
+        {/* Featured Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-center mb-8 text-white">
+            Featured Articles
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {blogPosts.slice(0, 2).map((post) => (
+              <Link key={`featured-${post.id}`} to={`/blog/${post.id}`}>
+                <Card className="group hover:shadow-xl transition-all duration-300 bg-gray-800 border-gray-700 hover:border-blue-500">
+                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                    <img 
+                      src={post.featuredImage} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+                        Featured
+                      </Badge>
+                      <Badge variant="secondary">
+                        {post.category}
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-2xl group-hover:text-blue-400 transition-colors text-white">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="text-base text-gray-300">
+                      {post.excerpt}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag) => (
+                        <Badge key={tag} variant="outline" className="border-gray-600 text-gray-300">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-sm text-gray-400">
+                        <User className="w-4 h-4 mr-1" />
+                        <span className="mr-4">{post.author}</span>
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span className="mr-4">{formatDate(post.publishDate)}</span>
+                        <Clock className="w-4 h-4 mr-1" />
+                        <span>{post.readTime}</span>
+                      </div>
+                      <Button variant="ghost" size="sm" className="group-hover:bg-blue-900 text-gray-300">
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
 
         {/* Newsletter Signup */}
         <div className="mt-16 text-center">
-          <Card className="max-w-2xl mx-auto">
+          <Card className="max-w-2xl mx-auto bg-gray-800 border-gray-700">
             <CardHeader>
-              <CardTitle className="text-2xl">Stay Updated</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-2xl text-white">Stay Updated</CardTitle>
+              <CardDescription className="text-gray-300">
                 Subscribe to our newsletter to get the latest articles and updates delivered to your inbox.
               </CardDescription>
             </CardHeader>
@@ -239,7 +723,7 @@ const Blog = () => {
                 <input
                   type="email"
                   placeholder="Enter your email address"
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                  className="flex-1 px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white placeholder-gray-400"
                 />
                 <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
                   Subscribe
