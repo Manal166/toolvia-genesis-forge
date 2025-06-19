@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { ToolConfig } from "@/config/tools.config";
 import ToolNavigation from "./ToolNavigation";
 import ToolHeader from "./ToolHeader";
+import FeedbackButton from "./FeedbackButton";
 
 interface ToolWrapperProps {
   tool: ToolConfig;
@@ -22,6 +23,14 @@ const ToolWrapper = ({ tool, isDark, onToggleTheme, children }: ToolWrapperProps
         <div className="grid lg:grid-cols-2 gap-8">
           {children}
         </div>
+      </div>
+
+      {/* Tool-specific feedback - positioned to not conflict with global feedback */}
+      <div className="fixed bottom-6 left-6 z-50">
+        <FeedbackButton 
+          toolName={tool.name}
+          variant="inline"
+        />
       </div>
     </div>
   );

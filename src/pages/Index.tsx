@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Code, Zap, Rocket, ArrowRight, Moon, Sun, Menu, X, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getFeaturedTools } from "@/config/tools.config";
 import ToolCard from "@/components/ToolCard";
+import EmailCapture from "@/components/EmailCapture";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(true);
