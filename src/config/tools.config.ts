@@ -50,16 +50,28 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
-    id: 'code-optimizer',
-    name: 'Code Optimizer',
-    description: 'Improve your code performance and readability.',
-    icon: 'zap',
-    category: 'Optimization',
+    id: 'code-translator',
+    name: 'Code Translator',
+    description: 'Translate code between programming languages while keeping the logic identical.',
+    icon: 'languages',
+    category: 'Code Generation',
     inputType: 'code',
     outputType: 'code',
-    languages: ['javascript', 'python', 'java', 'cpp'],
-    keywords: ['optimize', 'improve', 'performance', 'clean'],
-    featured: false
+    languages: ['javascript', 'python', 'java', 'cpp', 'csharp', 'php', 'ruby', 'go'],
+    keywords: ['translate', 'convert', 'port', 'language'],
+    featured: true
+  },
+  {
+    id: 'pseudocode-generator',
+    name: 'Pseudocode Generator',
+    description: 'Convert complex code into simple step-by-step pseudocode for easy understanding.',
+    icon: 'list-ordered',
+    category: 'Understanding',
+    inputType: 'code',
+    outputType: 'text',
+    languages: ['javascript', 'python', 'java', 'cpp', 'html', 'css'],
+    keywords: ['pseudocode', 'algorithm', 'steps', 'logic', 'simplify'],
+    featured: true
   },
   {
     id: 'regex-generator',
@@ -70,6 +82,18 @@ export const toolsConfig: ToolConfig[] = [
     inputType: 'prompt',
     outputType: 'text',
     keywords: ['regex', 'pattern', 'match', 'validation'],
+    featured: false
+  },
+  {
+    id: 'code-optimizer',
+    name: 'Code Optimizer',
+    description: 'Improve your code performance and readability.',
+    icon: 'zap',
+    category: 'Optimization',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['javascript', 'python', 'java', 'cpp'],
+    keywords: ['optimize', 'improve', 'performance', 'clean'],
     featured: false
   },
   {

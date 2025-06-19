@@ -6,6 +6,8 @@ import CodeExplainerTool from "@/tools/code-explainer/CodeExplainerTool";
 import AICodeGeneratorTool from "@/tools/ai-code-generator/AICodeGeneratorTool";
 import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
 import RegexGeneratorTool from "@/tools/regex-generator/RegexGeneratorTool";
+import CodeTranslatorTool from "@/tools/code-translator/CodeTranslatorTool";
+import PseudocodeGeneratorTool from "@/tools/pseudocode-generator/PseudocodeGeneratorTool";
 import GenericTool from "@/components/GenericTool";
 
 const Tool = () => {
@@ -53,6 +55,22 @@ const Tool = () => {
     case 'regex-generator':
       return (
         <RegexGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'code-translator':
+      return (
+        <CodeTranslatorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'pseudocode-generator':
+      return (
+        <PseudocodeGeneratorTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

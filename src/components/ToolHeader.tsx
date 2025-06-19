@@ -1,5 +1,4 @@
-
-import { Code, Zap, FileText, Bug, Wrench, Hash } from "lucide-react";
+import { Code, Zap, FileText, Bug, Wrench, Hash, Languages, ListOrdered } from "lucide-react";
 import { ToolConfig } from "@/config/tools.config";
 
 interface ToolHeaderProps {
@@ -14,6 +13,8 @@ const iconMap = {
   bug: Bug,
   tool: Wrench,
   regex: Hash,
+  languages: Languages,
+  'list-ordered': ListOrdered,
 };
 
 const ToolHeader = ({ tool, isDark }: ToolHeaderProps) => {
