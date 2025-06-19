@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, User, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, User, ArrowRight, Code } from 'lucide-react';
 
 interface BlogPost {
   id: string;
@@ -571,6 +570,18 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      {/* Navigation Header */}
+      <nav className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center h-16">
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <Code className="h-8 w-8 text-blue-400" />
+              <span className="text-xl font-bold font-mono text-white">CodeBoost</span>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
