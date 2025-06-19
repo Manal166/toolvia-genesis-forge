@@ -1,6 +1,7 @@
 
 import { Bug } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const BugFixerDetails = () => {
   const useCases = [
@@ -22,7 +23,12 @@ const BugFixerDetails = () => {
       toolId="bug-fixer"
       icon={<Bug className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="Bug Fixer - Fix Code Issues Instantly"
+        description="Automatically detect and fix bugs in your code with AI-powered analysis."
+      />
+    </ToolDetailsLayout>
   );
 };
 

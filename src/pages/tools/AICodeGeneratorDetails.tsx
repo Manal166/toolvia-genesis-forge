@@ -1,6 +1,7 @@
 
 import { Zap } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const AICodeGeneratorDetails = () => {
   const useCases = [
@@ -22,7 +23,12 @@ const AICodeGeneratorDetails = () => {
       toolId="ai-code-generator"
       icon={<Zap className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="AI Code Generator - Generate Production-Ready Code"
+        description="Create clean, well-commented, production-ready code from simple descriptions."
+      />
+    </ToolDetailsLayout>
   );
 };
 

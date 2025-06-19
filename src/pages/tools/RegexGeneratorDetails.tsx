@@ -1,6 +1,7 @@
 
 import { Hash } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const RegexGeneratorDetails = () => {
   const useCases = [
@@ -22,7 +23,12 @@ const RegexGeneratorDetails = () => {
       toolId="regex-generator"
       icon={<Hash className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="Regex Generator - Create Perfect Regular Expressions"
+        description="Generate complex regular expressions from plain English descriptions."
+      />
+    </ToolDetailsLayout>
   );
 };
 

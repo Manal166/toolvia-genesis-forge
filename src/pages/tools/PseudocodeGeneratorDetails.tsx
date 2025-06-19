@@ -1,6 +1,7 @@
 
 import { ListOrdered } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const PseudocodeGeneratorDetails = () => {
   const useCases = [
@@ -22,7 +23,12 @@ const PseudocodeGeneratorDetails = () => {
       toolId="pseudocode-generator"
       icon={<ListOrdered className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="Pseudocode Generator - Convert Code to Plain English"
+        description="Transform complex programming code into clear, step-by-step pseudocode."
+      />
+    </ToolDetailsLayout>
   );
 };
 

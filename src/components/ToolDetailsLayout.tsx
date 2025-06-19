@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code } from "lucide-react";
+import { ArrowRight, ArrowLeft, Code } from "lucide-react";
 import FeedbackButton from "./FeedbackButton";
 
 interface ToolDetailsLayoutProps {
@@ -60,9 +60,18 @@ const ToolDetailsLayout = ({
                   CodeBoost
                 </span>
               </Link>
-              <Link to="/tools" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                All Tools
-              </Link>
+              <div className="flex items-center space-x-4">
+                <Link 
+                  to="/tools" 
+                  className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  <ArrowLeft className="h-4 w-4 mr-1" />
+                  All Tools
+                </Link>
+                <Link to="/" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">
+                  Home
+                </Link>
+              </div>
             </div>
           </div>
         </nav>
@@ -85,12 +94,19 @@ const ToolDetailsLayout = ({
               {description}
             </p>
 
-            <Link to={`/tools/${toolId}`}>
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
-                Launch Tool
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to={`/tools/${toolId}`}>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
+                  Launch Tool
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/tools">
+                <Button size="lg" variant="outline" className="px-8 py-4 text-lg">
+                  Browse All Tools
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Use Cases Section */}
@@ -143,6 +159,31 @@ const ToolDetailsLayout = ({
                 <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Copy, download, or use your result instantly
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Section */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-8 mb-8">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+                Explore More Tools
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Discover our complete collection of developer tools to boost your productivity.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/tools">
+                  <Button size="lg" variant="outline" className="px-8 py-3">
+                    <ArrowLeft className="mr-2 h-5 w-5" />
+                    View All Tools
+                  </Button>
+                </Link>
+                <Link to="/">
+                  <Button size="lg" variant="outline" className="px-8 py-3">
+                    Back to Homepage
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

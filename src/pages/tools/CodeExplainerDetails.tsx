@@ -1,6 +1,7 @@
 
 import { MessageSquare } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const CodeExplainerDetails = () => {
   const useCases = [
@@ -21,7 +22,12 @@ const CodeExplainerDetails = () => {
       toolId="code-explainer"
       icon={<MessageSquare className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="Code Explainer - Understand Any Code in Seconds"
+        description="Transform complex code into clear, educational explanations with AI-powered analysis."
+      />
+    </ToolDetailsLayout>
   );
 };
 

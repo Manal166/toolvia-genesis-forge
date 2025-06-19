@@ -1,6 +1,7 @@
 
 import { Languages } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
+import SocialShareButtons from "@/components/SocialShareButtons";
 
 const CodeTranslatorDetails = () => {
   const useCases = [
@@ -22,7 +23,12 @@ const CodeTranslatorDetails = () => {
       toolId="code-translator"
       icon={<Languages className="h-8 w-8 text-blue-600 dark:text-blue-400" />}
       useCases={useCases}
-    />
+    >
+      <SocialShareButtons
+        title="Code Translator - Convert Code Between Languages"
+        description="Seamlessly translate code between programming languages while preserving logic and functionality."
+      />
+    </ToolDetailsLayout>
   );
 };
 
