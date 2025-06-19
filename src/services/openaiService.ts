@@ -1,4 +1,3 @@
-
 interface OpenAIMessage {
   role: 'system' | 'user' | 'assistant';
   content: string;
@@ -17,14 +16,13 @@ class OpenAIService {
   private baseUrl = 'https://api.openai.com/v1/chat/completions';
 
   constructor() {
-    // In production, this should come from environment variables
-    // For now, we'll use a placeholder that users can replace
-    this.apiKey = process.env.REACT_APP_OPENAI_API_KEY || '';
+    // In Vite, use import.meta.env instead of process.env
+    this.apiKey = import.meta.env.VITE_OPENAI_API_KEY || '';
   }
 
   private async makeRequest(messages: OpenAIMessage[], model: string = 'gpt-4o'): Promise<string> {
     if (!this.apiKey) {
-      throw new Error('OpenAI API key not configured. Please set REACT_APP_OPENAI_API_KEY environment variable.');
+      throw new Error('OpenAI API key not configured. Please set VITE_OPENAI_API_KEY environment variable.');
     }
 
     const response = await fetch(this.baseUrl, {
