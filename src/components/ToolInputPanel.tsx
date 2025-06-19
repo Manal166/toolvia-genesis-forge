@@ -33,7 +33,10 @@ const ToolInputPanel = ({
         onGenerateCode={onGenerateCode}
       />
 
-      <ExamplePrompts />
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+        <h3 className="text-lg font-semibold text-white mb-4">Examples</h3>
+        <ExamplePrompts />
+      </div>
     </div>
   );
 };

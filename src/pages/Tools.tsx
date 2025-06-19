@@ -51,6 +51,14 @@ const Tools = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Discover our collection of AI-powered tools designed to accelerate your development workflow.
           </p>
+          <div className="mt-8">
+            <Link 
+              to="/tools" 
+              className="inline-flex items-center text-white hover:text-blue-400 transition-colors"
+            >
+              View All Tools
+            </Link>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-8">

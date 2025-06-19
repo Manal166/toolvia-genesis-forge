@@ -1,4 +1,5 @@
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -132,6 +133,15 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Custom text color utilities */
+  .text-white-force {
+    color: white !important;
+  }
+
+  .text-green-force {
+    color: #10b981 !important;
+  }
 }
 
 /* Syntax highlighting for code blocks */
@@ -150,4 +160,18 @@
   .focus-visible {
     @apply ring-2 ring-blue-500 ring-offset-2 ring-offset-background outline-none;
   }
+
+  /* Tool-specific text color overrides */
+  .tool-label {
+    @apply text-white;
+  }
+
+  .tool-category {
+    @apply text-white;
+  }
+
+  .tool-search {
+    @apply text-white;
+  }
 }
+

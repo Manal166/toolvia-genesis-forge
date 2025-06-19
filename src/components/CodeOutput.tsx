@@ -12,7 +12,7 @@ const CodeOutput = ({ generatedCode, copied, onCopyToClipboard }: CodeOutputProp
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
       <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+        <h2 className="text-xl font-semibold text-green-400">
           Generated Code
         </h2>
         {generatedCode && (
