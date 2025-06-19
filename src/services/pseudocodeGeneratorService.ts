@@ -1,9 +1,18 @@
 
-// Mock service for pseudocode generation - replace with real API integration
+import { openaiService } from './openaiService';
+
 export const generatePseudocode = async (code: string, language: string): Promise<string> => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
+  try {
+    return await openaiService.generatePseudocode(code, language);
+  } catch (error) {
+    console.error('Error generating pseudocode:', error);
+    
+    // Fallback to mock response if API fails
+    return generateMockPseudocode(code, language);
+  }
+};
+
+const generateMockPseudocode = (code: string, language: string): string => {
   // Generate pseudocode based on code patterns
   if (code.includes('function') || code.includes('def') || code.includes('public static')) {
     return generateFunctionPseudocode(code, language);
