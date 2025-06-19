@@ -4,6 +4,7 @@ import { Code, Moon, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ToolDirectory from "@/components/ToolDirectory";
+import AdZone from "@/components/AdZone";
 
 const Tools = () => {
   const [isDark, setIsDark] = useState(true);
@@ -35,6 +36,12 @@ const Tools = () => {
         </div>
       </nav>
 
+      {/* Top Banner Ad Zone */}
+      <AdZone 
+        id="tools-banner-top" 
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4"
+      />
+
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
@@ -46,9 +53,33 @@ const Tools = () => {
           </p>
         </div>
 
-        {/* Tool Directory */}
-        <ToolDirectory />
+        <div className="grid lg:grid-cols-12 gap-8">
+          {/* Main Content Area */}
+          <div className="lg:col-span-9">
+            <ToolDirectory />
+          </div>
+          
+          {/* Sidebar Ad Zone */}
+          <div className="lg:col-span-3">
+            <div className="sticky top-8 space-y-6">
+              <AdZone 
+                id="tools-sidebar-primary"
+                className="w-full min-h-[300px]"
+              />
+              <AdZone 
+                id="tools-sidebar-secondary"
+                className="w-full min-h-[250px]"
+              />
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Bottom Banner Ad Zone */}
+      <AdZone 
+        id="tools-banner-bottom" 
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+      />
     </div>
   );
 };

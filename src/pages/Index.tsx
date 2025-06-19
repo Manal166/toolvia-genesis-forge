@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Code, Zap, Rocket, ArrowRight, Moon, Sun, Menu, X, Star } from "lucide-react";
@@ -5,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { getFeaturedTools } from "@/config/tools.config";
 import ToolCard from "@/components/ToolCard";
 import EmailCapture from "@/components/EmailCapture";
+import AdZone from "@/components/AdZone";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(true);
@@ -103,6 +105,12 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Top Banner Ad Zone */}
+      <AdZone 
+        id="banner-top" 
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4"
+      />
+
       {/* Featured Tools Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,9 +127,28 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {featuredTools.map((tool) => (
-              <ToolCard key={tool.id} tool={tool} />
+            {featuredTools.map((tool, index) => (
+              <div key={tool.id}>
+                <ToolCard tool={tool} />
+                {/* Sidebar Ad Zone after every 2 tools */}
+                {(index + 1) % 2 === 0 && (
+                  <div className="mt-8 lg:hidden">
+                    <AdZone 
+                      id={`tools-inline-${Math.floor(index / 2)}`}
+                      className="w-full"
+                    />
+                  </div>
+                )}
+              </div>
             ))}
+          </div>
+
+          {/* Sidebar Ad Zone for larger screens */}
+          <div className="hidden lg:block mb-8">
+            <AdZone 
+              id="tools-sidebar"
+              className="max-w-sm mx-auto"
+            />
           </div>
 
           <div className="text-center">
@@ -134,6 +161,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Middle Banner Ad Zone */}
+      <AdZone 
+        id="banner-middle" 
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+      />
 
       {/* Features Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
@@ -172,6 +205,14 @@ const Index = () => {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Feature Section Ad Zone */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <AdZone 
+            id="features-bottom"
+            className="max-w-2xl mx-auto"
+          />
         </div>
       </section>
 
