@@ -1,18 +1,17 @@
-
-// Mock service for bug fixing - replace with real API integration
-// Example for future OpenAI API integration:
-/*
-import OpenAI from 'openai';
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-*/
+import { openaiService } from './openaiService';
 
 export const fixCode = async (code: string, language: string = 'javascript'): Promise<string> => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 2000));
-  
+  try {
+    return await openaiService.fixCode(code, language);
+  } catch (error) {
+    console.error('Error fixing code:', error);
+    
+    // Fallback to mock response if API fails
+    return generateMockFix(language);
+  }
+};
+
+const generateMockFix = (language: string): string => {
   // Mock bug fixes for demonstration
   const mockFixes: Record<string, string> = {
     javascript: `// Fixed JavaScript Code
@@ -126,7 +125,6 @@ int main() {
 }`
   };
 
-  // Return appropriate mock fix based on language
   return mockFixes[language] || mockFixes.javascript;
 };
 

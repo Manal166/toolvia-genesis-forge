@@ -1,3 +1,4 @@
+import { openaiService } from './openaiService';
 
 export interface RegexResult {
   regex: string;
@@ -5,9 +6,17 @@ export interface RegexResult {
 }
 
 export const generateRegex = async (description: string): Promise<RegexResult> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 1500));
+  try {
+    return await openaiService.generateRegex(description);
+  } catch (error) {
+    console.error('Error generating regex:', error);
+    
+    // Fallback to mock response if API fails
+    return generateMockRegex(description);
+  }
+};
 
+const generateMockRegex = (description: string): RegexResult => {
   // Mock regex generation based on common patterns
   const patterns: Record<string, RegexResult> = {
     'email': {

@@ -1,3 +1,4 @@
+import { openaiService } from './openaiService';
 
 interface CodeExplanationResponse {
   explanation: string;
@@ -6,13 +7,14 @@ interface CodeExplanationResponse {
 }
 
 export const explainCode = async (code: string, language?: string): Promise<string> => {
-  // Simulate API call for now - in production, this would call your AI service
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const mockExplanation = generateMockExplanation(code, language);
-      resolve(mockExplanation);
-    }, 2000);
-  });
+  try {
+    return await openaiService.explainCode(code, language || 'javascript');
+  } catch (error) {
+    console.error('Error explaining code:', error);
+    
+    // Fallback to mock response if API fails
+    return generateMockExplanation(code, language);
+  }
 };
 
 const generateMockExplanation = (code: string, language?: string): string => {

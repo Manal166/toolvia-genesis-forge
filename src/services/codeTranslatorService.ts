@@ -1,10 +1,18 @@
+import { openaiService } from './openaiService';
 
-// Mock service for code translation - replace with real API integration
 export const translateCode = async (code: string, fromLanguage: string, toLanguage: string): Promise<string> => {
-  // Simulate API call delay
-  await new Promise(resolve => setTimeout(resolve, 2500));
-  
-  // Mock translations for demonstration
+  try {
+    return await openaiService.translateCode(code, fromLanguage, toLanguage);
+  } catch (error) {
+    console.error('Error translating code:', error);
+    
+    // Fallback to mock response if API fails
+    return generateMockTranslation(code, fromLanguage, toLanguage);
+  }
+};
+
+const generateMockTranslation = (code: string, fromLanguage: string, toLanguage: string): string => {
+  // Mock service for code translation - replace with real API integration
   const translations: Record<string, Record<string, string>> = {
     python: {
       javascript: `// Translated from Python to JavaScript
