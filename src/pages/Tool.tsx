@@ -5,6 +5,7 @@ import { getToolById } from "@/config/tools.config";
 import CodeExplainerTool from "@/tools/code-explainer/CodeExplainerTool";
 import AICodeGeneratorTool from "@/tools/ai-code-generator/AICodeGeneratorTool";
 import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
+import RegexGeneratorTool from "@/tools/regex-generator/RegexGeneratorTool";
 import GenericTool from "@/components/GenericTool";
 
 const Tool = () => {
@@ -44,6 +45,14 @@ const Tool = () => {
     case 'bug-fixer':
       return (
         <BugFixerTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'regex-generator':
+      return (
+        <RegexGeneratorTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
