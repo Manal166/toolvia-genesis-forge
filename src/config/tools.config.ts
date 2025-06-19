@@ -87,26 +87,26 @@ export const toolsConfig: ToolConfig[] = [
   {
     id: 'code-optimizer',
     name: 'Code Optimizer',
-    description: 'Improve your code performance and readability.',
-    icon: 'zap',
-    category: 'Optimization',
+    description: 'Improve your code performance and readability with AI-powered optimizations.',
+    icon: 'settings',
+    category: 'Fixing & Optimization',
     inputType: 'code',
     outputType: 'code',
-    languages: ['javascript', 'python', 'java', 'cpp'],
-    keywords: ['optimize', 'improve', 'performance', 'clean'],
-    featured: false
+    languages: ['javascript', 'python', 'java', 'cpp', 'html', 'css'],
+    keywords: ['optimize', 'improve', 'performance', 'clean', 'refactor'],
+    featured: true
   },
   {
     id: 'api-documentation',
     name: 'API Doc Generator',
-    description: 'Generate comprehensive API documentation from your code.',
+    description: 'Generate comprehensive API documentation from your code automatically.',
     icon: 'file-text',
     category: 'Documentation',
     inputType: 'code',
     outputType: 'text',
-    languages: ['javascript', 'python', 'java'],
-    keywords: ['documentation', 'api', 'docs', 'swagger'],
-    featured: false
+    languages: ['javascript', 'python', 'java', 'php', 'csharp'],
+    keywords: ['documentation', 'api', 'docs', 'swagger', 'openapi'],
+    featured: true
   }
 ];
 

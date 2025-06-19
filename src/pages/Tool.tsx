@@ -8,6 +8,8 @@ import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
 import RegexGeneratorTool from "@/tools/regex-generator/RegexGeneratorTool";
 import CodeTranslatorTool from "@/tools/code-translator/CodeTranslatorTool";
 import PseudocodeGeneratorTool from "@/tools/pseudocode-generator/PseudocodeGeneratorTool";
+import CodeOptimizerTool from "@/tools/code-optimizer/CodeOptimizerTool";
+import APIDocGeneratorTool from "@/tools/api-doc-generator/APIDocGeneratorTool";
 import GenericTool from "@/components/GenericTool";
 
 const Tool = () => {
@@ -71,6 +73,22 @@ const Tool = () => {
     case 'pseudocode-generator':
       return (
         <PseudocodeGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'code-optimizer':
+      return (
+        <CodeOptimizerTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'api-documentation':
+      return (
+        <APIDocGeneratorTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

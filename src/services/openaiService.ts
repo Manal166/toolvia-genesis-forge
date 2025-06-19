@@ -155,6 +155,36 @@ class OpenAIService {
 
     return this.makeRequest(messages);
   }
+
+  async optimizeCode(code: string, language: string): Promise<string> {
+    const messages: OpenAIMessage[] = [
+      {
+        role: 'system',
+        content: 'You are an expert code optimizer. Optimize the given code for performance, readability, and best practices. Return the optimized code followed by "---EXPLANATION---" and then provide a detailed explanation of the improvements made with bullet points.'
+      },
+      {
+        role: 'user',
+        content: `Optimize this ${language} code for better performance and readability:\n\n\`\`\`${language}\n${code}\n\`\`\``
+      }
+    ];
+
+    return this.makeRequest(messages);
+  }
+
+  async generateAPIDocumentation(code: string, language: string): Promise<string> {
+    const messages: OpenAIMessage[] = [
+      {
+        role: 'system',
+        content: 'You are an expert API documentation generator. Generate comprehensive API documentation from the provided code. Include endpoints, methods, parameters, responses, and examples. Format the output in a clear, structured manner with proper markdown formatting.'
+      },
+      {
+        role: 'user',
+        content: `Generate API documentation for this ${language} code:\n\n\`\`\`${language}\n${code}\n\`\`\``
+      }
+    ];
+
+    return this.makeRequest(messages);
+  }
 }
 
 export const openaiService = new OpenAIService();
