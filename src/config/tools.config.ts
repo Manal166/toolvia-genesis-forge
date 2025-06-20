@@ -86,6 +86,18 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
+    id: 'sql-query-generator',
+    name: 'SQL Query Generator',
+    description: 'Generate SQL queries from natural language instantly.',
+    icon: 'database',
+    category: 'Code Generation',
+    inputType: 'prompt',
+    outputType: 'code',
+    languages: ['sql'],
+    keywords: ['sql', 'database', 'query', 'select', 'insert', 'update', 'delete'],
+    featured: true
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Generate regular expressions from plain language descriptions.',

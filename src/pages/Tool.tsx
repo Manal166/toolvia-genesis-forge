@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getToolById } from "@/config/tools.config";
@@ -12,6 +13,7 @@ import APIDocGeneratorTool from "@/tools/api-doc-generator/APIDocGeneratorTool";
 import UnitTestTool from "@/tools/unit-test-generator/UnitTestTool";
 import GenericTool from "@/components/GenericTool";
 import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
+import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -106,6 +108,14 @@ const Tool = () => {
     case 'unit-test-generator':
       return (
         <UnitTestTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'sql-query-generator':
+      return (
+        <SQLQueryTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

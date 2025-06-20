@@ -215,6 +215,24 @@ class OpenAIService {
 
     return this.makeRequest(messages);
   }
+
+  async generateSQLQuery(description: string, dialect: string): Promise<string> {
+    const messages: OpenAIMessage[] = [
+      {
+        role: 'system',
+        content: 'You are a professional SQL expert. Generate safe, efficient SQL queries based on user requests. Return only the SQL code without any explanations or markdown formatting.'
+      },
+      {
+        role: 'user',
+        content: `Generate a SQL query for the following request using ${dialect}. Return only the SQL code.
+
+Request:
+${description}`
+      }
+    ];
+
+    return this.makeRequest(messages);
+  }
 }
 
 export const openaiService = new OpenAIService();
