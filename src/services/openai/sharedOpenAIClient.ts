@@ -26,12 +26,10 @@ export class SharedOpenAIClient {
     this.apiKey = import.meta.env.VITE_OPENAI_API_KEY || '';
   }
 
-  async makeRequest(messages: OpenAIMessage[], model: string = 'gpt-4o'): Promise<string> {
+  async makeRequest(messages: OpenAIMessage[], model: string = 'gpt-4.1-2025-04-14'): Promise<string> {
     if (!this.apiKey) {
       throw new Error('OpenAI API key not configured. Please set VITE_OPENAI_API_KEY environment variable.');
     }
-
-    console.log('Making OpenAI request with:', { model, messageCount: messages.length });
 
     const response = await fetch(this.baseUrl, {
       method: 'POST',
@@ -49,14 +47,11 @@ export class SharedOpenAIClient {
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({ error: { message: 'Unknown error' } }));
-      console.error('OpenAI API Error:', error);
       throw new Error(`OpenAI API Error: ${error.error?.message || response.statusText}`);
     }
 
     const data: OpenAIResponse = await response.json();
-    const result = data.choices[0]?.message?.content || 'No response generated';
-    console.log('OpenAI response received, length:', result.length);
-    return result;
+    return data.choices[0]?.message?.content || 'No response generated';
   }
 
   createSystemMessage(content: string): OpenAIMessage {

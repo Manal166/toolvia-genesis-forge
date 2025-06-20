@@ -37,8 +37,6 @@ export class VisualizationService {
   async explainCodeWithTone(code: string, language: string, tone: ExplanationTone): Promise<string> {
     const toneInstructions = this.getToneInstructions(tone);
     
-    console.log('Generating code explanation with tone:', tone);
-    
     const messages: OpenAIMessage[] = [
       sharedOpenAIClient.createSystemMessage(
         `You are an expert code analyst. Analyze the provided code and explain exactly what it does, how it works, and break down complex parts into understandable explanations. 
@@ -52,8 +50,7 @@ IMPORTANT:
 - Use the specific variable names, function names, and values from the code
 - Provide line-by-line analysis when helpful
 - Format your response with clear sections like "Function Purpose", "How It Works", "Key Variables", etc.
-- Be specific about what the code accomplishes, not generic programming concepts
-- Structure your response with markdown headers (##) for better readability`
+- Be specific about what the code accomplishes, not generic programming concepts`
       ),
       sharedOpenAIClient.createUserMessage(
         `Analyze and explain this ${language} code in detail:\n\n${sharedOpenAIClient.formatCodeBlock(code, language)}\n\nPlease provide a comprehensive explanation of what this specific code does, including its purpose, logic, variables, and return values.`
