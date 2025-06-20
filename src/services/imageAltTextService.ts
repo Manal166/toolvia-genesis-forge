@@ -15,7 +15,9 @@ const convertImageToBase64 = (file: File): Promise<string> => {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result as string;
-      resolve(result);
+      // Remove the data URL prefix to get just the base64 data
+      const base64 = result.split(',')[1];
+      resolve(base64);
     };
     reader.onerror = reject;
     reader.readAsDataURL(file);
@@ -88,7 +90,7 @@ Examples:
         {
           type: 'image_url',
           image_url: {
-            url: base64Image
+            url: `data:${file.type};base64,${base64Image}`
           }
         }
       ]
