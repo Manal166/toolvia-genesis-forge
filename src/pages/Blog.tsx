@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -66,61 +65,226 @@ The future of coding is collaborative—human creativity paired with AI efficien
   },
   {
     id: '2',
-    title: 'Best Practices for Code Documentation',
-    excerpt: 'Discover essential techniques for writing clear, maintainable documentation that helps teams collaborate effectively.',
+    title: 'The Art of Writing Self-Documenting Code',
+    excerpt: 'Master the craft of creating code that tells its own story, reducing the need for extensive documentation while improving maintainability.',
     content: `
-# Best Practices for Code Documentation
+# The Art of Writing Self-Documenting Code
 
-Good documentation is the bridge between complex code and human understanding. It's not just about explaining what your code does—it's about creating a roadmap for future developers, including your future self.
+In the fast-paced world of software development, documentation often becomes an afterthought. But what if your code could tell its own story? Self-documenting code is more than just a buzzword—it's a philosophy that can transform how teams collaborate and maintain software.
 
-## Why Documentation Matters
+## The Philosophy Behind Self-Documenting Code
 
-Every developer has experienced the frustration of encountering undocumented code. Whether it's a function with cryptic parameters or a complex algorithm without explanation, poor documentation costs time and increases bugs.
+Self-documenting code is code that clearly expresses its intent through careful naming, structure, and design. It reduces cognitive load and makes the codebase accessible to new team members without requiring extensive external documentation.
 
-## The Documentation Pyramid
+## The Foundation: Meaningful Names
 
-**Level 1: Code Comments**
-- Explain the "why," not the "what"
-- Use comments for complex business logic
-- Keep comments up-to-date with code changes
+**Choose Names That Reveal Intent**:
+\`\`\`javascript
+// Poor naming
+function calc(x, y) {
+  return x * y * 0.1;
+}
 
-**Level 2: Function/Method Documentation**
-- Document parameters and return values
-- Include usage examples
-- Specify any side effects or exceptions
+// Self-documenting naming
+function calculateMonthlyInterest(principal, rate) {
+  const MONTHS_PER_YEAR = 12;
+  return principal * rate / MONTHS_PER_YEAR;
+}
+\`\`\`
 
-**Level 3: Architecture Documentation**
-- Explain system design decisions
-- Document API endpoints and data flows
-- Maintain architectural decision records (ADRs)
+**Use Pronounceable Names**: If you can't say it out loud in a code review, it's probably not a good name.
+
+**Avoid Mental Mapping**: Don't make readers translate abbreviations or acronyms in their heads.
+
+## Function Design Principles
+
+**Single Responsibility**: Each function should do one thing well.
+\`\`\`python
+# Before: Function doing too much
+def process_user_data(user_id):
+    user = get_user(user_id)
+    validate_user(user)
+    update_last_login(user)
+    send_welcome_email(user)
+    log_user_activity(user)
+    
+# After: Broken into focused functions
+def authenticate_and_welcome_user(user_id):
+    user = authenticate_user(user_id)
+    welcome_returning_user(user)
+    
+def authenticate_user(user_id):
+    user = fetch_user_by_id(user_id)
+    validate_user_credentials(user)
+    record_login_timestamp(user)
+    return user
+    
+def welcome_returning_user(user):
+    send_personalized_welcome_email(user)
+    log_successful_authentication(user)
+\`\`\`
+
+**Small Functions**: Aim for functions that fit on a single screen. If you need to scroll, consider breaking it down.
+
+## Code Structure as Documentation
+
+**Use Guard Clauses**: Make the happy path obvious by handling edge cases early.
+\`\`\`typescript
+// Instead of deep nesting
+function processOrder(order: Order) {
+  if (order) {
+    if (order.items.length > 0) {
+      if (order.customer.isValid()) {
+        // main logic here
+      }
+    }
+  }
+}
+
+// Use guard clauses
+function processOrder(order: Order) {
+  if (!order) throw new Error('Order is required');
+  if (order.items.length === 0) throw new Error('Order must have items');
+  if (!order.customer.isValid()) throw new Error('Invalid customer');
+  
+  // main logic here - the happy path is clear
+}
+\`\`\`
+
+**Organize Code by Importance**: Put the most important logic first, details last.
+
+## The Power of Domain-Driven Design
+
+**Use Ubiquitous Language**: Your code should use the same terms that domain experts use.
+
+\`\`\`java
+// Generic, unclear
+class DataProcessor {
+  void process(List<Object> items) { }
+}
+
+// Domain-specific, clear
+class InvoiceValidator {
+  void validatePendingInvoices(List<Invoice> unpaidInvoices) { }
+}
+\`\`\`
+
+**Create Domain Models**: Let your classes represent real-world concepts.
+
+## When Comments Are Still Necessary
+
+While self-documenting code reduces the need for comments, some situations still require them:
+
+**Explaining Why, Not What**:
+\`\`\`javascript
+// Poor comment (explains what)
+user.status = 'inactive'; // Set user status to inactive
+
+// Good comment (explains why)
+user.status = 'inactive'; // Prevent login attempts during password reset process
+\`\`\`
+
+**Complex Business Rules**:
+\`\`\`python
+# Apply the "Rule of 72" for compound interest approximation
+# This simplified calculation is acceptable for estimation purposes
+# as specified in requirements document REQ-2024-003
+years_to_double = 72 / annual_interest_rate
+\`\`\`
+
+**API Documentation**: Public interfaces still need clear documentation.
+
+## Code Organization Strategies
+
+**Package by Feature, Not by Layer**:
+\`\`\`
+❌ Bad: Organized by technical layer
+src/
+  controllers/
+  services/
+  repositories/
+  
+✅ Good: Organized by business feature
+src/
+  user-management/
+  order-processing/
+  inventory-tracking/
+\`\`\`
+
+**Use Consistent Patterns**: Establish conventions and stick to them across your codebase.
+
+## Testing as Documentation
+
+Well-written tests serve as executable documentation:
+
+\`\`\`javascript
+describe('OrderCalculator', () => {
+  it('should apply senior citizen discount when customer is over 65', () => {
+    const customer = new Customer({ age: 70 });
+    const order = new Order({ subtotal: 100 });
+    
+    const total = OrderCalculator.calculateTotal(order, customer);
+    
+    expect(total).toBe(85); // 15% senior discount applied
+  });
+});
+\`\`\`
 
 ## Tools and Techniques
 
-**Documentation Generators**: Tools like JSDoc, Sphinx, or GitBook can automatically generate documentation from your code comments.
+**Type Systems**: Use TypeScript, Flow, or other type systems to make contracts explicit.
 
-**Living Documentation**: Keep documentation close to code—in README files, inline comments, or code annotation tools.
+**Linting Rules**: Enforce naming conventions and code structure through automated tools.
 
-**Examples and Tutorials**: Nothing beats working examples. Include sample code that developers can run immediately.
+**Code Reviews**: Focus on readability and intent during peer reviews.
 
-## Writing Tips
+## Advanced Techniques
 
-1. **Write for Your Audience**: Junior developers need more context than seniors
-2. **Use Clear Language**: Avoid jargon and overly technical language
-3. **Show, Don't Just Tell**: Include code examples whenever possible
-4. **Keep It Current**: Outdated documentation is worse than no documentation
+**Fluent Interfaces**: Make method chaining read like natural language.
+\`\`\`java
+Order order = OrderBuilder
+  .createOrder()
+  .forCustomer(customer)
+  .addItem(product, quantity)
+  .applyDiscount(coupon)
+  .build();
+\`\`\`
 
-## Documentation Culture
+**Command Query Separation**: Methods should either do something or return something, not both.
 
-The best-documented codebases come from teams that value documentation as much as code quality. Make documentation reviews part of your code review process, and celebrate team members who write great docs.
+**Intention-Revealing Interfaces**: Design APIs that make correct usage obvious.
 
-Remember: Code tells you how, documentation tells you why.
+## The Business Case
+
+Self-documenting code isn't just about developer happiness—it has real business impact:
+
+- **Faster Onboarding**: New developers become productive sooner
+- **Reduced Bugs**: Clear code leads to fewer misunderstandings
+- **Lower Maintenance Costs**: Self-evident code is easier to modify
+- **Better Collaboration**: Teams spend less time explaining and more time building
+
+## Making the Transition
+
+**Start Small**: Begin with new code and gradually refactor existing code during regular maintenance.
+
+**Team Agreement**: Establish coding standards that everyone follows.
+
+**Continuous Improvement**: Regular retrospectives on code quality and readability.
+
+**Measure Progress**: Track metrics like time to understand unfamiliar code or onboarding speed.
+
+## Conclusion
+
+Self-documenting code is an investment in your team's future productivity. It requires discipline and practice, but the payoff is enormous. When your code tells a clear story, everyone wins—from the developer who wrote it six months ago to the new team member encountering it for the first time.
+
+Remember: code is written once but read many times. Make every reading a pleasant experience.
     `,
-    author: 'Michael Chen',
-    publishDate: '2024-06-12',
-    readTime: '7 min read',
+    author: 'Alex Rivera',
+    publishDate: '2024-06-18',
+    readTime: '9 min read',
     category: 'Development',
-    tags: ['Documentation', 'Best Practices', 'Team Collaboration'],
-    featuredImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop'
+    tags: ['Documentation', 'Code Quality', 'Best Practices', 'Clean Code'],
+    featuredImage: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop'
   },
   {
     id: '3',
