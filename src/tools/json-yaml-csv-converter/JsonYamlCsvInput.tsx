@@ -58,14 +58,18 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
       {/* Format Selection */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor="from-format">From Format</Label>
+          <Label htmlFor="from-format" className="text-white">From Format</Label>
           <Select value={fromFormat} onValueChange={(value: DataFormat) => setFromFormat(value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select input format" />
+            <SelectTrigger className="text-white">
+              <SelectValue placeholder="Select input format" className="text-white" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-600">
               {formatOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem 
+                  key={option.value} 
+                  value={option.value}
+                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                >
                   {option.label}
                 </SelectItem>
               ))}
@@ -74,14 +78,18 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="to-format">To Format</Label>
+          <Label htmlFor="to-format" className="text-white">To Format</Label>
           <Select value={toFormat} onValueChange={(value: DataFormat) => setToFormat(value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select output format" />
+            <SelectTrigger className="text-white">
+              <SelectValue placeholder="Select output format" className="text-white" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-600">
               {formatOptions.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
+                <SelectItem 
+                  key={option.value} 
+                  value={option.value}
+                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                >
                   {option.label}
                 </SelectItem>
               ))}
@@ -99,7 +107,7 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
 
       {/* Input Textarea */}
       <div className="space-y-2">
-        <Label htmlFor="input-data">Input Data</Label>
+        <Label htmlFor="input-data" className="text-white">Input Data</Label>
         <textarea
           id="input-data"
           value={input}
