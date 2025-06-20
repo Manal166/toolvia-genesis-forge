@@ -126,7 +126,7 @@ console.log("Total:", calculateTotal(items));`
             placeholder="Describe what's wrong with your code (e.g., 'Button is not clickable', 'Layout is broken on mobile', 'Getting console errors')"
             value={issueDescription}
             onChange={(e) => onIssueDescriptionChange(e.target.value)}
-            className={`min-h-[80px] ${isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : ''}`}
+            className="min-h-[80px] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
           />
         </div>
 
@@ -138,7 +138,7 @@ console.log("Total:", calculateTotal(items));`
             placeholder={`Paste your ${language.toUpperCase()} code here...`}
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
-            className={`min-h-[300px] font-mono text-sm ${isDark ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : ''}`}
+            className="min-h-[300px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
           />
         </div>
 
