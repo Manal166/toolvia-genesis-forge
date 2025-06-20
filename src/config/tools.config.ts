@@ -1,4 +1,3 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
@@ -188,6 +187,17 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'text',
     languages: ['javascript', 'python', 'java', 'react', 'nodejs', 'html', 'css'],
     keywords: ['interview', 'questions', 'technical', 'ai', 'practice', 'preparation', 'coding'],
+    featured: true
+  },
+  {
+    id: 'json-yaml-csv-converter',
+    name: 'JSON ↔ YAML ↔ CSV Converter',
+    description: 'A powerful data format converter that allows users to seamlessly convert between JSON, YAML, and CSV formats.',
+    icon: 'file-text',
+    category: 'Data Tools',
+    inputType: 'text',
+    outputType: 'text',
+    keywords: ['json', 'yaml', 'csv', 'convert', 'data', 'format', 'transform'],
     featured: true
   },
   {

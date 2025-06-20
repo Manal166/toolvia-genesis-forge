@@ -22,6 +22,7 @@ import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
 import ImageAltTextTool from "@/tools/image-alt-text-generator/ImageAltTextTool";
 import LivePlaygroundTool from "@/tools/live-playground/LivePlaygroundTool";
 import AIInterviewGeneratorTool from "@/tools/ai-interview-generator/AIInterviewGeneratorTool";
+import JsonYamlCsvTool from "@/tools/json-yaml-csv-converter/JsonYamlCsvTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -188,6 +189,14 @@ const Tool = () => {
     case 'ai-interview-generator':
       return (
         <AIInterviewGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'json-yaml-csv-converter':
+      return (
+        <JsonYamlCsvTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
