@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Copy, Download, RefreshCw, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,7 +25,7 @@ const ImageAltTextOutput = ({
   const [editedText, setEditedText] = useState('');
 
   // Update edited text when result changes
-  useState(() => {
+  useEffect(() => {
     if (result) {
       setEditedText(result.altText);
     }
