@@ -116,27 +116,27 @@ const CodeRefactorDetails = () => {
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border">
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Before (Original)</h3>
             <div className="bg-gray-900 p-3 rounded text-green-400 text-xs font-mono">
-              function calc(a,b,op){'{'}
-              <br/>{'  '}if(op=='add') return a+b;
-              <br/>{'  '}if(op=='sub') return a-b;
-              <br/>{'  '}if(op=='mul') return a*b;
-              <br/>{'  '}if(op=='div') return a/b;
-              <br/>{'}'}
+              function calc(a,b,op){'{'}<br/>
+              {'  '}if(op=='add') return a+b;<br/>
+              {'  '}if(op=='sub') return a-b;<br/>
+              {'  '}if(op=='mul') return a*b;<br/>
+              {'  '}if(op=='div') return a/b;<br/>
+              {'}'}
             </div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg border">
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">After (Refactored)</h3>
             <div className="bg-gray-900 p-3 rounded text-green-400 text-xs font-mono">
-              function calculate(operandA, operandB, operation) {'{'}
-              <br/>{'  '}const operations = {'{'}
-              <br/>{'    '}add: (a, b) => a + b,
-              <br/>{'    '}subtract: (a, b) => a - b,
-              <br/>{'    '}multiply: (a, b) => a * b,
-              <br/>{'    '}divide: (a, b) => b !== 0 ? a / b : null
-              <br/>{'  '}{'}'};
-              <br/>{'  '}return operations[operation]?.(operandA, operandB);
-              <br/>{'}'}
+              function calculate(operandA, operandB, operation) {'{'}<br/>
+              {'  '}const operations = {'{'}<br/>
+              {'    '}add: (a, b) ={'>'} a + b,<br/>
+              {'    '}subtract: (a, b) ={'>'} a - b,<br/>
+              {'    '}multiply: (a, b) ={'>'} a * b,<br/>
+              {'    '}divide: (a, b) ={'>'} b !== 0 ? a / b : null<br/>
+              {'  '}{'}'};{' '}<br/>
+              {'  '}return operations[operation]?.(operandA, operandB);<br/>
+              {'}'}
             </div>
           </div>
         </div>
