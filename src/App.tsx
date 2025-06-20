@@ -31,6 +31,7 @@ import CodeRefactorDetails from "./pages/tools/CodeRefactorDetails";
 import TextSummarizerDetails from "./pages/tools/TextSummarizerDetails";
 import ColorPaletteExtractorDetails from "./pages/tools/ColorPaletteExtractorDetails";
 import ImageAltTextGeneratorDetails from "./pages/tools/ImageAltTextGeneratorDetails";
+import LivePlaygroundDetails from "./pages/tools/LivePlaygroundDetails";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const AppContent = () => {
         <Route path="/tools/text-summarizer/details" element={<TextSummarizerDetails />} />
         <Route path="/tools/color-palette-extractor/details" element={<ColorPaletteExtractorDetails />} />
         <Route path="/tools/image-alt-text-generator/details" element={<ImageAltTextGeneratorDetails />} />
+        <Route path="/tools/live-playground/details" element={<LivePlaygroundDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

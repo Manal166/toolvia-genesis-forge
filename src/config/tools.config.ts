@@ -1,4 +1,3 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
@@ -152,6 +151,18 @@ export const toolsConfig: ToolConfig[] = [
     inputType: 'file',
     outputType: 'text',
     keywords: ['alt text', 'accessibility', 'seo', 'image', 'description', 'ai vision'],
+    featured: true
+  },
+  {
+    id: 'live-playground',
+    name: 'Live HTML/CSS Playground',
+    description: 'Write and preview HTML, CSS, and JavaScript code in real-time with our interactive playground.',
+    icon: 'play',
+    category: 'Frontend Tools',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['html', 'css', 'javascript'],
+    keywords: ['playground', 'live', 'preview', 'html', 'css', 'javascript', 'codepen', 'jsfiddle'],
     featured: true
   },
   {

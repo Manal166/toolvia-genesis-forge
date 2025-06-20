@@ -20,6 +20,7 @@ import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugToo
 import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
 import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
 import ImageAltTextTool from "@/tools/image-alt-text-generator/ImageAltTextTool";
+import LivePlaygroundTool from "@/tools/live-playground/LivePlaygroundTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -170,6 +171,14 @@ const Tool = () => {
     case 'image-alt-text-generator':
       return (
         <ImageAltTextTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'live-playground':
+      return (
+        <LivePlaygroundTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
