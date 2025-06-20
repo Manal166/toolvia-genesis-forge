@@ -55,7 +55,7 @@ const CodeTranslatorInput = ({
               From Language
             </label>
             <Select value={fromLanguage} onValueChange={onFromLanguageChange}>
-              <SelectTrigger className="[&>span]:text-white">
+              <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
                 <SelectValue placeholder="Select source language" />
               </SelectTrigger>
               <SelectContent>
@@ -77,7 +77,7 @@ const CodeTranslatorInput = ({
               To Language
             </label>
             <Select value={toLanguage} onValueChange={onToLanguageChange}>
-              <SelectTrigger className="[&>span]:text-white">
+              <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
                 <SelectValue placeholder="Select target language" />
               </SelectTrigger>
               <SelectContent>
@@ -100,7 +100,7 @@ const CodeTranslatorInput = ({
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
             placeholder={`Paste your ${fromLanguage} code here...`}
-            className="min-h-[200px] font-mono text-sm resize-none"
+            className="min-h-[200px] font-mono text-sm resize-none text-gray-900 dark:text-white"
             disabled={isTranslating}
           />
         </div>

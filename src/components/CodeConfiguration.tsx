@@ -33,7 +33,7 @@ const CodeConfiguration = ({
             Programming Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="w-full text-white [&>span]:text-white">
+            <SelectTrigger className="w-full [&>span]:text-gray-900 dark:[&>span]:text-white">
               <SelectValue placeholder="Select a language" />
             </SelectTrigger>
             <SelectContent>
@@ -55,7 +55,7 @@ const CodeConfiguration = ({
             placeholder="Describe what you want to build... (e.g., 'a login form with email and password fields', 'a to-do list app', 'a calculator function')"
             value={description}
             onChange={(e) => onDescriptionChange(e.target.value)}
-            className="min-h-[120px] text-white placeholder:text-gray-400"
+            className="min-h-[120px] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
           />
         </div>
 

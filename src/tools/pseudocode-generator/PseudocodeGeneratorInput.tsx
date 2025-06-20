@@ -70,7 +70,7 @@ const PseudocodeGeneratorInput = ({
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
             placeholder={`Paste your ${language} code here...`}
-            className="min-h-[200px] font-mono text-sm resize-none"
+            className="min-h-[200px] font-mono text-sm resize-none text-gray-900 dark:text-white"
             disabled={isGenerating}
           />
         </div>

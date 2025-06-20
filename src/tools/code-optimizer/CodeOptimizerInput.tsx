@@ -56,7 +56,7 @@ const CodeOptimizerInput = ({
   return (
     <div className="space-y-6">
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-        <h2 className="text-xl font-semibold text-white mb-4">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
           Code Optimization
         </h2>
         
@@ -66,7 +66,7 @@ const CodeOptimizerInput = ({
               Programming Language
             </label>
             <Select value={language} onValueChange={onLanguageChange}>
-              <SelectTrigger className="w-full text-white">
+              <SelectTrigger className="w-full [&>span]:text-gray-900 dark:[&>span]:text-white">
                 <SelectValue placeholder="Select a language" />
               </SelectTrigger>
               <SelectContent>
@@ -99,7 +99,7 @@ const CodeOptimizerInput = ({
               placeholder="Paste your code here for optimization..."
               value={code}
               onChange={(e) => onCodeChange(e.target.value)}
-              className="min-h-[200px] font-mono text-sm text-white placeholder:text-gray-400"
+              className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
@@ -126,7 +126,7 @@ const CodeOptimizerInput = ({
 
       {/* Optimization Tips */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Optimization Areas</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Optimization Areas</h3>
         <div className="grid grid-cols-2 gap-3 text-sm">
           <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
             <span className="font-semibold text-green-600 dark:text-green-400">Performance:</span> Loop optimization, algorithm efficiency

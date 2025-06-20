@@ -106,7 +106,7 @@ const CodeExplainerInput = ({
             Programming Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="[&>span]:text-white">
+            <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
             <SelectContent>
@@ -128,7 +128,7 @@ const CodeExplainerInput = ({
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
             placeholder="Paste the code you want explained..."
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white"
           />
         </div>
 
