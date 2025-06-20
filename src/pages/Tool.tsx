@@ -19,6 +19,7 @@ import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
 import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugTool";
 import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
 import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
+import ImageAltTextTool from "@/tools/image-alt-text-generator/ImageAltTextTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -161,6 +162,14 @@ const Tool = () => {
     case 'color-palette-extractor':
       return (
         <ColorPaletteTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'image-alt-text-generator':
+      return (
+        <ImageAltTextTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

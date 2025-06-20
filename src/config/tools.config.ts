@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -140,6 +141,17 @@ export const toolsConfig: ToolConfig[] = [
     inputType: 'file',
     outputType: 'text',
     keywords: ['color', 'palette', 'extract', 'image', 'design', 'hex'],
+    featured: true
+  },
+  {
+    id: 'image-alt-text-generator',
+    name: 'Image Alt Text Generator',
+    description: 'Generate descriptive alt text for images using AI vision analysis.',
+    icon: 'image',
+    category: 'Accessibility Tools',
+    inputType: 'file',
+    outputType: 'text',
+    keywords: ['alt text', 'accessibility', 'seo', 'image', 'description', 'ai vision'],
     featured: true
   },
   {

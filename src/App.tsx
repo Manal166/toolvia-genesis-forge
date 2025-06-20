@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -29,6 +30,7 @@ import SQLQueryGeneratorDetails from "./pages/tools/SQLQueryGeneratorDetails";
 import CodeRefactorDetails from "./pages/tools/CodeRefactorDetails";
 import TextSummarizerDetails from "./pages/tools/TextSummarizerDetails";
 import ColorPaletteExtractorDetails from "./pages/tools/ColorPaletteExtractorDetails";
+import ImageAltTextGeneratorDetails from "./pages/tools/ImageAltTextGeneratorDetails";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +58,7 @@ const AppContent = () => {
         <Route path="/tools/code-refactor/details" element={<CodeRefactorDetails />} />
         <Route path="/tools/text-summarizer/details" element={<TextSummarizerDetails />} />
         <Route path="/tools/color-palette-extractor/details" element={<ColorPaletteExtractorDetails />} />
+        <Route path="/tools/image-alt-text-generator/details" element={<ImageAltTextGeneratorDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
