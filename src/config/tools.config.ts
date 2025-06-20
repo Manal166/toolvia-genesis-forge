@@ -98,6 +98,18 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
+    id: 'code-refactor',
+    name: 'Code Refactoring Tool',
+    description: 'Improve code readability, structure, and performance using AI.',
+    icon: 'wand-sparkles',
+    category: 'Fixing & Optimization',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['javascript', 'python', 'java', 'cpp', 'typescript', 'html', 'css'],
+    keywords: ['refactor', 'improve', 'clean', 'structure', 'optimize', 'readable'],
+    featured: true
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Generate regular expressions from plain language descriptions.',

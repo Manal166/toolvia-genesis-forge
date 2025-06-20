@@ -14,6 +14,7 @@ import UnitTestTool from "@/tools/unit-test-generator/UnitTestTool";
 import GenericTool from "@/components/GenericTool";
 import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
 import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
+import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -116,6 +117,14 @@ const Tool = () => {
     case 'sql-query-generator':
       return (
         <SQLQueryTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'code-refactor':
+      return (
+        <CodeRefactorTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
