@@ -12,6 +12,8 @@ export interface BlogPost {
   featuredImage: string;
 }
 
+console.log('Blog data loading...', { postsCount: 3 });
+
 export const blogPosts: BlogPost[] = [
   {
     id: '1',
@@ -282,3 +284,5 @@ Following these practices will help you build robust React applications that are
     featuredImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=400&fit=crop'
   }
 ];
+
+console.log('Blog posts loaded successfully:', blogPosts.map(post => ({ id: post.id, title: post.title })));

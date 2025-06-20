@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,11 +9,15 @@ import { blogPosts } from '../data/blogData';
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
   
+  console.log('Blog component rendering with posts:', blogPosts);
+  
   const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
   
   const filteredPosts = selectedCategory === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.category === selectedCategory);
+
+  console.log('Filtered posts:', filteredPosts.length, 'Category:', selectedCategory);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -49,6 +52,13 @@ const Blog = () => {
           </p>
         </div>
 
+        {/* Debug Information */}
+        <div className="mb-4 p-4 bg-gray-800 rounded-lg">
+          <p className="text-sm text-gray-300">
+            Debug: {blogPosts.length} total posts found, {filteredPosts.length} posts after filtering
+          </p>
+        </div>
+
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((category) => (
@@ -68,56 +78,62 @@ const Blog = () => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.id}`}>
-              <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-800 border-gray-700 hover:border-blue-500">
-                <div className="aspect-video overflow-hidden rounded-t-lg">
-                  <img 
-                    src={post.featuredImage} 
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary" className="text-xs bg-gray-700 text-white border-gray-600">
-                      {post.category}
-                    </Badge>
-                    <div className="flex items-center text-xs text-white">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {post.readTime}
-                    </div>
+        {filteredPosts.length > 0 ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredPosts.map((post) => (
+              <Link key={post.id} to={`/blog/${post.id}`}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer bg-gray-800 border-gray-700 hover:border-blue-500">
+                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                    <img 
+                      src={post.featuredImage} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <CardTitle className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm text-white leading-relaxed">
-                    {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs border-gray-600 text-white bg-gray-700">
-                        {tag}
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="secondary" className="text-xs bg-gray-700 text-white border-gray-600">
+                        {post.category}
                       </Badge>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-white">
-                      <User className="w-4 h-4 mr-1" />
-                      <span className="mr-3">{post.author}</span>
-                      <Calendar className="w-4 h-4 mr-1" />
-                      <span>{formatDate(post.publishDate)}</span>
+                      <div className="flex items-center text-xs text-white">
+                        <Clock className="w-3 h-3 mr-1" />
+                        {post.readTime}
+                      </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-white group-hover:text-blue-400 transition-colors" />
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+                    <CardTitle className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm text-white leading-relaxed">
+                      {post.excerpt}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {post.tags.map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs border-gray-600 text-white bg-gray-700">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-sm text-white">
+                        <User className="w-4 h-4 mr-1" />
+                        <span className="mr-3">{post.author}</span>
+                        <Calendar className="w-4 h-4 mr-1" />
+                        <span>{formatDate(post.publishDate)}</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-white group-hover:text-blue-400 transition-colors" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-xl text-gray-400">No articles found for the selected category.</p>
+          </div>
+        )}
 
         {/* Featured Section */}
         <div className="mt-16">
