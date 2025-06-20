@@ -60,7 +60,7 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
         <div className="space-y-2">
           <Label htmlFor="from-format" className="text-white">From Format</Label>
           <Select value={fromFormat} onValueChange={(value: DataFormat) => setFromFormat(value)}>
-            <SelectTrigger className="text-white">
+            <SelectTrigger className="text-white bg-gray-800 border-gray-600 [&>span]:text-white">
               <SelectValue placeholder="Select input format" className="text-white" />
             </SelectTrigger>
             <SelectContent className="bg-gray-800 border-gray-600">
@@ -80,7 +80,7 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
         <div className="space-y-2">
           <Label htmlFor="to-format" className="text-white">To Format</Label>
           <Select value={toFormat} onValueChange={(value: DataFormat) => setToFormat(value)}>
-            <SelectTrigger className="text-white">
+            <SelectTrigger className="text-white bg-gray-800 border-gray-600 [&>span]:text-white">
               <SelectValue placeholder="Select output format" className="text-white" />
             </SelectTrigger>
             <SelectContent className="bg-gray-800 border-gray-600">
