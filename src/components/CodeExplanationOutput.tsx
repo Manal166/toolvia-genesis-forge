@@ -64,7 +64,7 @@ const CodeExplanationOutput = ({
               variant="outline"
               size="sm"
               onClick={onRegenerate}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <RotateCcw className="h-4 w-4" />
               <span>Regenerate</span>
@@ -74,7 +74,7 @@ const CodeExplanationOutput = ({
             variant="outline"
             size="sm"
             onClick={copyExplanation}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             {copied ? (
               <CheckCircle className="h-4 w-4 text-green-600" />
@@ -89,7 +89,7 @@ const CodeExplanationOutput = ({
       <div className="p-6 space-y-6">
         {/* Original Code Display */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 uppercase tracking-wide">
+          <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2 uppercase tracking-wide">
             Original {language} Code:
           </h3>
           <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono border">
@@ -99,7 +99,7 @@ const CodeExplanationOutput = ({
 
         {/* Explanation */}
         <div>
-          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
+          <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3 uppercase tracking-wide">
             Explanation:
           </h3>
           <div className="prose prose-sm dark:prose-invert max-w-none">
@@ -113,21 +113,21 @@ const CodeExplanationOutput = ({
               }
               if (line.startsWith('• ')) {
                 return (
-                  <li key={index} className="text-gray-700 dark:text-gray-300 ml-4">
+                  <li key={index} className="text-gray-900 dark:text-white ml-4">
                     {line.substring(2)}
                   </li>
                 );
               }
               if (line.match(/^\d+\./)) {
                 return (
-                  <p key={index} className="text-gray-700 dark:text-gray-300 font-medium">
+                  <p key={index} className="text-gray-900 dark:text-white font-medium">
                     {line}
                   </p>
                 );
               }
               if (line.trim()) {
                 return (
-                  <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p key={index} className="text-gray-900 dark:text-white leading-relaxed">
                     {line}
                   </p>
                 );

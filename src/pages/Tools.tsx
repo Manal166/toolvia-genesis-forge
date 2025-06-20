@@ -48,13 +48,13 @@ const Tools = () => {
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             Developer Tools
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Discover our collection of AI-powered tools designed to accelerate your development workflow.
           </p>
           <div className="mt-8">
             <Link 
               to="/tools" 
-              className="inline-flex items-center text-white hover:text-blue-400 transition-colors"
+              className="inline-flex items-center text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               View All Tools
             </Link>
