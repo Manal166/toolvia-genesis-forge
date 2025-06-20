@@ -18,6 +18,7 @@ import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
 import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
 import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugTool";
 import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
+import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -93,7 +94,7 @@ const Tool = () => {
           onToggleTheme={toggleTheme}
         />
       );
-    case 'pseu docode-generator':
+    case 'pseudocode-generator':
       return (
         <PseudocodeGeneratorTool 
           tool={tool} 
@@ -152,6 +153,14 @@ const Tool = () => {
     case 'text-summarizer':
       return (
         <TextSummarizerTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'color-palette-extractor':
+      return (
+        <ColorPaletteTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

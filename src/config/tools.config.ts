@@ -132,6 +132,17 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
+    id: 'color-palette-extractor',
+    name: 'Color Palette Extractor',
+    description: 'Extract beautiful color palettes from images using AI analysis.',
+    icon: 'palette',
+    category: 'Visual Tools',
+    inputType: 'file',
+    outputType: 'text',
+    keywords: ['color', 'palette', 'extract', 'image', 'design', 'hex'],
+    featured: true
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Generate regular expressions from plain language descriptions.',
