@@ -1,5 +1,4 @@
-
-import { sharedOpenAIClient } from './openai/sharedOpenAIClient';
+import { sharedOpenAIClient, OpenAIMessage } from './openai/sharedOpenAIClient';
 
 export interface ColorPalette {
   colors: string[];
@@ -60,28 +59,27 @@ Guidelines:
 Example format: ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#33FFF3", "#F3FF33"]`
     );
 
-    const userMessage = sharedOpenAIClient.createUserMessage(
-      `Please analyze this image and extract ${options.colorCount || 6} representative colors. Return them as a JSON array of HEX color codes.`
-    );
+    // Create a vision message with mixed content
+    const visionMessage: OpenAIMessage = {
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: `Please analyze this image and extract ${options.colorCount || 6} representative colors. Return them as a JSON array of HEX color codes.`
+        },
+        {
+          type: 'image_url',
+          image_url: {
+            url: `data:${file.type};base64,${base64Image}`
+          }
+        }
+      ]
+    };
 
     // For image analysis, we need to use a model that supports vision
     const response = await sharedOpenAIClient.makeRequest([
       systemMessage,
-      {
-        role: 'user',
-        content: [
-          {
-            type: 'text',
-            text: `Please analyze this image and extract ${options.colorCount || 6} representative colors. Return them as a JSON array of HEX color codes.`
-          },
-          {
-            type: 'image_url',
-            image_url: {
-              url: `data:${file.type};base64,${base64Image}`
-            }
-          }
-        ]
-      }
+      visionMessage
     ], 'gpt-4o'); // Using gpt-4o for vision capabilities
 
     // Parse the JSON response
