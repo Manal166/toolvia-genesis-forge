@@ -136,6 +136,7 @@ const JsonYamlCsvInput = ({ onConvert, isLoading, isDark }: JsonYamlCsvInputProp
           variant="outline"
           onClick={loadExample}
           disabled={isLoading}
+          className="text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           Load Example
         </Button>
