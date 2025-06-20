@@ -1,3 +1,4 @@
+
 import { sharedOpenAIClient, OpenAIMessage } from './openai/sharedOpenAIClient';
 
 export interface ColorPalette {
@@ -124,6 +125,91 @@ Example format: ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#33FFF3", "#F3FF33
       throw error;
     }
     throw new Error('Failed to extract color palette from image');
+  }
+};
+
+export const extractColorsFromUrl = async (
+  url: string,
+  options: ExtractPaletteOptions = { colorCount: 6 }
+): Promise<ColorPalette> => {
+  if (!url) {
+    throw new Error('Please enter a website URL');
+  }
+
+  // Validate URL format
+  try {
+    new URL(url);
+  } catch {
+    throw new Error('Please enter a valid URL (e.g., https://example.com)');
+  }
+
+  try {
+    const systemMessage = sharedOpenAIClient.createSystemMessage(
+      `You are a color palette extraction expert. I will provide a website URL and you need to extract ${options.colorCount || 6} distinct, representative colors from the website's design.
+
+Guidelines:
+- Extract colors from the website's visual design (backgrounds, headers, buttons, accent colors, etc.)
+- Return exactly ${options.colorCount || 6} colors
+- Use HEX format (e.g., #FF5733)
+- Choose colors that best represent the website's brand and design
+- Avoid very similar shades
+- Prioritize colors that would work well in design contexts
+- Return the result as a clean JSON array of HEX color strings
+
+Example format: ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#33FFF3", "#F3FF33"]`
+    );
+
+    const userMessage = sharedOpenAIClient.createUserMessage(
+      `Please visit this website: ${url} and extract ${options.colorCount || 6} representative colors from its design. Return them as a JSON array of HEX color codes.`
+    );
+
+    const response = await sharedOpenAIClient.makeRequest([
+      systemMessage,
+      userMessage
+    ]);
+
+    // Parse the JSON response
+    let colors: string[];
+    try {
+      // Try to extract JSON from the response
+      const jsonMatch = response.match(/\[.*\]/);
+      if (jsonMatch) {
+        colors = JSON.parse(jsonMatch[0]);
+      } else {
+        // Fallback: extract hex codes using regex
+        const hexMatches = response.match(/#[0-9A-Fa-f]{6}/g);
+        if (hexMatches && hexMatches.length > 0) {
+          colors = hexMatches.slice(0, options.colorCount || 6);
+        } else {
+          throw new Error('No valid colors found in response');
+        }
+      }
+    } catch (parseError) {
+      // Fallback: extract hex codes using regex
+      const hexMatches = response.match(/#[0-9A-Fa-f]{6}/g);
+      if (hexMatches && hexMatches.length > 0) {
+        colors = hexMatches.slice(0, options.colorCount || 6);
+      } else {
+        throw new Error('Failed to parse color palette from response');
+      }
+    }
+
+    // Validate that we have the expected number of colors
+    if (!colors || colors.length === 0) {
+      throw new Error('No colors could be extracted from the website');
+    }
+
+    return {
+      colors: colors.slice(0, options.colorCount || 6),
+      extractedFrom: 'url'
+    };
+
+  } catch (error) {
+    console.error('Error extracting colors from URL:', error);
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error('Failed to extract color palette from website');
   }
 };
 

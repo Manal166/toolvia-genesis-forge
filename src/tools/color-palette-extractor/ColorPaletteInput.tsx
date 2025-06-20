@@ -9,10 +9,11 @@ import { ExtractPaletteOptions } from "@/services/colorPaletteService";
 
 interface ColorPaletteInputProps {
   onExtractPalette: (file: File, options: ExtractPaletteOptions) => void;
+  onExtractFromUrl: (url: string, options: ExtractPaletteOptions) => void;
   isLoading: boolean;
 }
 
-const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputProps) => {
+const ColorPaletteInput = ({ onExtractPalette, onExtractFromUrl, isLoading }: ColorPaletteInputProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [colorCount, setColorCount] = useState<3 | 6 | 9>(6);
@@ -48,9 +49,15 @@ const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputPro
     }
   };
 
-  const handleExtract = () => {
+  const handleExtractFromImage = () => {
     if (selectedFile) {
       onExtractPalette(selectedFile, { colorCount });
+    }
+  };
+
+  const handleExtractFromUrl = () => {
+    if (websiteUrl.trim()) {
+      onExtractFromUrl(websiteUrl.trim(), { colorCount });
     }
   };
 
@@ -89,10 +96,10 @@ const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputPro
       <CardContent className="p-6 space-y-6">
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-            Upload Image
+            Upload Image or Enter URL
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
-            Extract beautiful color palettes from your images
+            Extract beautiful color palettes from images or websites
           </p>
         </div>
 
@@ -138,11 +145,11 @@ const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputPro
           )}
         </div>
 
-        {/* URL Input (Future Feature) */}
+        {/* URL Input */}
         <div className="space-y-2">
           <Label htmlFor="website-url" className="flex items-center gap-2">
             <LinkIcon className="h-4 w-4" />
-            Website URL (Coming Soon)
+            Website URL
           </Label>
           <Input
             id="website-url"
@@ -150,8 +157,7 @@ const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputPro
             placeholder="https://example.com"
             value={websiteUrl}
             onChange={(e) => setWebsiteUrl(e.target.value)}
-            disabled
-            className="opacity-50"
+            disabled={isLoading}
           />
         </div>
 
@@ -176,12 +182,22 @@ const ColorPaletteInput = ({ onExtractPalette, isLoading }: ColorPaletteInputPro
         {/* Action Buttons */}
         <div className="space-y-3">
           <Button
-            onClick={handleExtract}
+            onClick={handleExtractFromImage}
             disabled={!selectedFile || isLoading}
             className="w-full"
             size="lg"
           >
-            {isLoading ? 'Extracting...' : 'Extract Palette'}
+            {isLoading ? 'Extracting...' : 'Extract from Image'}
+          </Button>
+          
+          <Button
+            onClick={handleExtractFromUrl}
+            disabled={!websiteUrl.trim() || isLoading}
+            className="w-full"
+            size="lg"
+            variant="outline"
+          >
+            {isLoading ? 'Extracting...' : 'Extract from Website'}
           </Button>
           
           <Button
