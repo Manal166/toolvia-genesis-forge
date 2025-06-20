@@ -37,7 +37,7 @@ const ToolDirectory = () => {
             placeholder="Search tools..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
+            className="pl-10 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
           />
         </div>
         
@@ -48,7 +48,11 @@ const ToolDirectory = () => {
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory(category)}
-              className="text-sm"
+              className={`text-sm ${
+                selectedCategory === category
+                  ? "text-white"
+                  : "text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+              }`}
             >
               {category}
             </Button>
