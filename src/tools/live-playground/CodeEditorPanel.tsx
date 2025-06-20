@@ -37,12 +37,6 @@ const CodeEditorPanel = ({ language, value, onChange, isDark }: CodeEditorPanelP
           placeholder: 'console.log("Hello, World!");\n\n// Your JavaScript code here',
           badgeColor: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
         };
-      default:
-        return {
-          title: language.toUpperCase(),
-          placeholder: '// Code here...',
-          badgeColor: 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
-        };
     }
   };
 
