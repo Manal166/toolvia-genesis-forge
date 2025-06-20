@@ -1,5 +1,5 @@
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Upload, Image as ImageIcon, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -17,6 +17,7 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
   const [dragActive, setDragActive] = useState(false);
   const [options, setOptions] = useState<AltTextOptions>({ tone: 'neutral' });
   const [preview, setPreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -68,6 +69,13 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
   const clearFile = () => {
     setSelectedFile(null);
     setPreview(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -85,20 +93,29 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
 
           {/* File Upload Area */}
           <div
-            className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+            className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer ${
               dragActive
                 ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                 : selectedFile
                 ? 'border-green-500 bg-green-50 dark:bg-green-900/20'
                 : isDark
-                ? 'border-gray-600 bg-gray-700/50'
-                : 'border-gray-300 bg-gray-50'
+                ? 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
+                : 'border-gray-300 bg-gray-50 hover:border-gray-400'
             }`}
             onDragEnter={handleDrag}
             onDragLeave={handleDrag}
             onDragOver={handleDrag}
             onDrop={handleDrop}
+            onClick={handleUploadClick}
           >
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleFileInput}
+              className="hidden"
+            />
+            
             {preview ? (
               <div className="space-y-4">
                 <img
@@ -108,12 +125,15 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
                 />
                 <div className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                   <p className="font-medium">{selectedFile?.name}</p>
-                  <p>{(selectedFile?.size || 0 / 1024 / 1024).toFixed(2)} MB</p>
+                  <p>{((selectedFile?.size || 0) / 1024 / 1024).toFixed(2)} MB</p>
                 </div>
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={clearFile}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    clearFile();
+                  }}
                   className={isDark ? 'border-gray-600 text-gray-300' : ''}
                 >
                   Remove
@@ -121,8 +141,8 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
               </div>
             ) : (
               <div className="space-y-4">
-                <div className={`mx-auto w-12 h-12 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                  {dragActive ? <Upload /> : <ImageIcon />}
+                <div className={`mx-auto w-12 h-12 flex items-center justify-center ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  {dragActive ? <Upload className="w-12 h-12" /> : <ImageIcon className="w-12 h-12" />}
                 </div>
                 <div>
                   <p className={`text-lg font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -132,18 +152,9 @@ const ImageAltTextInput = ({ onGenerate, isGenerating, isDark }: ImageAltTextInp
                     Supports PNG, JPG, WebP (max 5MB)
                   </p>
                 </div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileInput}
-                  className="hidden"
-                  id="image-upload"
-                />
-                <label htmlFor="image-upload">
-                  <Button variant="outline" className="cursor-pointer">
-                    Choose File
-                  </Button>
-                </label>
+                <Button variant="outline" className="cursor-pointer">
+                  Choose File
+                </Button>
               </div>
             )}
           </div>
