@@ -23,17 +23,17 @@ const CodeConfiguration = ({
 }: CodeConfigurationProps) => {
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+      <h2 className="text-xl font-semibold text-white mb-4">
         Configuration
       </h2>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             Programming Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="w-full [&>span]:text-gray-900 dark:[&>span]:text-white">
+            <SelectTrigger className="w-full [&>span]:text-white">
               <SelectValue placeholder="Select a language" />
             </SelectTrigger>
             <SelectContent>
@@ -48,14 +48,14 @@ const CodeConfiguration = ({
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             Description
           </label>
           <Textarea
             placeholder="Describe what you want to build... (e.g., 'a login form with email and password fields', 'a to-do list app', 'a calculator function')"
             value={description}
             onChange={(e) => onDescriptionChange(e.target.value)}
-            className="min-h-[120px] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
+            className="min-h-[120px] text-white placeholder:text-gray-400 bg-gray-700 border-gray-600"
           />
         </div>
 

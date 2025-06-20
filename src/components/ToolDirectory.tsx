@@ -37,7 +37,7 @@ const ToolDirectory = () => {
             placeholder="Search tools..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+            className="pl-10 text-white placeholder:text-gray-400 bg-gray-800 border-gray-600"
           />
         </div>
         
@@ -50,8 +50,8 @@ const ToolDirectory = () => {
               onClick={() => setSelectedCategory(category)}
               className={`text-sm ${
                 selectedCategory === category
-                  ? "text-white"
-                  : "text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  ? "text-white bg-blue-600 hover:bg-blue-700"
+                  : "text-white border-gray-600 hover:bg-gray-700 bg-gray-800"
               }`}
             >
               {category}
@@ -69,7 +69,7 @@ const ToolDirectory = () => {
         </div>
       ) : (
         <div className="text-center py-12">
-          <p className="text-gray-500 dark:text-gray-400 text-lg">
+          <p className="text-white text-lg">
             No tools found matching your criteria.
           </p>
         </div>

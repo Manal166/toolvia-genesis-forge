@@ -64,7 +64,7 @@ const CodeExplanationOutput = ({
               variant="outline"
               size="sm"
               onClick={onRegenerate}
-              className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="flex items-center space-x-2 text-white border-gray-600 hover:bg-gray-700"
             >
               <RotateCcw className="h-4 w-4" />
               <span>Regenerate</span>
@@ -74,7 +74,7 @@ const CodeExplanationOutput = ({
             variant="outline"
             size="sm"
             onClick={copyExplanation}
-            className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+            className="flex items-center space-x-2 text-white border-gray-600 hover:bg-gray-700"
           >
             {copied ? (
               <CheckCircle className="h-4 w-4 text-green-600" />

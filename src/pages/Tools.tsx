@@ -15,19 +15,19 @@ const Tools = () => {
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen transition-colors duration-300 bg-black`}>
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+      <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
               <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              <span className="text-xl font-bold font-mono text-gray-900 dark:text-white">CodeBoost</span>
+              <span className="text-xl font-bold font-mono text-white">CodeBoost</span>
             </Link>
             
             <div className="flex items-center space-x-8">
-              <Link to="/" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</Link>
-              <Link to="/about" className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</Link>
+              <Link to="/" className="text-white hover:text-blue-400 transition-colors">Home</Link>
+              <Link to="/about" className="text-white hover:text-blue-400 transition-colors">About</Link>
               <Button variant="ghost" size="sm" onClick={toggleTheme}>
                 {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
@@ -45,16 +45,16 @@ const Tools = () => {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Developer Tools
           </h1>
-          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-white max-w-3xl mx-auto">
             Discover our collection of AI-powered tools designed to accelerate your development workflow.
           </p>
           <div className="mt-8">
             <Link 
               to="/tools" 
-              className="inline-flex items-center text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="inline-flex items-center text-white hover:text-blue-400 transition-colors"
             >
               View All Tools
             </Link>
