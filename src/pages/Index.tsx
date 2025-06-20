@@ -153,7 +153,7 @@ const Index = () => {
 
           <div className="text-center">
             <Link to="/tools">
-              <Button size="lg" variant="outline" className="px-8 py-3">
+              <Button size="lg" variant="outline" className="px-8 py-3 text-white border-white hover:bg-white hover:text-gray-900 transition-all">
                 View All Tools
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
