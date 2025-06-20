@@ -21,6 +21,7 @@ import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
 import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
 import ImageAltTextTool from "@/tools/image-alt-text-generator/ImageAltTextTool";
 import LivePlaygroundTool from "@/tools/live-playground/LivePlaygroundTool";
+import AIInterviewGeneratorTool from "@/tools/ai-interview-generator/AIInterviewGeneratorTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -179,6 +180,14 @@ const Tool = () => {
     case 'live-playground':
       return (
         <LivePlaygroundTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'ai-interview-generator':
+      return (
+        <AIInterviewGeneratorTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

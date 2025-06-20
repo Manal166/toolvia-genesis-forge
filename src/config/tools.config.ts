@@ -179,6 +179,18 @@ export const toolsConfig: ToolConfig[] = [
     featured: true
   },
   {
+    id: 'ai-interview-generator',
+    name: 'AI Interview Question Generator',
+    description: 'Generate technical interview questions tailored to specific programming languages, technologies, and difficulty levels.',
+    icon: 'brain',
+    category: 'AI Tools',
+    inputType: 'prompt',
+    outputType: 'text',
+    languages: ['javascript', 'python', 'java', 'react', 'nodejs', 'html', 'css'],
+    keywords: ['interview', 'questions', 'technical', 'ai', 'practice', 'preparation', 'coding'],
+    featured: true
+  },
+  {
     id: 'regex-generator',
     name: 'Regex Generator',
     description: 'Generate regular expressions from plain language descriptions.',

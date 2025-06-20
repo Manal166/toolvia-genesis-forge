@@ -5,6 +5,7 @@ import { RefactoringService } from './refactoringService';
 import { TestingService } from './testingService';
 import { DocumentationService } from './documentationService';
 import { VisualizationService } from './visualizationService';
+import { InterviewService } from './interviewService';
 import { sharedOpenAIClient } from './sharedOpenAIClient';
 
 class OpenAIService {
@@ -14,6 +15,7 @@ class OpenAIService {
   private testing: TestingService;
   private documentation: DocumentationService;
   private visualization: VisualizationService;
+  private interview: InterviewService;
 
   constructor() {
     this.codeGeneration = new CodeGenerationService();
@@ -22,6 +24,7 @@ class OpenAIService {
     this.testing = new TestingService();
     this.documentation = new DocumentationService();
     this.visualization = new VisualizationService();
+    this.interview = new InterviewService();
   }
 
   // Generic method for simple requests
@@ -97,6 +100,11 @@ class OpenAIService {
 
   async explainCode(code: string, language: string): Promise<string> {
     return this.visualization.explainCode(code, language);
+  }
+
+  // Interview Methods
+  async generateInterviewQuestions(prompt: string, technology: string, difficulty: string, questionCount: number): Promise<string> {
+    return this.interview.generateInterviewQuestions(prompt, technology, difficulty, questionCount);
   }
 }
 

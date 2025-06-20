@@ -33,6 +33,7 @@ import ColorPaletteExtractorDetails from "./pages/tools/ColorPaletteExtractorDet
 import ImageAltTextGeneratorDetails from "./pages/tools/ImageAltTextGeneratorDetails";
 import LivePlaygroundDetails from "./pages/tools/LivePlaygroundDetails";
 import CodeMinifierDetails from "./pages/tools/CodeMinifierDetails";
+import AIInterviewGeneratorDetails from "./pages/tools/AIInterviewGeneratorDetails";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const AppContent = () => {
         <Route path="/tools/image-alt-text-generator/details" element={<ImageAltTextGeneratorDetails />} />
         <Route path="/tools/live-playground/details" element={<LivePlaygroundDetails />} />
         <Route path="/tools/code-minifier/details" element={<CodeMinifierDetails />} />
+        <Route path="/tools/ai-interview-generator/details" element={<AIInterviewGeneratorDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
