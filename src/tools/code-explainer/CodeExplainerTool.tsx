@@ -5,7 +5,7 @@ import ToolWrapper from "@/components/ToolWrapper";
 import ToolSection from "@/components/ToolSection";
 import CodeExplainerInput from "@/components/CodeExplainerInput";
 import CodeExplanationOutput from "@/components/CodeExplanationOutput";
-import { explainCode } from "@/services/codeExplainerService";
+import { explainCode, ExplanationTone } from "@/services/codeExplainerService";
 import { ToolConfig } from "@/config/tools.config";
 
 interface CodeExplainerToolProps {
@@ -17,6 +17,7 @@ interface CodeExplainerToolProps {
 const CodeExplainerTool = ({ tool, isDark, onToggleTheme }: CodeExplainerToolProps) => {
   const [codeToExplain, setCodeToExplain] = useState("");
   const [codeLanguage, setCodeLanguage] = useState("javascript");
+  const [explanationTone, setExplanationTone] = useState<ExplanationTone>("technical");
   const [explanation, setExplanation] = useState("");
   const [isExplaining, setIsExplaining] = useState(false);
   
@@ -35,12 +36,12 @@ const CodeExplainerTool = ({ tool, isDark, onToggleTheme }: CodeExplainerToolPro
     setIsExplaining(true);
     
     try {
-      const result = await explainCode(codeToExplain, codeLanguage);
+      const result = await explainCode(codeToExplain, codeLanguage, explanationTone);
       setExplanation(result);
       
       toast({
         title: "Code Explained!",
-        description: "Your code explanation is ready.",
+        description: "Your detailed code explanation is ready.",
       });
     } catch (error) {
       console.error('Error explaining code:', error);
@@ -69,9 +70,11 @@ const CodeExplainerTool = ({ tool, isDark, onToggleTheme }: CodeExplainerToolPro
         <CodeExplainerInput
           code={codeToExplain}
           language={codeLanguage}
+          tone={explanationTone}
           isExplaining={isExplaining}
           onCodeChange={setCodeToExplain}
           onLanguageChange={setCodeLanguage}
+          onToneChange={setExplanationTone}
           onExplainCode={handleExplainCode}
         />
       </ToolSection>

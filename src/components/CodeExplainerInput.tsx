@@ -4,33 +4,34 @@ import { Code, Lightbulb, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ExplanationTone } from "@/services/codeExplainerService";
 
 interface CodeExplainerInputProps {
   code: string;
   language: string;
+  tone: ExplanationTone;
   isExplaining: boolean;
   onCodeChange: (value: string) => void;
   onLanguageChange: (value: string) => void;
+  onToneChange: (value: ExplanationTone) => void;
   onExplainCode: () => void;
 }
 
 const CodeExplainerInput = ({
   code,
   language,
+  tone,
   isExplaining,
   onCodeChange,
   onLanguageChange,
+  onToneChange,
   onExplainCode
 }: CodeExplainerInputProps) => {
   const [showExamples, setShowExamples] = useState(false);
 
   const exampleCodes = {
-    javascript: `function calculateTotal(items) {
-  let total = 0;
-  for (let item of items) {
-    total += item.price;
-  }
-  return total;
+    javascript: `function isEven(n) {
+  return n % 2 === 0;
 }`,
     python: `def fibonacci(n):
     if n <= 1:
@@ -101,23 +102,41 @@ const CodeExplainerInput = ({
           </div>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Programming Language
-          </label>
-          <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
-              <SelectValue placeholder="Select language" />
-            </SelectTrigger>
-            <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
-              <SelectItem value="javascript" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">JavaScript</SelectItem>
-              <SelectItem value="python" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Python</SelectItem>
-              <SelectItem value="html" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">HTML</SelectItem>
-              <SelectItem value="css" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">CSS</SelectItem>
-              <SelectItem value="java" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Java</SelectItem>
-              <SelectItem value="cpp" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">C++</SelectItem>
-            </SelectContent>
-          </Select>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Programming Language
+            </label>
+            <Select value={language} onValueChange={onLanguageChange}>
+              <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                <SelectValue placeholder="Select language" />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                <SelectItem value="javascript" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">JavaScript</SelectItem>
+                <SelectItem value="python" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Python</SelectItem>
+                <SelectItem value="html" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">HTML</SelectItem>
+                <SelectItem value="css" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">CSS</SelectItem>
+                <SelectItem value="java" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Java</SelectItem>
+                <SelectItem value="cpp" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">C++</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Explanation Style
+            </label>
+            <Select value={tone} onValueChange={onToneChange}>
+              <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                <SelectValue placeholder="Select tone" />
+              </SelectTrigger>
+              <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+                <SelectItem value="beginner" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Beginner-Friendly</SelectItem>
+                <SelectItem value="technical" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Technical</SelectItem>
+                <SelectItem value="seo-friendly" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">SEO-Friendly</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         <div>

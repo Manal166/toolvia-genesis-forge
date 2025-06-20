@@ -4,7 +4,7 @@ import { SQLService } from './sqlService';
 import { RefactoringService } from './refactoringService';
 import { TestingService } from './testingService';
 import { DocumentationService } from './documentationService';
-import { VisualizationService } from './visualizationService';
+import { VisualizationService, ExplanationTone } from './visualizationService';
 import { InterviewService } from './interviewService';
 import { sharedOpenAIClient } from './sharedOpenAIClient';
 
@@ -102,6 +102,10 @@ class OpenAIService {
     return this.visualization.explainCode(code, language);
   }
 
+  async explainCodeWithTone(code: string, language: string, tone: ExplanationTone): Promise<string> {
+    return this.visualization.explainCodeWithTone(code, language, tone);
+  }
+
   // Interview Methods
   async generateInterviewQuestions(prompt: string, technology: string, difficulty: string, questionCount: number): Promise<string> {
     return this.interview.generateInterviewQuestions(prompt, technology, difficulty, questionCount);
@@ -109,3 +113,4 @@ class OpenAIService {
 }
 
 export const openaiService = new OpenAIService();
+export type { ExplanationTone };
