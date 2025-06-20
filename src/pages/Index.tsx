@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,10 @@ const tools = [
     id: "code-explainer",
     name: "Code Explainer",
     description: "Understand code snippets instantly with AI-powered explanations.",
-    icon: Code,
+    icon: "book-open",
+    category: "Understanding",
+    inputType: "code" as const,
+    outputType: "text" as const,
     href: "/tools/code-explainer",
     color: "bg-blue-500",
   },
@@ -22,7 +26,10 @@ const tools = [
     id: "ai-code-generator",
     name: "AI Code Generator",
     description: "Generate code for any task using AI. Describe your requirements and get instant code.",
-    icon: Zap,
+    icon: "code",
+    category: "Code Generation",
+    inputType: "prompt" as const,
+    outputType: "code" as const,
     href: "/tools/ai-code-generator",
     color: "bg-green-500",
   },
@@ -30,7 +37,10 @@ const tools = [
     id: "bug-fixer",
     name: "Bug Fixer",
     description: "Fix code errors quickly with AI. Paste your code and get solutions.",
-    icon: Shield,
+    icon: "bug",
+    category: "Fixing & Optimization",
+    inputType: "code" as const,
+    outputType: "code" as const,
     href: "/tools/bug-fixer",
     color: "bg-red-500",
   },
@@ -38,7 +48,10 @@ const tools = [
     id: "regex-generator",
     name: "Regex Generator",
     description: "Generate regular expressions easily with AI. Describe your pattern and get the regex.",
-    icon: Globe,
+    icon: "regex",
+    category: "Utilities",
+    inputType: "prompt" as const,
+    outputType: "text" as const,
     href: "/tools/regex-generator",
     color: "bg-yellow-500",
   },
@@ -60,19 +73,9 @@ const features = [
 ];
 
 const Index = () => {
-  const handleEmailCapture = async (email: string) => {
-    console.log("Email captured:", email);
-    // Here you would typically handle the email submission to a backend service
-    // or a state management solution.
-  };
-
   return (
     <>
-      <SEOManager 
-        title="CodeBoost - AI-Powered Developer Tools"
-        description="Boost your coding productivity with our comprehensive suite of AI-powered development tools. Code explanation, generation, debugging, and optimization made simple."
-        keywords="AI coding tools, code generator, code explainer, debugging assistant, developer productivity"
-      />
+      <SEOManager />
       
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
         {/* Navigation */}
@@ -157,7 +160,7 @@ const Index = () => {
 
         {/* Email Capture Section */}
         <section className="container mx-auto px-4 py-16">
-          <EmailCapture onSubmit={handleEmailCapture} />
+          <EmailCapture />
         </section>
 
         {/* Social Sharing and Ad Zone */}
@@ -165,11 +168,15 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Share this page</h3>
-              <SocialShareButtons url={window.location.href} title="CodeBoost - AI-Powered Developer Tools" />
+              <SocialShareButtons 
+                url={window.location.href} 
+                title="CodeBoost - AI-Powered Developer Tools"
+                description="Boost your coding productivity with our comprehensive suite of AI-powered development tools. Code explanation, generation, debugging, and optimization made simple."
+              />
             </div>
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Advertisements</h3>
-              <AdZone />
+              <AdZone id="homepage-ad" />
             </div>
           </div>
         </section>
