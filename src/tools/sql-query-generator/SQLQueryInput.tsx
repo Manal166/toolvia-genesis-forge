@@ -58,7 +58,7 @@ const SQLQueryInput = ({ onGenerate, isLoading }: SQLQueryInputProps) => {
               Database Dialect
             </label>
             <Select value={dialect} onValueChange={setDialect} disabled={isLoading}>
-              <SelectTrigger>
+              <SelectTrigger className="[&>span]:text-white">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

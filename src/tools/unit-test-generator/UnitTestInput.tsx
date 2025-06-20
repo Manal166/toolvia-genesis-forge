@@ -46,7 +46,7 @@ const UnitTestInput = ({
         <div className="space-y-2">
           <Label htmlFor="language">Testing Framework</Label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger>
+            <SelectTrigger className="[&>span]:text-white">
               <SelectValue placeholder="Select language and framework" />
             </SelectTrigger>
             <SelectContent>

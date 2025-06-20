@@ -47,7 +47,7 @@ const BugFixerInput = ({
               Programming Language
             </label>
             <Select value={language} onValueChange={onLanguageChange}>
-              <SelectTrigger>
+              <SelectTrigger className="[&>span]:text-white">
                 <SelectValue placeholder="Select language" />
               </SelectTrigger>
               <SelectContent>

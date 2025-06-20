@@ -43,7 +43,7 @@ const CodeRefactorInput = ({ onRefactor, isLoading }: CodeRefactorInputProps) =>
               Programming Language
             </label>
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger>
+              <SelectTrigger className="[&>span]:text-white">
                 <SelectValue placeholder="Select language" />
               </SelectTrigger>
               <SelectContent>

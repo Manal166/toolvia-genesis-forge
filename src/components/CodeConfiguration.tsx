@@ -33,7 +33,7 @@ const CodeConfiguration = ({
             Programming Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="w-full text-white">
+            <SelectTrigger className="w-full text-white [&>span]:text-white">
               <SelectValue placeholder="Select a language" />
             </SelectTrigger>
             <SelectContent>
