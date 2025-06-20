@@ -14,6 +14,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
+import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
 import FeedbackButton from "./components/FeedbackButton";
 
@@ -71,6 +72,7 @@ const AppContent = () => {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/community" element={<Community />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

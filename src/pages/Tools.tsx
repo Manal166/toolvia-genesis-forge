@@ -27,6 +27,7 @@ const Tools = () => {
             
             <div className="flex items-center space-x-8">
               <Link to="/" className="text-white hover:text-blue-400 transition-colors">Home</Link>
+              <Link to="/community" className="text-white hover:text-blue-400 transition-colors">Community</Link>
               <Link to="/about" className="text-white hover:text-blue-400 transition-colors">About</Link>
               <Button variant="ghost" size="sm" onClick={toggleTheme}>
                 {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
