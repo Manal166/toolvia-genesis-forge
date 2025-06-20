@@ -4,8 +4,47 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, User, ArrowRight, Code } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
+import { Calendar, Clock, User, ArrowRight, Code, AlertCircle } from 'lucide-react';
+
+// Fallback blog posts data in case the main data file has issues
+const fallbackBlogPosts = [
+  {
+    id: '1',
+    title: 'Getting Started with Web Development',
+    excerpt: 'Learn the fundamentals of web development with modern tools and best practices.',
+    content: 'Content temporarily unavailable.',
+    author: 'CodeBoost Team',
+    publishDate: '2024-12-01',
+    readTime: '5 min read',
+    category: 'Web Development',
+    tags: ['JavaScript', 'HTML', 'CSS'],
+    featuredImage: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop'
+  },
+  {
+    id: '2',
+    title: 'Modern JavaScript Features',
+    excerpt: 'Discover the latest JavaScript features and how to use them in your projects.',
+    content: 'Content temporarily unavailable.',
+    author: 'CodeBoost Team',
+    publishDate: '2024-11-28',
+    readTime: '8 min read',
+    category: 'JavaScript',
+    tags: ['ES6', 'Modern JS', 'Development'],
+    featuredImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop'
+  }
+];
+
+let blogPosts = fallbackBlogPosts;
+
+// Try to import the main blog posts, fall back to backup if there's an error
+try {
+  const { blogPosts: importedPosts } = require('@/data/blogPosts');
+  if (importedPosts && Array.isArray(importedPosts)) {
+    blogPosts = importedPosts;
+  }
+} catch (error) {
+  console.warn('Could not load blog posts data, using fallback content:', error);
+}
 
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
@@ -48,6 +87,16 @@ const Blog = () => {
             Insights, tutorials, and best practices for modern software development
           </p>
         </div>
+
+        {/* Data Loading Notice */}
+        {blogPosts === fallbackBlogPosts && (
+          <div className="mb-8 p-4 bg-yellow-900/20 border border-yellow-600 rounded-lg flex items-center gap-3">
+            <AlertCircle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
+            <p className="text-yellow-200">
+              Blog content is temporarily limited due to data loading issues. Full content will be restored soon.
+            </p>
+          </div>
+        )}
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">

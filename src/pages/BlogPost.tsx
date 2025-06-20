@@ -4,12 +4,52 @@ import { useParams, Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
+import { Calendar, Clock, User, ArrowLeft, Share2, AlertCircle } from 'lucide-react';
+
+// Fallback blog posts data in case the main data file has issues
+const fallbackBlogPosts = [
+  {
+    id: '1',
+    title: 'Getting Started with Web Development',
+    excerpt: 'Learn the fundamentals of web development with modern tools and best practices.',
+    content: 'This content is temporarily unavailable due to data loading issues. Please check back later for the full article content.',
+    author: 'CodeBoost Team',
+    publishDate: '2024-12-01',
+    readTime: '5 min read',
+    category: 'Web Development',
+    tags: ['JavaScript', 'HTML', 'CSS'],
+    featuredImage: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop'
+  },
+  {
+    id: '2',
+    title: 'Modern JavaScript Features',
+    excerpt: 'Discover the latest JavaScript features and how to use them in your projects.',
+    content: 'This content is temporarily unavailable due to data loading issues. Please check back later for the full article content.',
+    author: 'CodeBoost Team',
+    publishDate: '2024-11-28',
+    readTime: '8 min read',
+    category: 'JavaScript',
+    tags: ['ES6', 'Modern JS', 'Development'],
+    featuredImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop'
+  }
+];
+
+let blogPosts = fallbackBlogPosts;
+
+// Try to import the main blog posts, fall back to backup if there's an error
+try {
+  const { blogPosts: importedPosts } = require('@/data/blogPosts');
+  if (importedPosts && Array.isArray(importedPosts)) {
+    blogPosts = importedPosts;
+  }
+} catch (error) {
+  console.warn('Could not load blog posts data, using fallback content:', error);
+}
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
   const post = blogPosts.find(p => p.id === id);
+  const isUsingFallback = blogPosts === fallbackBlogPosts;
 
   if (!post) {
     return (
@@ -41,6 +81,16 @@ const BlogPost = () => {
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Blog
         </Link>
+
+        {/* Data Loading Notice */}
+        {isUsingFallback && (
+          <div className="mb-8 p-4 bg-yellow-900/20 border border-yellow-600 rounded-lg flex items-center gap-3">
+            <AlertCircle className="h-5 w-5 text-yellow-400 flex-shrink-0" />
+            <p className="text-yellow-200">
+              This article's full content is temporarily unavailable due to data loading issues. The full content will be restored soon.
+            </p>
+          </div>
+        )}
 
         {/* Article Header */}
         <div className="mb-8">
