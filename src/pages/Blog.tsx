@@ -570,7 +570,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Navigation Header */}
       <nav className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800">
         <div className="container mx-auto px-4">
@@ -589,7 +589,7 @@ const Blog = () => {
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
             Developer Blog
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-white max-w-2xl mx-auto">
             Insights, tutorials, and best practices for modern software development
           </p>
         </div>
@@ -601,7 +601,11 @@ const Blog = () => {
               key={category}
               variant={selectedCategory === category ? "default" : "outline"}
               onClick={() => setSelectedCategory(category)}
-              className="rounded-full"
+              className={`rounded-full ${
+                selectedCategory === category 
+                  ? 'bg-blue-600 hover:bg-blue-700 text-white border-blue-600' 
+                  : 'bg-gray-800 border-gray-600 text-white hover:bg-gray-700 hover:border-gray-500'
+              }`}
             >
               {category}
             </Button>
@@ -622,10 +626,10 @@ const Blog = () => {
                 </div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs bg-gray-700 text-white border-gray-600">
                       {post.category}
                     </Badge>
-                    <div className="flex items-center text-xs text-gray-400">
+                    <div className="flex items-center text-xs text-white">
                       <Clock className="w-3 h-3 mr-1" />
                       {post.readTime}
                     </div>
@@ -633,26 +637,26 @@ const Blog = () => {
                   <CardTitle className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
                     {post.title}
                   </CardTitle>
-                  <CardDescription className="text-sm text-gray-300 leading-relaxed">
+                  <CardDescription className="text-sm text-white leading-relaxed">
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {post.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs border-gray-600 text-gray-300">
+                      <Badge key={tag} variant="outline" className="text-xs border-gray-600 text-white bg-gray-700">
                         {tag}
                       </Badge>
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-gray-400">
+                    <div className="flex items-center text-sm text-white">
                       <User className="w-4 h-4 mr-1" />
                       <span className="mr-3">{post.author}</span>
                       <Calendar className="w-4 h-4 mr-1" />
                       <span>{formatDate(post.publishDate)}</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                    <ArrowRight className="w-4 h-4 text-white group-hover:text-blue-400 transition-colors" />
                   </div>
                 </CardContent>
               </Card>
@@ -681,27 +685,27 @@ const Blog = () => {
                       <Badge className="bg-gradient-to-r from-blue-500 to-purple-500 text-white">
                         Featured
                       </Badge>
-                      <Badge variant="secondary">
+                      <Badge variant="secondary" className="bg-gray-700 text-white border-gray-600">
                         {post.category}
                       </Badge>
                     </div>
                     <CardTitle className="text-2xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors">
                       {post.title}
                     </CardTitle>
-                    <CardDescription className="text-base text-gray-300 leading-relaxed">
+                    <CardDescription className="text-base text-white leading-relaxed">
                       {post.excerpt}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {post.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="border-gray-600 text-gray-300">
+                        <Badge key={tag} variant="outline" className="border-gray-600 text-white bg-gray-700">
                           {tag}
                         </Badge>
                       ))}
                     </div>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center text-sm text-gray-400">
+                      <div className="flex items-center text-sm text-white">
                         <User className="w-4 h-4 mr-1" />
                         <span className="mr-4">{post.author}</span>
                         <Calendar className="w-4 h-4 mr-1" />
@@ -709,7 +713,7 @@ const Blog = () => {
                         <Clock className="w-4 h-4 mr-1" />
                         <span>{post.readTime}</span>
                       </div>
-                      <Button variant="ghost" size="sm" className="group-hover:bg-blue-900 text-gray-300">
+                      <Button variant="ghost" size="sm" className="group-hover:bg-blue-900 text-white hover:text-white">
                         Read More
                         <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
@@ -726,7 +730,7 @@ const Blog = () => {
           <Card className="max-w-2xl mx-auto bg-gray-800 border-gray-700">
             <CardHeader>
               <CardTitle className="text-2xl text-white">Stay Updated</CardTitle>
-              <CardDescription className="text-gray-300">
+              <CardDescription className="text-white">
                 Subscribe to our newsletter to get the latest articles and updates delivered to your inbox.
               </CardDescription>
             </CardHeader>
@@ -737,7 +741,7 @@ const Blog = () => {
                   placeholder="Enter your email address"
                   className="flex-1 px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-700 text-white placeholder-gray-400"
                 />
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
+                <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
                   Subscribe
                 </Button>
               </div>
