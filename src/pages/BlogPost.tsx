@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
-import { blogPosts } from '../data/blogData';
+import { blogPosts } from '@/data/blogPosts';
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
