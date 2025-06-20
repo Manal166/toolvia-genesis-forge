@@ -2,27 +2,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getToolById } from "@/config/tools.config";
-import CodeExplainerTool from "@/tools/code-explainer/CodeExplainerTool";
-import AICodeGeneratorTool from "@/tools/ai-code-generator/AICodeGeneratorTool";
-import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
-import RegexGeneratorTool from "@/tools/regex-generator/RegexGeneratorTool";
-import RegexExplainerTool from "@/tools/regex-explainer/RegexExplainerTool";
-import CodeTranslatorTool from "@/tools/code-translator/CodeTranslatorTool";
-import PseudocodeGeneratorTool from "@/tools/pseudocode-generator/PseudocodeGeneratorTool";
-import CodeOptimizerTool from "@/tools/code-optimizer/CodeOptimizerTool";
-import APIDocGeneratorTool from "@/tools/api-doc-generator/APIDocGeneratorTool";
-import UnitTestTool from "@/tools/unit-test-generator/UnitTestTool";
-import GenericTool from "@/components/GenericTool";
-import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
-import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
-import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
-import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugTool";
-import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
-import ColorPaletteTool from "@/tools/color-palette-extractor/ColorPaletteTool";
-import ImageAltTextTool from "@/tools/image-alt-text-generator/ImageAltTextTool";
-import LivePlaygroundTool from "@/tools/live-playground/LivePlaygroundTool";
-import AIInterviewGeneratorTool from "@/tools/ai-interview-generator/AIInterviewGeneratorTool";
-import JsonYamlCsvTool from "@/tools/json-yaml-csv-converter/JsonYamlCsvTool";
+import ToolLoader from "@/components/ToolLoader";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -40,177 +20,13 @@ const Tool = () => {
     document.documentElement.classList.toggle('dark');
   };
 
-  // Render specific tool components based on tool ID
-  switch (tool.id) {
-    case 'code-explainer':
-      return (
-        <CodeExplainerTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'ai-code-generator':
-      return (
-        <AICodeGeneratorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'bug-fixer':
-      return (
-        <BugFixerTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'frontend-debug-assistant':
-      return (
-        <FrontendDebugTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'regex-generator':
-      return (
-        <RegexGeneratorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'regex-explainer':
-      return (
-        <RegexExplainerTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'code-translator':
-      return (
-        <CodeTranslatorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'pseudocode-generator':
-      return (
-        <PseudocodeGeneratorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'flowchart-generator':
-      return (
-        <FlowchartTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'code-optimizer':
-      return (
-        <CodeOptimizerTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'api-documentation':
-      return (
-        <APIDocGeneratorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'unit-test-generator':
-      return (
-        <UnitTestTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'sql-query-generator':
-      return (
-        <SQLQueryTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'code-refactor':
-      return (
-        <CodeRefactorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'text-summarizer':
-      return (
-        <TextSummarizerTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'color-palette-extractor':
-      return (
-        <ColorPaletteTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'image-alt-text-generator':
-      return (
-        <ImageAltTextTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'live-playground':
-      return (
-        <LivePlaygroundTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'ai-interview-generator':
-      return (
-        <AIInterviewGeneratorTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    case 'json-yaml-csv-converter':
-      return (
-        <JsonYamlCsvTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-    default:
-      return (
-        <GenericTool 
-          tool={tool} 
-          isDark={isDark} 
-          onToggleTheme={toggleTheme}
-        />
-      );
-  }
+  return (
+    <ToolLoader 
+      tool={tool} 
+      isDark={isDark} 
+      onToggleTheme={toggleTheme}
+    />
+  );
 };
 
 export default Tool;
