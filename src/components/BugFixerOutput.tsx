@@ -1,3 +1,4 @@
+
 import { CheckCircle, Copy, RefreshCw, Download, Bug } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -99,7 +100,7 @@ const BugFixerOutput = ({
               variant="outline"
               size="sm"
               onClick={onRegenerate}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <RefreshCw className="h-4 w-4" />
               <span>Regenerate</span>
@@ -108,7 +109,7 @@ const BugFixerOutput = ({
               variant="outline"
               size="sm"
               onClick={downloadCode}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <Download className="h-4 w-4" />
               <span>Download</span>
@@ -117,7 +118,7 @@ const BugFixerOutput = ({
               variant="outline"
               size="sm"
               onClick={copyToClipboard}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               {copied ? (
                 <CheckCircle className="h-4 w-4 text-green-600" />
@@ -133,18 +134,18 @@ const BugFixerOutput = ({
       <div className="p-4">
         {fixedCode ? (
           <div className="space-y-4">
-            <div className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
-              <pre className="text-sm font-mono text-gray-100">
+            <div className="bg-gray-900 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto">
+              <pre className="text-sm font-mono text-gray-100 dark:text-gray-100">
                 <code>{fixedCode}</code>
               </pre>
             </div>
             
             {showExplanation && (
               <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                <h3 className="font-semibold text-blue-900 dark:text-white mb-2">
                   Fix Explanation
                 </h3>
-                <div className="text-blue-800 dark:text-blue-200 text-sm whitespace-pre-line">
+                <div className="text-blue-800 dark:text-white text-sm whitespace-pre-line">
                   {getFixExplanation()}
                 </div>
               </div>

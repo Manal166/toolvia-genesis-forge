@@ -47,12 +47,12 @@ const BugFixerInput = ({
               Programming Language
             </label>
             <Select value={language} onValueChange={onLanguageChange}>
-              <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
+              <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
                 <SelectValue placeholder="Select language" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
                 {languages.map((lang) => (
-                  <SelectItem key={lang.value} value={lang.value}>
+                  <SelectItem key={lang.value} value={lang.value} className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
                     {lang.label}
                   </SelectItem>
                 ))}
@@ -65,7 +65,7 @@ const BugFixerInput = ({
               variant="outline"
               size="sm"
               onClick={() => onToggleExplanation(!showExplanation)}
-              className="text-sm"
+              className="text-sm text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               {showExplanation ? 'Hide' : 'Show'} Fix Explanation
             </Button>
@@ -84,7 +84,7 @@ function calculate(a, b {
   result = a + b
   console.log(result
 }`}
-          className="min-h-[300px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
+          className="min-h-[300px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
         />
         
         <div className="mt-4 flex justify-center">
