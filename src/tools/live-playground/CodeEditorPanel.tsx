@@ -98,9 +98,10 @@ const CodeEditorPanel = ({ language, value, onChange, isDark }: CodeEditorPanelP
             className={`
               font-mono text-sm resize-none transition-all duration-200
               ${isExpanded ? 'min-h-[400px]' : 'min-h-[150px]'}
+              text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700
               ${isDark 
-                ? 'bg-gray-900 border-gray-600 text-gray-300 placeholder-gray-500' 
-                : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400'
+                ? 'border-gray-600' 
+                : 'border-gray-300'
               }
             `}
           />
