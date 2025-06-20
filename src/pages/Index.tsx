@@ -1,10 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Code, Zap, Shield, Globe, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
-import SEOManager from "@/components/SEOManager";
 import ToolCard from "@/components/ToolCard";
 import EmailCapture from "@/components/EmailCapture";
 import SocialShareButtons from "@/components/SocialShareButtons";
@@ -83,9 +81,7 @@ const Index = () => {
   };
 
   return (
-    <>
-      <SEOManager />
-      
+    <>      
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
         {/* Navigation */}
         <nav className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800">
