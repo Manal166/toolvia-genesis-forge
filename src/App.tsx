@@ -26,6 +26,7 @@ import CodeTranslatorDetails from "./pages/tools/CodeTranslatorDetails";
 import PseudocodeGeneratorDetails from "./pages/tools/PseudocodeGeneratorDetails";
 import FrontendDebugAssistantDetails from "./pages/tools/FrontendDebugAssistantDetails";
 import SQLQueryGeneratorDetails from "./pages/tools/SQLQueryGeneratorDetails";
+import CodeRefactorDetails from "./pages/tools/CodeRefactorDetails";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const AppContent = () => {
         <Route path="/tools/pseudocode-generator/details" element={<PseudocodeGeneratorDetails />} />
         <Route path="/tools/frontend-debug-assistant/details" element={<FrontendDebugAssistantDetails />} />
         <Route path="/tools/sql-query-generator/details" element={<SQLQueryGeneratorDetails />} />
+        <Route path="/tools/code-refactor/details" element={<CodeRefactorDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
