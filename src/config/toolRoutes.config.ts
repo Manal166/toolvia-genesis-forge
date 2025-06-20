@@ -21,6 +21,7 @@ import ImageAltTextTool from '@/tools/image-alt-text-generator/ImageAltTextTool'
 import LivePlaygroundTool from '@/tools/live-playground/LivePlaygroundTool';
 import AIInterviewGeneratorTool from '@/tools/ai-interview-generator/AIInterviewGeneratorTool';
 import JsonYamlCsvTool from '@/tools/json-yaml-csv-converter/JsonYamlCsvTool';
+import CodeMinifierTool from '@/tools/code-minifier/CodeMinifierTool';
 import GenericTool from '@/components/GenericTool';
 
 export interface ToolComponentProps {
@@ -52,6 +53,7 @@ export const toolComponentMap: Record<string, ToolComponent> = {
   'live-playground': LivePlaygroundTool,
   'ai-interview-generator': AIInterviewGeneratorTool,
   'json-yaml-csv-converter': JsonYamlCsvTool,
+  'code-minifier': CodeMinifierTool,
 };
 
 export const getToolComponent = (toolId: string): ToolComponent => {
