@@ -48,7 +48,7 @@ const PseudocodeGeneratorInput = ({
             Code Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="[&>span]:text-white">
+            <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
               <SelectValue placeholder="Select programming language" />
             </SelectTrigger>
             <SelectContent>
