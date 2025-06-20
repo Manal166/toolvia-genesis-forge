@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -130,6 +131,17 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'text',
     keywords: ['regex', 'pattern', 'match', 'validation'],
     featured: false
+  },
+  {
+    id: 'regex-explainer',
+    name: 'Regex Explainer',
+    description: 'Break down regular expressions into simple, human-readable explanations.',
+    icon: 'zoom-in',
+    category: 'Code Understanding',
+    inputType: 'code',
+    outputType: 'text',
+    keywords: ['regex', 'explain',  'understand', 'pattern', 'breakdown'],
+    featured: true
   },
   {
     id: 'code-optimizer',

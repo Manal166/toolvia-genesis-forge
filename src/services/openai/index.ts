@@ -5,6 +5,7 @@ import { RefactoringService } from './refactoringService';
 import { TestingService } from './testingService';
 import { DocumentationService } from './documentationService';
 import { VisualizationService } from './visualizationService';
+import { sharedOpenAIClient } from './sharedOpenAIClient';
 
 class OpenAIService {
   private codeGeneration: CodeGenerationService;
@@ -21,6 +22,11 @@ class OpenAIService {
     this.testing = new TestingService();
     this.documentation = new DocumentationService();
     this.visualization = new VisualizationService();
+  }
+
+  // Generic method for simple requests
+  async makeRequest(messages: any[], model?: string): Promise<string> {
+    return sharedOpenAIClient.makeRequest(messages, model);
   }
 
   // Code Generation Methods

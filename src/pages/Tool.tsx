@@ -6,6 +6,7 @@ import CodeExplainerTool from "@/tools/code-explainer/CodeExplainerTool";
 import AICodeGeneratorTool from "@/tools/ai-code-generator/AICodeGeneratorTool";
 import BugFixerTool from "@/tools/bug-fixer/BugFixerTool";
 import RegexGeneratorTool from "@/tools/regex-generator/RegexGeneratorTool";
+import RegexExplainerTool from "@/tools/regex-explainer/RegexExplainerTool";
 import CodeTranslatorTool from "@/tools/code-translator/CodeTranslatorTool";
 import PseudocodeGeneratorTool from "@/tools/pseudocode-generator/PseudocodeGeneratorTool";
 import CodeOptimizerTool from "@/tools/code-optimizer/CodeOptimizerTool";
@@ -70,6 +71,14 @@ const Tool = () => {
     case 'regex-generator':
       return (
         <RegexGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'regex-explainer':
+      return (
+        <RegexExplainerTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
