@@ -38,8 +38,8 @@ const PlaygroundToolbar = ({
               size="sm"
               className={`flex items-center space-x-2 ${
                 isDark 
-                  ? 'border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white' 
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                  ? 'border-gray-600 text-white hover:bg-gray-700 hover:text-white bg-gray-800' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'
               }`}
             >
               <FileCode className="h-4 w-4" />
@@ -52,8 +52,8 @@ const PlaygroundToolbar = ({
               size="sm"
               className={`flex items-center space-x-2 ${
                 isDark 
-                  ? 'border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white' 
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                  ? 'border-gray-600 text-white hover:bg-gray-700 hover:text-white bg-gray-800' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'
               }`}
             >
               <RotateCcw className="h-4 w-4" />
@@ -68,8 +68,8 @@ const PlaygroundToolbar = ({
               size="sm"
               className={`flex items-center space-x-2 ${
                 isDark 
-                  ? 'border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white' 
-                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                  ? 'border-gray-600 text-white hover:bg-gray-700 hover:text-white bg-gray-800' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'
               }`}
             >
               {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -90,7 +90,7 @@ const PlaygroundToolbar = ({
         
         {/* Quick Tips */}
         <div className={`mt-3 pt-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-          <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-xs ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
             💡 <span className="font-medium">Tips:</span> Your code is automatically saved. 
             Use the mobile/desktop toggle in preview. Changes update in real-time.
           </p>

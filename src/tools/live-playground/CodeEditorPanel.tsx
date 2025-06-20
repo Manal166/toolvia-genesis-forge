@@ -98,10 +98,9 @@ const CodeEditorPanel = ({ language, value, onChange, isDark }: CodeEditorPanelP
             className={`
               font-mono text-sm resize-none transition-all duration-200
               ${isExpanded ? 'min-h-[400px]' : 'min-h-[150px]'}
-              text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700
               ${isDark 
-                ? 'border-gray-600' 
-                : 'border-gray-300'
+                ? 'bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:ring-blue-400 focus:border-blue-400' 
+                : 'bg-white border-gray-300 text-gray-900 placeholder:text-gray-500 focus:ring-blue-500 focus:border-blue-500'
               }
             `}
           />
@@ -117,7 +116,7 @@ const CodeEditorPanel = ({ language, value, onChange, isDark }: CodeEditorPanelP
         </div>
         
         {/* Character count */}
-        <div className={`text-xs mt-2 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+        <div className={`text-xs mt-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
           {value.length} characters, {value.split('\n').length} lines
         </div>
       </CardContent>
