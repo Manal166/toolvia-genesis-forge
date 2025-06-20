@@ -185,6 +185,21 @@ class OpenAIService {
 
     return this.makeRequest(messages);
   }
+
+  async generateUnitTests(code: string, language: string): Promise<string> {
+    const messages: OpenAIMessage[] = [
+      {
+        role: 'system',
+        content: 'You are a software testing assistant. Generate comprehensive unit tests using the best practices for the given language. Include positive, negative, and edge case tests. Return the test code followed by "---EXPLANATION---" and then provide a detailed explanation of the test cases.'
+      },
+      {
+        role: 'user',
+        content: `Generate unit tests for the following function written in ${language}. Use the correct framework and cover edge cases:\n\n\`\`\`${language}\n${code}\n\`\`\``
+      }
+    ];
+
+    return this.makeRequest(messages);
+  }
 }
 
 export const openaiService = new OpenAIService();

@@ -1,4 +1,3 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
@@ -106,6 +105,18 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'text',
     languages: ['javascript', 'python', 'java', 'php', 'csharp'],
     keywords: ['documentation', 'api', 'docs', 'swagger', 'openapi'],
+    featured: true
+  },
+  {
+    id: 'unit-test-generator',
+    name: 'Unit Test Generator',
+    description: 'Automatically generate comprehensive unit tests from your code with AI-powered analysis.',
+    icon: 'test-tube',
+    category: 'Testing Tools',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['javascript', 'python', 'java', 'typescript', 'cpp', 'csharp', 'php'],
+    keywords: ['test', 'unit', 'testing', 'jest', 'pytest', 'junit', 'automation'],
     featured: true
   }
 ];

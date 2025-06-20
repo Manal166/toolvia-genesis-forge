@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getToolById } from "@/config/tools.config";
@@ -10,6 +9,7 @@ import CodeTranslatorTool from "@/tools/code-translator/CodeTranslatorTool";
 import PseudocodeGeneratorTool from "@/tools/pseudocode-generator/PseudocodeGeneratorTool";
 import CodeOptimizerTool from "@/tools/code-optimizer/CodeOptimizerTool";
 import APIDocGeneratorTool from "@/tools/api-doc-generator/APIDocGeneratorTool";
+import UnitTestTool from "@/tools/unit-test-generator/UnitTestTool";
 import GenericTool from "@/components/GenericTool";
 
 const Tool = () => {
@@ -89,6 +89,14 @@ const Tool = () => {
     case 'api-documentation':
       return (
         <APIDocGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'unit-test-generator':
+      return (
+        <UnitTestTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
