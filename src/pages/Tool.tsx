@@ -17,6 +17,7 @@ import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
 import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
 import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
 import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugTool";
+import TextSummarizerTool from "@/tools/text-summarizer/TextSummarizerTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -92,7 +93,7 @@ const Tool = () => {
           onToggleTheme={toggleTheme}
         />
       );
-    case 'pseudocode-generator':
+    case 'pseu docode-generator':
       return (
         <PseudocodeGeneratorTool 
           tool={tool} 
@@ -143,6 +144,14 @@ const Tool = () => {
     case 'code-refactor':
       return (
         <CodeRefactorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'text-summarizer':
+      return (
+        <TextSummarizerTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}

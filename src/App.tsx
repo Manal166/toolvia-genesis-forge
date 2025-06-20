@@ -28,6 +28,7 @@ import PseudocodeGeneratorDetails from "./pages/tools/PseudocodeGeneratorDetails
 import FrontendDebugAssistantDetails from "./pages/tools/FrontendDebugAssistantDetails";
 import SQLQueryGeneratorDetails from "./pages/tools/SQLQueryGeneratorDetails";
 import CodeRefactorDetails from "./pages/tools/CodeRefactorDetails";
+import TextSummarizerDetails from "./pages/tools/TextSummarizerDetails";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const AppContent = () => {
         <Route path="/tools/frontend-debug-assistant/details" element={<FrontendDebugAssistantDetails />} />
         <Route path="/tools/sql-query-generator/details" element={<SQLQueryGeneratorDetails />} />
         <Route path="/tools/code-refactor/details" element={<CodeRefactorDetails />} />
+        <Route path="/tools/text-summarizer/details" element={<TextSummarizerDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

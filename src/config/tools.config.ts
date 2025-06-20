@@ -1,11 +1,10 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
   description: string;
   icon: string;
   category: string;
-  inputType: 'prompt' | 'code' | 'file';
+  inputType: 'prompt' | 'code' | 'file' | 'text';
   outputType: 'code' | 'text' | 'file' | 'diagram';
   languages?: string[];
   keywords?: string[];
@@ -119,6 +118,17 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'code',
     languages: ['javascript', 'python', 'java', 'cpp', 'typescript', 'html', 'css'],
     keywords: ['refactor', 'improve', 'clean', 'structure', 'optimize', 'readable'],
+    featured: true
+  },
+  {
+    id: 'text-summarizer',
+    name: 'Text Summarizer',
+    description: 'Summarize long texts into clear, concise summaries using AI.',
+    icon: 'AlignJustify',
+    category: 'AI Utilities',
+    inputType: 'text',
+    outputType: 'text',
+    keywords: ['summarize', 'text', 'summary', 'ai', 'condense', 'brief'],
     featured: true
   },
   {
