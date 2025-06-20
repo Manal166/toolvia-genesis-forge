@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -5,7 +6,7 @@ export interface ToolConfig {
   icon: string;
   category: string;
   inputType: 'prompt' | 'code' | 'file';
-  outputType: 'code' | 'text' | 'file';
+  outputType: 'code' | 'text' | 'file' | 'diagram';
   languages?: string[];
   keywords?: string[];
   featured?: boolean;
@@ -70,6 +71,18 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'text',
     languages: ['javascript', 'python', 'java', 'cpp', 'html', 'css'],
     keywords: ['pseudocode', 'algorithm', 'steps', 'logic', 'simplify'],
+    featured: true
+  },
+  {
+    id: 'flowchart-generator',
+    name: 'Flowchart Generator',
+    description: 'Convert your code into a visual flowchart for better understanding and documentation.',
+    icon: 'diagram',
+    category: 'Code Understanding',
+    inputType: 'code',
+    outputType: 'diagram',
+    languages: ['javascript', 'python', 'java', 'cpp', 'html', 'css', 'typescript'],
+    keywords: ['flowchart', 'diagram', 'visual', 'mermaid', 'chart', 'flow'],
     featured: true
   },
   {

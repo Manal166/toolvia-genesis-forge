@@ -200,6 +200,21 @@ class OpenAIService {
 
     return this.makeRequest(messages);
   }
+
+  async generateFlowchart(code: string, language: string): Promise<string> {
+    const messages: OpenAIMessage[] = [
+      {
+        role: 'system',
+        content: 'You are an expert in code visualization and flowchart creation. Convert code into logical flowcharts using Mermaid.js syntax. Focus on control flow, decision points, loops, and function calls. Return the Mermaid flowchart code followed by "---EXPLANATION---" and then provide a detailed explanation of the flowchart structure.'
+      },
+      {
+        role: 'user',
+        content: `Analyze the following ${language} code and generate a step-by-step flowchart in Mermaid.js syntax. Focus on the logical flow, conditions, loops, and function calls:\n\n\`\`\`${language}\n${code}\n\`\`\``
+      }
+    ];
+
+    return this.makeRequest(messages);
+  }
 }
 
 export const openaiService = new OpenAIService();

@@ -11,6 +11,7 @@ import CodeOptimizerTool from "@/tools/code-optimizer/CodeOptimizerTool";
 import APIDocGeneratorTool from "@/tools/api-doc-generator/APIDocGeneratorTool";
 import UnitTestTool from "@/tools/unit-test-generator/UnitTestTool";
 import GenericTool from "@/components/GenericTool";
+import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -73,6 +74,14 @@ const Tool = () => {
     case 'pseudocode-generator':
       return (
         <PseudocodeGeneratorTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'flowchart-generator':
+      return (
+        <FlowchartTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
