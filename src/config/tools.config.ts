@@ -1,4 +1,3 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
@@ -47,6 +46,18 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'code',
     languages: ['html', 'css', 'javascript', 'python', 'java', 'cpp'],
     keywords: ['fix', 'debug', 'error', 'bug', 'repair'],
+    featured: true
+  },
+  {
+    id: 'frontend-debug-assistant',
+    name: 'Frontend Debug Assistant',
+    description: 'Diagnose and fix HTML, CSS, and JavaScript issues using AI.',
+    icon: 'bug-play',
+    category: 'Fixing & Optimization',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['html', 'css', 'javascript'],
+    keywords: ['frontend', 'debug', 'html', 'css', 'javascript', 'fix', 'ui'],
     featured: true
   },
   {

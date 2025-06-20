@@ -15,6 +15,7 @@ import GenericTool from "@/components/GenericTool";
 import FlowchartTool from "@/tools/flowchart-generator/FlowchartTool";
 import SQLQueryTool from "@/tools/sql-query-generator/SQLQueryTool";
 import CodeRefactorTool from "@/tools/code-refactor/CodeRefactorTool";
+import FrontendDebugTool from "@/tools/frontend-debug-assistant/FrontendDebugTool";
 
 const Tool = () => {
   const { toolId } = useParams();
@@ -53,6 +54,14 @@ const Tool = () => {
     case 'bug-fixer':
       return (
         <BugFixerTool 
+          tool={tool} 
+          isDark={isDark} 
+          onToggleTheme={toggleTheme}
+        />
+      );
+    case 'frontend-debug-assistant':
+      return (
+        <FrontendDebugTool 
           tool={tool} 
           isDark={isDark} 
           onToggleTheme={toggleTheme}
