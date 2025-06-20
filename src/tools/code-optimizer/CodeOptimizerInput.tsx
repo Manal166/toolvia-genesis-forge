@@ -99,7 +99,7 @@ const CodeOptimizerInput = ({
               placeholder="Paste your code here for optimization..."
               value={code}
               onChange={(e) => onCodeChange(e.target.value)}
-              className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+              className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
             />
           </div>
 

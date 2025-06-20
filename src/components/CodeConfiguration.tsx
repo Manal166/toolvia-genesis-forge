@@ -55,7 +55,7 @@ const CodeConfiguration = ({
             placeholder="Describe what you want to build... (e.g., 'a login form with email and password fields', 'a to-do list app', 'a calculator function')"
             value={description}
             onChange={(e) => onDescriptionChange(e.target.value)}
-            className="min-h-[120px] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
+            className="min-h-[120px] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
           />
         </div>
 

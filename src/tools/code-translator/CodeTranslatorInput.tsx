@@ -100,7 +100,7 @@ const CodeTranslatorInput = ({
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
             placeholder={`Paste your ${fromLanguage} code here...`}
-            className="min-h-[200px] font-mono text-sm resize-none text-gray-900 dark:text-white"
+            className="min-h-[200px] font-mono text-sm resize-none text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
             disabled={isTranslating}
           />
         </div>
