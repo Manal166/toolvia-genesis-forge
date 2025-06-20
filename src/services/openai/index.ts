@@ -1,19 +1,26 @@
 
-import { CodeAnalysisService } from './codeAnalysis';
-import { CodeGenerationService } from './codeGeneration';
-import { CodeImprovementService } from './codeImprovement';
-import { DocumentationService } from './documentation';
+import { CodeGenerationService } from './codeGenerationService';
+import { SQLService } from './sqlService';
+import { RefactoringService } from './refactoringService';
+import { TestingService } from './testingService';
+import { DocumentationService } from './documentationService';
+import { VisualizationService } from './visualizationService';
 
-class OpenAIService extends CodeAnalysisService {
+class OpenAIService {
   private codeGeneration: CodeGenerationService;
-  private codeImprovement: CodeImprovementService;
+  private sql: SQLService;
+  private refactoring: RefactoringService;
+  private testing: TestingService;
   private documentation: DocumentationService;
+  private visualization: VisualizationService;
 
   constructor() {
-    super();
     this.codeGeneration = new CodeGenerationService();
-    this.codeImprovement = new CodeImprovementService();
+    this.sql = new SQLService();
+    this.refactoring = new RefactoringService();
+    this.testing = new TestingService();
     this.documentation = new DocumentationService();
+    this.visualization = new VisualizationService();
   }
 
   // Code Generation Methods
@@ -25,25 +32,39 @@ class OpenAIService extends CodeAnalysisService {
     return this.codeGeneration.translateCode(code, fromLanguage, toLanguage);
   }
 
-  async generateSQLQuery(description: string, dialect: string): Promise<string> {
-    return this.codeGeneration.generateSQLQuery(description, dialect);
-  }
-
   async generateRegex(description: string): Promise<{ regex: string; explanation: string }> {
     return this.codeGeneration.generateRegex(description);
   }
 
-  // Code Improvement Methods
+  // SQL Methods
+  async generateSQLQuery(description: string, dialect: string = 'standard'): Promise<string> {
+    return this.sql.generateSQLQuery(description, dialect);
+  }
+
+  async optimizeSQLQuery(query: string, dialect: string = 'standard'): Promise<string> {
+    return this.sql.optimizeSQLQuery(query, dialect);
+  }
+
+  // Refactoring Methods
+  async refactorCode(code: string, language: string): Promise<string> {
+    return this.refactoring.refactorCode(code, language);
+  }
+
   async fixCode(code: string, language: string): Promise<string> {
-    return this.codeImprovement.fixCode(code, language);
+    return this.refactoring.fixCode(code, language);
   }
 
   async optimizeCode(code: string, language: string): Promise<string> {
-    return this.codeImprovement.optimizeCode(code, language);
+    return this.refactoring.optimizeCode(code, language);
   }
 
-  async refactorCode(code: string, language: string): Promise<string> {
-    return this.codeImprovement.refactorCode(code, language);
+  // Testing Methods
+  async generateUnitTests(code: string, language: string): Promise<string> {
+    return this.testing.generateUnitTests(code, language);
+  }
+
+  async generateIntegrationTests(code: string, language: string): Promise<string> {
+    return this.testing.generateIntegrationTests(code, language);
   }
 
   // Documentation Methods
@@ -51,8 +72,25 @@ class OpenAIService extends CodeAnalysisService {
     return this.documentation.generateAPIDocumentation(code, language);
   }
 
-  async generateUnitTests(code: string, language: string): Promise<string> {
-    return this.documentation.generateUnitTests(code, language);
+  async generateCodeComments(code: string, language: string): Promise<string> {
+    return this.documentation.generateCodeComments(code, language);
+  }
+
+  async generateReadme(code: string, language: string): Promise<string> {
+    return this.documentation.generateReadme(code, language);
+  }
+
+  // Visualization Methods
+  async generateFlowchart(code: string, language: string): Promise<string> {
+    return this.visualization.generateFlowchart(code, language);
+  }
+
+  async generatePseudocode(code: string, language: string): Promise<string> {
+    return this.visualization.generatePseudocode(code, language);
+  }
+
+  async explainCode(code: string, language: string): Promise<string> {
+    return this.visualization.explainCode(code, language);
   }
 }
 

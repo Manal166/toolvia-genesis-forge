@@ -12,15 +12,15 @@ interface OpenAIResponse {
   }[];
 }
 
-export class BaseOpenAIService {
-  protected apiKey: string;
+export class SharedOpenAIClient {
+  private apiKey: string;
   private baseUrl = 'https://api.openai.com/v1/chat/completions';
 
   constructor() {
     this.apiKey = import.meta.env.VITE_OPENAI_API_KEY || '';
   }
 
-  protected async makeRequest(messages: OpenAIMessage[], model: string = 'gpt-4o'): Promise<string> {
+  async makeRequest(messages: OpenAIMessage[], model: string = 'gpt-4.1-2025-04-14'): Promise<string> {
     if (!this.apiKey) {
       throw new Error('OpenAI API key not configured. Please set VITE_OPENAI_API_KEY environment variable.');
     }
@@ -47,6 +47,19 @@ export class BaseOpenAIService {
     const data: OpenAIResponse = await response.json();
     return data.choices[0]?.message?.content || 'No response generated';
   }
+
+  createSystemMessage(content: string): OpenAIMessage {
+    return { role: 'system', content };
+  }
+
+  createUserMessage(content: string): OpenAIMessage {
+    return { role: 'user', content };
+  }
+
+  formatCodeBlock(code: string, language: string): string {
+    return `\`\`\`${language}\n${code}\n\`\`\``;
+  }
 }
 
 export type { OpenAIMessage };
+export const sharedOpenAIClient = new SharedOpenAIClient();
