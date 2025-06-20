@@ -1,9 +1,5 @@
 
 import * as prettier from 'prettier';
-import { minify as minifyHTML } from 'html-minifier-terser';
-import cssnano from 'cssnano';
-import postcss from 'postcss';
-import { minify as minifyJS } from 'uglify-js';
 import { toast } from '@/hooks/use-toast';
 
 export type SupportedLanguage = 'html' | 'css' | 'javascript';
@@ -31,7 +27,7 @@ class CodeFormatterService {
       if (mode === 'prettify') {
         result = await this.prettifyCode(code, language);
       } else {
-        result = await this.minifyCode(code, language);
+        result = this.minifyCode(code, language);
       }
 
       return { code: result, success: true };
@@ -79,34 +75,65 @@ class CodeFormatterService {
     }
   }
 
-  private async minifyCode(code: string, language: SupportedLanguage): Promise<string> {
+  private minifyCode(code: string, language: SupportedLanguage): string {
     switch (language) {
       case 'html':
-        return await minifyHTML(code, {
-          removeComments: true,
-          removeRedundantAttributes: true,
-          removeEmptyAttributes: true,
-          removeEmptyElements: false,
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          minifyCSS: true,
-          minifyJS: true
-        });
+        return this.minifyHTML(code);
       
       case 'css':
-        const result = await postcss([cssnano({ preset: 'default' })]).process(code, { from: undefined });
-        return result.css;
+        return this.minifyCSS(code);
       
       case 'javascript':
-        const minified = minifyJS(code);
-        if (minified.error) {
-          throw minified.error;
-        }
-        return minified.code || code;
+        return this.minifyJS(code);
       
       default:
         throw new Error(`Unsupported language: ${language}`);
     }
+  }
+
+  private minifyHTML(html: string): string {
+    return html
+      // Remove comments
+      .replace(/<!--[\s\S]*?-->/g, '')
+      // Remove extra whitespace between tags
+      .replace(/>\s+</g, '><')
+      // Remove leading/trailing whitespace
+      .replace(/^\s+|\s+$/gm, '')
+      // Remove empty lines
+      .replace(/\n\s*\n/g, '\n')
+      // Collapse multiple spaces into one
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
+  private minifyCSS(css: string): string {
+    return css
+      // Remove comments
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      // Remove extra whitespace
+      .replace(/\s+/g, ' ')
+      // Remove space around certain characters
+      .replace(/\s*([{}:;,>+~])\s*/g, '$1')
+      // Remove trailing semicolon before }
+      .replace(/;}/g, '}')
+      // Remove leading/trailing whitespace
+      .trim();
+  }
+
+  private minifyJS(js: string): string {
+    return js
+      // Remove single-line comments (but preserve URLs)
+      .replace(/(?<!:)\/\/.*$/gm, '')
+      // Remove multi-line comments
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      // Remove extra whitespace
+      .replace(/\s+/g, ' ')
+      // Remove space around certain operators
+      .replace(/\s*([=+\-*/%<>!&|?:;,{}()[\]])\s*/g, '$1')
+      // Remove trailing semicolons where possible
+      .replace(/;\s*}/g, '}')
+      // Remove leading/trailing whitespace
+      .trim();
   }
 
   getExampleCode(language: SupportedLanguage): string {
