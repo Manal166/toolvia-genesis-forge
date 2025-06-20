@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,15 +10,11 @@ import { blogPosts } from '../data/blogData';
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('All');
   
-  console.log('Blog component rendering with posts:', blogPosts);
-  
   const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
   
   const filteredPosts = selectedCategory === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.category === selectedCategory);
-
-  console.log('Filtered posts:', filteredPosts.length, 'Category:', selectedCategory);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -37,6 +34,17 @@ const Blog = () => {
               <Code className="h-8 w-8 text-blue-400" />
               <span className="text-xl font-bold font-mono text-white">CodeBoost</span>
             </Link>
+            <div className="flex items-center space-x-4">
+              <Link to="/">
+                <Button variant="ghost" className="text-white hover:text-blue-400">Home</Button>
+              </Link>
+              <Link to="/about">
+                <Button variant="ghost" className="text-white hover:text-blue-400">About</Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="ghost" className="text-white hover:text-blue-400">Contact</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
@@ -49,13 +57,6 @@ const Blog = () => {
           </h1>
           <p className="text-xl text-white max-w-2xl mx-auto">
             Insights, tutorials, and best practices for modern software development
-          </p>
-        </div>
-
-        {/* Debug Information */}
-        <div className="mb-4 p-4 bg-gray-800 rounded-lg">
-          <p className="text-sm text-gray-300">
-            Debug: {blogPosts.length} total posts found, {filteredPosts.length} posts after filtering
           </p>
         </div>
 
