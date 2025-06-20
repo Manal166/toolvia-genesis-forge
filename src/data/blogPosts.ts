@@ -40,7 +40,7 @@ Implement MFA to add an extra layer of security beyond passwords. This significa
 
 **JSON Web Tokens (JWT)**
 Use JWT for secure token-based authentication:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 const jwt = require('jsonwebtoken');
 
 function generateToken(user) {
@@ -50,7 +50,7 @@ function generateToken(user) {
     { expiresIn: '1h' }
   );
 }
-\`\`\`
+\\\`\\\`\\\`
 
 **Role-Based Access Control (RBAC)**
 Implement granular permissions to ensure users only access resources they're authorized for.
@@ -59,26 +59,26 @@ Implement granular permissions to ensure users only access resources they're aut
 
 **Server-Side Validation**
 Never trust client-side validation alone. Always validate and sanitize input on the server:
-\`\`\`python
+\\\`\\\`\\\`python
 import re
 from html import escape
 
 def sanitize_input(user_input):
     # Remove potentially dangerous characters
-    sanitized = re.sub(r'[<>"\\'']', '', user_input)
+    sanitized = re.sub(r'[<>"\\']', '', user_input)
     # Escape HTML entities
     return escape(sanitized)
-\`\`\`
+\\\`\\\`\\\`
 
 **Parameterized Queries**
 Use parameterized queries to prevent SQL injection:
-\`\`\`sql
+\\\`\\\`\\\`sql
 -- Vulnerable query
 SELECT * FROM users WHERE email = '\${userEmail}';
 
 -- Safe parameterized query
 SELECT * FROM users WHERE email = ?;
-\`\`\`
+\\\`\\\`\\\`
 
 ## HTTPS and Data Encryption
 
@@ -87,7 +87,7 @@ Always use HTTPS to encrypt data in transit. Obtain SSL certificates from truste
 
 **Data Encryption at Rest**
 Encrypt sensitive data stored in databases:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 const crypto = require('crypto');
 
 function encryptData(text, key) {
@@ -99,12 +99,12 @@ function decryptData(encryptedText, key) {
   const decipher = crypto.createDecipher('aes256', key);
   return decipher.update(encryptedText, 'hex', 'utf8') + decipher.final('utf8');
 }
-\`\`\`
+\\\`\\\`\\\`
 
 ## Security Headers
 
 Implement security headers to protect against various attacks:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
@@ -113,7 +113,7 @@ app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', "default-src 'self'");
   next();
 });
-\`\`\`
+\\\`\\\`\\\`
 
 ## Regular Security Audits
 
@@ -122,10 +122,10 @@ Use tools like OWASP ZAP, Burp Suite, or commercial solutions to regularly scan 
 
 **Dependency Management**
 Regularly update dependencies and use tools like npm audit or Snyk to identify vulnerable packages:
-\`\`\`bash
+\\\`\\\`\\\`bash
 npm audit
 npm audit fix
-\`\`\`
+\\\`\\\`\\\`
 
 **Penetration Testing**
 Conduct regular penetration testing to identify vulnerabilities that automated tools might miss.
@@ -134,17 +134,17 @@ Conduct regular penetration testing to identify vulnerabilities that automated t
 
 **Secure Error Messages**
 Never expose sensitive information in error messages:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 // Bad - exposes system information
 res.status(500).json({ error: "Database connection failed: " + dbError.message });
 
 // Good - generic error message
 res.status(500).json({ error: "Internal server error" });
-\`\`\`
+\\\`\\\`\\\`
 
 **Comprehensive Logging**
 Log security events for monitoring and incident response:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 const winston = require('winston');
 
 const logger = winston.createLogger({
@@ -161,13 +161,13 @@ logger.info('Failed login attempt', {
   email: req.body.email, 
   timestamp: new Date() 
 });
-\`\`\`
+\\\`\\\`\\\`
 
 ## API Security
 
 **Rate Limiting**
 Implement rate limiting to prevent abuse:
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 const rateLimit = require('express-rate-limit');
 
 const limiter = rateLimit({
@@ -177,7 +177,7 @@ const limiter = rateLimit({
 });
 
 app.use('/api/', limiter);
-\`\`\`
+\\\`\\\`\\\`
 
 **API Key Management**
 Secure API keys and rotate them regularly. Use environment variables and never commit keys to version control.
@@ -185,7 +185,7 @@ Secure API keys and rotate them regularly. Use environment variables and never c
 ## Session Management
 
 **Secure Session Configuration**
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -196,7 +196,7 @@ app.use(session({
     maxAge: 30 * 60 * 1000 // 30 minutes
   }
 }));
-\`\`\`
+\\\`\\\`\\\`
 
 ## Incident Response Plan
 
@@ -264,11 +264,11 @@ AWS is the market leader with the most comprehensive set of cloud services.
 - **CloudFront**: Content Delivery Network
 
 **Pricing Example:**
-\`\`\`
+\\\`\\\`\\\`
 EC2 t3.micro instance: $0.0104/hour
 S3 Standard storage: $0.023/GB/month
 RDS MySQL db.t3.micro: $0.017/hour
-\`\`\`
+\\\`\\\`\\\`
 
 **Best For:**
 - Startups to large enterprises
@@ -293,11 +293,11 @@ Azure integrates seamlessly with Microsoft's ecosystem and offers strong hybrid 
 - **CDN**: Content delivery network
 
 **Pricing Comparison:**
-\`\`\`
+\\\`\\\`\\\`
 Standard B1s VM: $0.0104/hour
 Blob Storage (Hot): $0.0184/GB/month
 SQL Database (Basic): $4.90/month
-\`\`\`
+\\\`\\\`\\\`
 
 **Best For:**
 - Organizations using Microsoft technologies
@@ -322,11 +322,11 @@ GCP leverages Google's expertise in data analytics and machine learning.
 - **BigQuery**: Data warehouse and analytics
 
 **Pricing Structure:**
-\`\`\`
+\\\`\\\`\\\`
 n1-standard-1 instance: $0.0475/hour
 Cloud Storage (Standard): $0.020/GB/month
 Cloud SQL (db-n1-standard-1): $0.0825/hour
-\`\`\`
+\\\`\\\`\\\`
 
 **Best For:**
 - Data-driven applications
@@ -354,13 +354,13 @@ Cloud SQL (db-n1-standard-1): $0.0825/hour
 
 **Lift and Shift**
 Move existing applications to the cloud with minimal changes:
-\`\`\`bash
+\\\`\\\`\\\`bash
 # AWS CLI example for data migration
 aws s3 sync ./local-folder s3://my-bucket --delete
 
 # Azure CLI example
 az storage blob upload-batch --source ./local-folder --destination container-name
-\`\`\`
+\\\`\\\`\\\`
 
 **Re-platforming**
 Make minor optimizations to leverage cloud services:
@@ -378,7 +378,7 @@ Redesign applications for cloud-native architectures:
 
 **Right-sizing Resources**
 Monitor and adjust resource allocation:
-\`\`\`python
+\\\`\\\`\\\`python
 # AWS Cost Explorer API example
 import boto3
 
@@ -391,7 +391,7 @@ response = client.get_cost_and_usage(
     Granularity='MONTHLY',
     Metrics=['BlendedCost']
 )
-\`\`\`
+\\\`\\\`\\\`
 
 **Reserved Instances**
 Commit to longer terms for significant savings:
@@ -401,7 +401,7 @@ Commit to longer terms for significant savings:
 
 **Spot Instances**
 Use spare capacity for significant cost reduction:
-\`\`\`yaml
+\\\`\\\`\\\`yaml
 # Kubernetes example with spot instances
 apiVersion: v1
 kind: Node
@@ -413,7 +413,7 @@ spec:
   - key: spot
     value: "true"
     effect: NoSchedule
-\`\`\`
+\\\`\\\`\\\`
 
 ## Security Considerations
 
@@ -423,7 +423,7 @@ Understand what you're responsible for:
 - **Customer**: Guest OS, applications, data, access management
 
 **Identity and Access Management**
-\`\`\`json
+\\\`\\\`\\\`json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -437,7 +437,7 @@ Understand what you're responsible for:
     }
   ]
 }
-\`\`\`
+\\\`\\\`\\\`
 
 **Encryption**
 Enable encryption at rest and in transit:
@@ -534,7 +534,7 @@ Native development involves creating apps specifically for each platform using p
 - **UIKit/SwiftUI**: User interface frameworks
 
 **Swift Example:**
-\`\`\`swift
+\\\`\\\`\\\`swift
 import SwiftUI
 
 struct ContentView: View {
@@ -547,14 +547,14 @@ struct ContentView: View {
                 .padding()
             
             Button("Greet") {
-                print("Hello, \\(userName)!")
+                print("Hello, \\\\(userName)!")
             }
             .buttonStyle(.borderedProminent)
         }
         .padding()
     }
 }
-\`\`\`
+\\\`\\\`\\\`
 
 ### Android Native Development
 
@@ -565,7 +565,7 @@ struct ContentView: View {
 - **Jetpack Compose**: Modern UI toolkit
 
 **Kotlin Example:**
-\`\`\`kotlin
+\\\`\\\`\\\`kotlin
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -601,7 +601,7 @@ fun GreetingScreen() {
         }
     }
 }
-\`\`\`
+\\\`\\\`\\\`
 
 ## Cross-Platform Development
 
@@ -621,7 +621,7 @@ Cross-platform development allows you to write code once and deploy to multiple 
 - Third-party library compatibility issues
 
 **React Native Example:**
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -629,7 +629,7 @@ const GreetingScreen = () => {
   const [userName, setUserName] = useState('');
 
   const handleGreet = () => {
-    console.log(\`Hello, \${userName}!\`);
+    console.log(\\\`Hello, \\\${userName}!\\\`);
   };
 
   return (
@@ -676,7 +676,7 @@ const styles = StyleSheet.create({
 });
 
 export default GreetingScreen;
-\`\`\`
+\\\`\\\`\\\`
 
 ### Flutter
 
@@ -692,7 +692,7 @@ export default GreetingScreen;
 - Dart language learning curve
 
 **Flutter Example:**
-\`\`\`dart
+\\\`\\\`\\\`dart
 import 'package:flutter/material.dart';
 
 class GreetingScreen extends StatefulWidget {
@@ -704,7 +704,7 @@ class _GreetingScreenState extends State<GreetingScreen> {
   final TextEditingController _controller = TextEditingController();
 
   void _handleGreet() {
-    print('Hello, \${_controller.text}!');
+    print('Hello, \\\${_controller.text}!');
   }
 
   @override
@@ -735,7 +735,7 @@ class _GreetingScreenState extends State<GreetingScreen> {
     );
   }
 }
-\`\`\`
+\\\`\\\`\\\`
 
 ## Performance Comparison
 
@@ -810,7 +810,7 @@ class _GreetingScreenState extends State<GreetingScreen> {
 ## Testing Strategies
 
 **Native Testing:**
-\`\`\`swift
+\\\`\\\`\\\`swift
 // iOS XCTest example
 import XCTest
 @testable import MyApp
@@ -821,10 +821,10 @@ class GreetingTests: XCTestCase {
         XCTAssertEqual(greeting, "Hello, John!")
     }
 }
-\`\`\`
+\\\`\\\`\\\`
 
 **Cross-Platform Testing:**
-\`\`\`javascript
+\\\`\\\`\\\`javascript
 // React Native testing with Jest
 import { render, fireEvent } from '@testing-library/react-native';
 import GreetingScreen from './GreetingScreen';
@@ -840,7 +840,7 @@ test('displays greeting message', () => {
   
   // Test console output or state changes
 });
-\`\`\`
+\\\`\\\`\\\`
 
 ## Distribution and Deployment
 
@@ -851,7 +851,7 @@ test('displays greeting message', () => {
 - Plan for app review process
 
 **Deployment Automation:**
-\`\`\`yaml
+\\\`\\\`\\\`yaml
 # GitHub Actions example for React Native
 name: Build and Deploy
 on:
@@ -873,7 +873,7 @@ jobs:
         run: npx react-native run-ios --configuration Release
       - name: Build Android
         run: npx react-native run-android --variant=release
-\`\`\`
+\\\`\\\`\\\`
 
 ## Future Trends
 
