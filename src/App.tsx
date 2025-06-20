@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Community from "./pages/Community";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import FeedbackButton from "./components/FeedbackButton";
 
@@ -48,6 +49,7 @@ const AppContent = () => {
         <Route path="/tools" element={<Tools />} />
         <Route path="/tools/:toolId" element={<Tool />} />
         <Route path="/tool" element={<Tool />} />
+        <Route path="/settings" element={<Settings />} />
         
         {/* Tool detail pages for SEO */}
         <Route path="/tools/code-explainer/details" element={<CodeExplainerDetails />} />

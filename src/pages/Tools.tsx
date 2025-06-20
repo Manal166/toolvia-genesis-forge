@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Code, Moon, Sun } from "lucide-react";
+import { Code, Moon, Sun, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ToolDirectory from "@/components/ToolDirectory";
@@ -29,6 +29,11 @@ const Tools = () => {
               <Link to="/" className="text-white hover:text-blue-400 transition-colors">Home</Link>
               <Link to="/community" className="text-white hover:text-blue-400 transition-colors">Community</Link>
               <Link to="/about" className="text-white hover:text-blue-400 transition-colors">About</Link>
+              <Link to="/settings">
+                <Button variant="ghost" size="sm" className="text-white hover:text-blue-400">
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </Link>
               <Button variant="ghost" size="sm" onClick={toggleTheme}>
                 {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </Button>
