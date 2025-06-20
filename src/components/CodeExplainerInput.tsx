@@ -61,7 +61,7 @@ const CodeExplainerInput = ({
           variant="outline"
           size="sm"
           onClick={() => setShowExamples(!showExamples)}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <Lightbulb className="h-4 w-4" />
           <span>Examples</span>
@@ -71,13 +71,13 @@ const CodeExplainerInput = ({
       <div className="p-4 space-y-4">
         {showExamples && (
           <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-800">
-            <h3 className="font-medium text-blue-900 dark:text-blue-100 mb-3">Try these examples:</h3>
+            <h3 className="font-medium text-blue-900 dark:text-white mb-3">Try these examples:</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => insertExample('javascript')}
-                className="text-left"
+                className="text-left text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 JavaScript Function
               </Button>
@@ -85,7 +85,7 @@ const CodeExplainerInput = ({
                 variant="outline"
                 size="sm"
                 onClick={() => insertExample('python')}
-                className="text-left"
+                className="text-left text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Python Algorithm
               </Button>
@@ -93,7 +93,7 @@ const CodeExplainerInput = ({
                 variant="outline"
                 size="sm"
                 onClick={() => insertExample('html')}
-                className="text-left"
+                className="text-left text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 HTML Component
               </Button>
@@ -106,16 +106,16 @@ const CodeExplainerInput = ({
             Programming Language
           </label>
           <Select value={language} onValueChange={onLanguageChange}>
-            <SelectTrigger className="[&>span]:text-gray-900 dark:[&>span]:text-white">
+            <SelectTrigger className="text-gray-900 dark:text-white bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="javascript">JavaScript</SelectItem>
-              <SelectItem value="python">Python</SelectItem>
-              <SelectItem value="html">HTML</SelectItem>
-              <SelectItem value="css">CSS</SelectItem>
-              <SelectItem value="java">Java</SelectItem>
-              <SelectItem value="cpp">C++</SelectItem>
+            <SelectContent className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600">
+              <SelectItem value="javascript" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">JavaScript</SelectItem>
+              <SelectItem value="python" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Python</SelectItem>
+              <SelectItem value="html" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">HTML</SelectItem>
+              <SelectItem value="css" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">CSS</SelectItem>
+              <SelectItem value="java" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">Java</SelectItem>
+              <SelectItem value="cpp" className="text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600">C++</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -128,7 +128,7 @@ const CodeExplainerInput = ({
             value={code}
             onChange={(e) => onCodeChange(e.target.value)}
             placeholder="Paste the code you want explained..."
-            className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700"
+            className="min-h-[200px] font-mono text-sm text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600"
           />
         </div>
 
