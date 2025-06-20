@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -163,6 +164,18 @@ export const toolsConfig: ToolConfig[] = [
     outputType: 'code',
     languages: ['html', 'css', 'javascript'],
     keywords: ['playground', 'live', 'preview', 'html', 'css', 'javascript', 'codepen', 'jsfiddle'],
+    featured: true
+  },
+  {
+    id: 'code-minifier',
+    name: 'Code Minifier / Prettifier',
+    description: 'Compress or beautify your HTML, CSS, and JavaScript code instantly.',
+    icon: 'terminal',
+    category: 'Frontend Tools',
+    inputType: 'code',
+    outputType: 'code',
+    languages: ['html', 'css', 'javascript'],
+    keywords: ['minify', 'prettify', 'compress', 'beautify', 'format', 'optimize'],
     featured: true
   },
   {

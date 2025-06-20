@@ -1,5 +1,5 @@
 
-import { Code, Zap, FileText, Bug, Wrench, Hash, Languages, ListOrdered, Play } from "lucide-react";
+import { Code, Zap, FileText, Bug, Wrench, Hash, Languages, ListOrdered, Play, Terminal } from "lucide-react";
 import { ToolConfig } from "@/config/tools.config";
 
 interface ToolHeaderProps {
@@ -17,6 +17,7 @@ const iconMap = {
   languages: Languages,
   'list-ordered': ListOrdered,
   play: Play,
+  terminal: Terminal,
 };
 
 const ToolHeader = ({ tool, isDark }: ToolHeaderProps) => {
