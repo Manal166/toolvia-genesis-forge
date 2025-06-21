@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Code, ArrowLeft, Moon, Sun } from "lucide-react";
+import { Code, ArrowLeft, Moon, Sun, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ToolNavigationProps {
@@ -19,9 +19,16 @@ const ToolNavigation = ({ isDark, onToggleTheme }: ToolNavigationProps) => {
             <span className="text-xl font-bold font-mono text-gray-900 dark:text-white">CodeBoost</span>
           </Link>
           
-          <Button variant="ghost" size="sm" onClick={onToggleTheme}>
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Link to="/settings">
+              <Button variant="ghost" size="sm" title="Settings">
+                <Settings className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Button variant="ghost" size="sm" onClick={onToggleTheme}>
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </Button>
+          </div>
         </div>
       </div>
     </nav>
