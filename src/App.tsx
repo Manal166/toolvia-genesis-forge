@@ -93,15 +93,15 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
-        <BrowserRouter>
-          <TooltipProvider delayDuration={0}>
+        <TooltipProvider>
+          <BrowserRouter>
             <div className="min-h-screen w-full">
               <Toaster />
               <Sonner />
               <AppContent />
             </div>
-          </TooltipProvider>
-        </BrowserRouter>
+          </BrowserRouter>
+        </TooltipProvider>
       </HelmetProvider>
     </QueryClientProvider>
   );

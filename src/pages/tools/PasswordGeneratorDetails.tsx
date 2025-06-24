@@ -4,37 +4,6 @@ import { Key } from "lucide-react";
 import ToolDetailsLayout from "@/components/ToolDetailsLayout";
 
 const PasswordGeneratorDetails = () => {
-  const toolInfo = {
-    name: "Password Generator",
-    description: "Generate strong, secure, and random passwords for your online accounts",
-    category: "Security Tools",
-    icon: Key,
-    features: [
-      "Adjustable password length (6-32 characters)",
-      "Include/exclude uppercase letters", 
-      "Include/exclude numbers",
-      "Include/exclude special symbols",
-      "One-click copy to clipboard",
-      "Instant password generation",
-      "No data stored or transmitted",
-      "Fully secure and private"
-    ],
-    useCases: [
-      "Creating strong passwords for new accounts",
-      "Updating weak existing passwords",
-      "Generating unique passwords for each service",
-      "Meeting specific password requirements",
-      "Enhancing account security"
-    ],
-    benefits: [
-      "Prevents password reuse across accounts",
-      "Creates cryptographically strong passwords",
-      "Saves time with instant generation",
-      "Reduces risk of data breaches",
-      "Improves overall digital security"
-    ]
-  };
-
   return (
     <>
       <Helmet>
@@ -48,8 +17,18 @@ const PasswordGeneratorDetails = () => {
       </Helmet>
 
       <ToolDetailsLayout 
-        {...toolInfo}
-        toolPath="/tools/password-generator"
+        title="Password Generator"
+        description="Generate strong, secure, and random passwords for your online accounts"
+        metaDescription="Generate strong, secure, and random passwords for your online accounts. Free password generator tool for students, developers & everyone. No registration required."
+        toolId="password-generator"
+        icon={<Key className="h-8 w-8 text-blue-600" />}
+        useCases={[
+          "Creating strong passwords for new accounts",
+          "Updating weak existing passwords",
+          "Generating unique passwords for each service",
+          "Meeting specific password requirements",
+          "Enhancing account security"
+        ]}
       />
     </>
   );
