@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -86,18 +87,24 @@ const AppContent = () => {
   );
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
+const App = () => {
+  console.log("App component rendering...");
+  
+  return (
+    <QueryClientProvider client={queryClient}>
+      <HelmetProvider>
         <BrowserRouter>
-          <AppContent />
+          <TooltipProvider delayDuration={0}>
+            <div className="min-h-screen w-full">
+              <Toaster />
+              <Sonner />
+              <AppContent />
+            </div>
+          </TooltipProvider>
         </BrowserRouter>
-      </TooltipProvider>
-    </HelmetProvider>
-  </QueryClientProvider>
-);
+      </HelmetProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

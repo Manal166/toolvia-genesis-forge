@@ -11,7 +11,7 @@ const PasswordGeneratorDetails = () => {
     icon: Key,
     features: [
       "Adjustable password length (6-32 characters)",
-      "Include/exclude uppercase letters",
+      "Include/exclude uppercase letters", 
       "Include/exclude numbers",
       "Include/exclude special symbols",
       "One-click copy to clipboard",
@@ -48,7 +48,7 @@ const PasswordGeneratorDetails = () => {
       </Helmet>
 
       <ToolDetailsLayout 
-        tool={toolInfo}
+        {...toolInfo}
         toolPath="/tools/password-generator"
       />
     </>
