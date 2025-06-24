@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -24,6 +25,7 @@ import AICodeGeneratorDetails from "./pages/tools/AICodeGeneratorDetails";
 import BugFixerDetails from "./pages/tools/BugFixerDetails";
 import RegexGeneratorDetails from "./pages/tools/RegexGeneratorDetails";
 import RegexExplainerDetails from "./pages/tools/RegexExplainerDetails";
+import CaseConverterDetails from "./pages/tools/CaseConverterDetails";
 import CodeTranslatorDetails from "./pages/tools/CodeTranslatorDetails";
 import PseudocodeGeneratorDetails from "./pages/tools/PseudocodeGeneratorDetails";
 import FrontendDebugAssistantDetails from "./pages/tools/FrontendDebugAssistantDetails";
@@ -59,6 +61,7 @@ const AppContent = () => {
         <Route path="/tools/bug-fixer/details" element={<BugFixerDetails />} />
         <Route path="/tools/regex-generator/details" element={<RegexGeneratorDetails />} />
         <Route path="/tools/regex-explainer/details" element={<RegexExplainerDetails />} />
+        <Route path="/tools/case-converter/details" element={<CaseConverterDetails />} />
         <Route path="/tools/code-translator/details" element={<CodeTranslatorDetails />} />
         <Route path="/tools/pseudocode-generator/details" element={<PseudocodeGeneratorDetails />} />
         <Route path="/tools/frontend-debug-assistant/details" element={<FrontendDebugAssistantDetails />} />

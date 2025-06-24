@@ -1,3 +1,4 @@
+
 import { ComponentType } from 'react';
 import { ToolConfig } from './tools.config';
 import CodeExplainerTool from '@/tools/code-explainer/CodeExplainerTool';
@@ -5,6 +6,7 @@ import AICodeGeneratorTool from '@/tools/ai-code-generator/AICodeGeneratorTool';
 import BugFixerTool from '@/tools/bug-fixer/BugFixerTool';
 import RegexGeneratorTool from '@/tools/regex-generator/RegexGeneratorTool';
 import RegexExplainerTool from '@/tools/regex-explainer/RegexExplainerTool';
+import CaseConverterTool from '@/tools/case-converter/CaseConverterTool';
 import CodeTranslatorTool from '@/tools/code-translator/CodeTranslatorTool';
 import PseudocodeGeneratorTool from '@/tools/pseudocode-generator/PseudocodeGeneratorTool';
 import CodeOptimizerTool from '@/tools/code-optimizer/CodeOptimizerTool';
@@ -41,6 +43,7 @@ export const toolComponentMap: Record<string, ToolComponent> = {
   'frontend-debug-assistant': FrontendDebugTool,
   'regex-generator': RegexGeneratorTool,
   'regex-explainer': RegexExplainerTool,
+  'case-converter': CaseConverterTool,
   'code-translator': CodeTranslatorTool,
   'pseudocode-generator': PseudocodeGeneratorTool,
   'flowchart-generator': FlowchartTool,

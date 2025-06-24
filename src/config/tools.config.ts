@@ -71,6 +71,15 @@ export const toolsConfig: ToolConfig[] = [
     useCases: ['Learning regex', 'Debugging patterns', 'Code documentation', 'Pattern optimization']
   },
   {
+    id: 'case-converter',
+    name: 'Case Converter',
+    description: 'Convert text between different case formats including uppercase, lowercase, title case, camelCase, and snake_case.',
+    category: 'Text Processing',
+    icon: 'type',
+    features: ['Multiple case formats', 'Real-time conversion', 'Copy to clipboard', 'Batch processing'],
+    useCases: ['Programming variable names', 'Document formatting', 'Social media posts', 'API response formatting', 'Documentation standardization', 'Naming conventions', 'Style guide compliance', 'Web development']
+  },
+  {
     id: 'code-translator',
     name: 'Code Translator',
     description: 'Convert code between different programming languages while preserving functionality.',
