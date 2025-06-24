@@ -37,6 +37,7 @@ import CodeMinifierDetails from "./pages/tools/CodeMinifierDetails";
 import AIInterviewGeneratorDetails from "./pages/tools/AIInterviewGeneratorDetails";
 import PasswordGeneratorDetails from "./pages/tools/PasswordGeneratorDetails";
 import URLEncoderDecoderDetails from "./pages/tools/URLEncoderDecoderDetails";
+import UnitConverterDetails from "./pages/tools/UnitConverterDetails";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const AppContent = () => {
         <Route path="/tools/ai-interview-generator/details" element={<AIInterviewGeneratorDetails />} />
         <Route path="/tools/password-generator/details" element={<PasswordGeneratorDetails />} />
         <Route path="/tools/url-encoder-decoder/details" element={<URLEncoderDecoderDetails />} />
+        <Route path="/tools/unit-converter/details" element={<UnitConverterDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

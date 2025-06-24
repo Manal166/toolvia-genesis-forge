@@ -1,4 +1,3 @@
-
 import { ComponentType } from 'react';
 import { ToolConfig } from './tools.config';
 import CodeExplainerTool from '@/tools/code-explainer/CodeExplainerTool';
@@ -24,6 +23,7 @@ import JsonYamlCsvTool from '@/tools/json-yaml-csv-converter/JsonYamlCsvTool';
 import CodeMinifierTool from '@/tools/code-minifier/CodeMinifierTool';
 import PasswordGeneratorTool from '@/tools/password-generator/PasswordGeneratorTool';
 import URLEncoderDecoderTool from '@/tools/url-encoder-decoder/URLEncoderDecoderTool';
+import UnitConverterTool from '@/tools/unit-converter/UnitConverterTool';
 import GenericTool from '@/components/GenericTool';
 
 export interface ToolComponentProps {
@@ -58,6 +58,7 @@ export const toolComponentMap: Record<string, ToolComponent> = {
   'code-minifier': CodeMinifierTool,
   'password-generator': PasswordGeneratorTool,
   'url-encoder-decoder': URLEncoderDecoderTool,
+  'unit-converter': UnitConverterTool,
 };
 
 export const getToolComponent = (toolId: string): ToolComponent => {

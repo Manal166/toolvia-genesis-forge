@@ -231,6 +231,15 @@ export const toolsConfig: ToolConfig[] = [
     icon: 'tool',
     features: ['URL encoding', 'URL decoding', 'Percent encoding', 'Copy to clipboard', 'Error handling'],
     useCases: ['Web development', 'API integration', 'URL debugging', 'Query string handling', 'Form data processing']
+  },
+  {
+    id: 'unit-converter',
+    name: 'Unit Converter',
+    description: 'Convert between different units of measurement including length, weight, and temperature.',
+    category: 'Utilities',
+    icon: 'calculator',
+    features: ['Length conversion', 'Weight conversion', 'Temperature conversion', 'Metric and Imperial units', 'Instant results'],
+    useCases: ['Engineering calculations', 'Educational assignments', 'Recipe conversions', 'Travel planning', 'Scientific research', 'Construction projects', 'Fitness tracking', 'International commerce']
   }
 ];
 
