@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -36,6 +35,7 @@ import ImageAltTextGeneratorDetails from "./pages/tools/ImageAltTextGeneratorDet
 import LivePlaygroundDetails from "./pages/tools/LivePlaygroundDetails";
 import CodeMinifierDetails from "./pages/tools/CodeMinifierDetails";
 import AIInterviewGeneratorDetails from "./pages/tools/AIInterviewGeneratorDetails";
+import PasswordGeneratorDetails from "./pages/tools/PasswordGeneratorDetails";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +68,7 @@ const AppContent = () => {
         <Route path="/tools/live-playground/details" element={<LivePlaygroundDetails />} />
         <Route path="/tools/code-minifier/details" element={<CodeMinifierDetails />} />
         <Route path="/tools/ai-interview-generator/details" element={<AIInterviewGeneratorDetails />} />
+        <Route path="/tools/password-generator/details" element={<PasswordGeneratorDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

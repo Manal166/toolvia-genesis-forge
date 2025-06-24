@@ -1,4 +1,3 @@
-
 import { ComponentType } from 'react';
 import { ToolConfig } from './tools.config';
 import CodeExplainerTool from '@/tools/code-explainer/CodeExplainerTool';
@@ -22,6 +21,7 @@ import LivePlaygroundTool from '@/tools/live-playground/LivePlaygroundTool';
 import AIInterviewGeneratorTool from '@/tools/ai-interview-generator/AIInterviewGeneratorTool';
 import JsonYamlCsvTool from '@/tools/json-yaml-csv-converter/JsonYamlCsvTool';
 import CodeMinifierTool from '@/tools/code-minifier/CodeMinifierTool';
+import PasswordGeneratorTool from '@/tools/password-generator/PasswordGeneratorTool';
 import GenericTool from '@/components/GenericTool';
 
 export interface ToolComponentProps {
@@ -54,6 +54,7 @@ export const toolComponentMap: Record<string, ToolComponent> = {
   'ai-interview-generator': AIInterviewGeneratorTool,
   'json-yaml-csv-converter': JsonYamlCsvTool,
   'code-minifier': CodeMinifierTool,
+  'password-generator': PasswordGeneratorTool,
 };
 
 export const getToolComponent = (toolId: string): ToolComponent => {

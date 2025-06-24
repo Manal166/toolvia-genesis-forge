@@ -22,6 +22,7 @@ const SEOManager = () => {
     { name: "Regex Generator", path: "/tools/regex-generator/details" },
     { name: "Code Translator", path: "/tools/code-translator/details" },
     { name: "Pseudocode Generator", path: "/tools/pseudocode-generator/details" },
+    { name: "Password Generator", path: "/tools/password-generator/details" },
   ];
 
   return (
