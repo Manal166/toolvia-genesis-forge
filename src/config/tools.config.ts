@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -221,6 +222,15 @@ export const toolsConfig: ToolConfig[] = [
     icon: 'tool',
     features: ['Adjustable length', 'Character customization', 'Strength indicators', 'Copy to clipboard'],
     useCases: ['Account security', 'Password creation', 'Security best practices', 'Privacy protection']
+  },
+  {
+    id: 'url-encoder-decoder',
+    name: 'URL Encoder/Decoder',
+    description: 'Encode or decode URLs quickly and easily with percent encoding/decoding.',
+    category: 'Web Development',
+    icon: 'tool',
+    features: ['URL encoding', 'URL decoding', 'Percent encoding', 'Copy to clipboard', 'Error handling'],
+    useCases: ['Web development', 'API integration', 'URL debugging', 'Query string handling', 'Form data processing']
   }
 ];
 
