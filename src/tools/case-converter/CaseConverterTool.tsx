@@ -64,10 +64,10 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
   return (
     <ToolWrapper tool={tool} isDark={isDark} onToggleTheme={onToggleTheme}>
       {/* Input Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+      <div className="bg-gray-800 rounded-xl shadow-lg p-6">
         <div className="flex items-center mb-4">
-          <Type className="h-5 w-5 text-blue-600 dark:text-blue-400 mr-2" />
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <Type className="h-5 w-5 text-blue-400 mr-2" />
+          <h2 className="text-lg font-semibold text-white">
             Input Text
           </h2>
         </div>
@@ -76,7 +76,7 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
           placeholder="Enter your text here to convert between different cases..."
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="min-h-[120px] mb-4"
+          className="min-h-[120px] mb-4 bg-gray-800 text-white border-gray-600 overflow-auto break-words"
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -85,7 +85,7 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
               key={button.type}
               onClick={() => handleConvert(button.type)}
               variant={activeCase === button.type ? "default" : "outline"}
-              className="justify-start h-auto p-3"
+              className="justify-start h-auto p-3 bg-gray-700 text-white hover:bg-gray-600 border-gray-600"
               disabled={!text.trim()}
             >
               <div className="text-left">
@@ -98,37 +98,37 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
       </div>
 
       {/* Output Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+      <div className="bg-gray-800 rounded-xl shadow-lg p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
-            <Copy className="h-5 w-5 text-green-600 dark:text-green-400 mr-2" />
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <Copy className="h-5 w-5 text-green-400 mr-2" />
+            <h2 className="text-lg font-semibold text-white">
               Converted Text
             </h2>
           </div>
           {converted && (
-            <Button onClick={handleCopy} size="sm" className="ml-2">
+            <Button onClick={handleCopy} size="sm" className="ml-2 bg-blue-600 hover:bg-blue-700 text-white">
               <Copy className="h-4 w-4 mr-2" />
               Copy
             </Button>
           )}
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 min-h-[120px] border-2 border-dashed border-gray-200 dark:border-gray-600">
+        <div className="bg-gray-800 border border-gray-600 rounded-lg p-4 min-h-[120px] border-2 border-dashed">
           {converted ? (
-            <div className="text-gray-900 dark:text-white whitespace-pre-wrap break-words">
+            <div className="text-white whitespace-pre-wrap break-words overflow-auto">
               {converted}
             </div>
           ) : (
-            <div className="text-gray-500 dark:text-gray-400 italic">
+            <div className="text-gray-400 italic">
               Select a case conversion option above to see the result here...
             </div>
           )}
         </div>
 
         {converted && (
-          <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <p className="text-sm text-blue-700 dark:text-blue-300">
+          <div className="mt-4 p-3 bg-blue-900/20 rounded-lg">
+            <p className="text-sm text-blue-300">
               <strong>Result:</strong> Your text has been converted to {
                 caseButtons.find(b => b.type === activeCase)?.label
               } format. Click the copy button to use it elsewhere.
