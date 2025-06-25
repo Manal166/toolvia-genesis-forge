@@ -1,4 +1,3 @@
-
 export interface ToolConfig {
   id: string;
   name: string;
@@ -249,6 +248,15 @@ export const toolsConfig: ToolConfig[] = [
     icon: 'calculator',
     features: ['Length conversion', 'Weight conversion', 'Temperature conversion', 'Metric and Imperial units', 'Instant results'],
     useCases: ['Engineering calculations', 'Educational assignments', 'Recipe conversions', 'Travel planning', 'Scientific research', 'Construction projects', 'Fitness tracking', 'International commerce']
+  },
+  {
+    id: 'text-compare',
+    name: 'Text Compare Tool',
+    description: 'Compare two texts side-by-side and identify differences with visual highlighting and line-by-line analysis.',
+    category: 'Text Processing',
+    icon: 'file-text',
+    features: ['Side-by-side comparison', 'Difference highlighting', 'Line-by-line analysis', 'Copy results', 'Clear interface'],
+    useCases: ['Document version comparison', 'Code diff analysis', 'Proofreading assistance', 'Content revision tracking', 'Quality assurance', 'Academic research', 'Legal document comparison', 'Collaboration workflows']
   }
 ];
 

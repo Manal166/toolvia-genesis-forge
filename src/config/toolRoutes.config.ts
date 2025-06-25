@@ -1,4 +1,3 @@
-
 import { ComponentType } from 'react';
 import { ToolConfig } from './tools.config';
 import CodeExplainerTool from '@/tools/code-explainer/CodeExplainerTool';
@@ -27,6 +26,7 @@ import PasswordGeneratorTool from '@/tools/password-generator/PasswordGeneratorT
 import URLEncoderDecoderTool from '@/tools/url-encoder-decoder/URLEncoderDecoderTool';
 import UnitConverterTool from '@/tools/unit-converter/UnitConverterTool';
 import GenericTool from '@/components/GenericTool';
+import TextCompareTool from '@/tools/text-compare/TextCompareTool';
 
 export interface ToolComponentProps {
   tool: ToolConfig;
@@ -62,6 +62,7 @@ export const toolComponentMap: Record<string, ToolComponent> = {
   'password-generator': PasswordGeneratorTool,
   'url-encoder-decoder': URLEncoderDecoderTool,
   'unit-converter': UnitConverterTool,
+  'text-compare': TextCompareTool,
 };
 
 export const getToolComponent = (toolId: string): ToolComponent => {
