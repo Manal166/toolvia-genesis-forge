@@ -76,16 +76,16 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
           placeholder="Enter your text here to convert between different cases..."
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="min-h-[120px] mb-4 bg-gray-800 text-white border-gray-600 overflow-auto break-words"
+          className="min-h-[120px] mb-6 bg-gray-800 text-white border-gray-600 overflow-auto break-words"
         />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="flex flex-wrap gap-3 justify-center">
           {caseButtons.map((button) => (
             <Button
               key={button.type}
               onClick={() => handleConvert(button.type)}
               variant={activeCase === button.type ? "default" : "outline"}
-              className="bg-gray-700 text-white hover:bg-gray-600 border-gray-600"
+              className="bg-gray-700 text-white hover:bg-gray-600 border-gray-600 min-w-[150px] text-sm text-center"
               disabled={!text.trim()}
             >
               {button.label}
