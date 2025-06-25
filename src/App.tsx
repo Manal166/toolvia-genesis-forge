@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -40,6 +41,7 @@ import PasswordGeneratorDetails from "./pages/tools/PasswordGeneratorDetails";
 import URLEncoderDecoderDetails from "./pages/tools/URLEncoderDecoderDetails";
 import UnitConverterDetails from "./pages/tools/UnitConverterDetails";
 import TextCompareDetails from "./pages/tools/TextCompareDetails";
+import RemoveDuplicateLinesDetails from "./pages/tools/RemoveDuplicateLinesDetails";
 
 const queryClient = new QueryClient();
 
@@ -77,6 +79,7 @@ const AppContent = () => {
         <Route path="/tools/url-encoder-decoder/details" element={<URLEncoderDecoderDetails />} />
         <Route path="/tools/unit-converter/details" element={<UnitConverterDetails />} />
         <Route path="/tools/text-compare/details" element={<TextCompareDetails />} />
+        <Route path="/tools/remove-duplicate-lines/details" element={<RemoveDuplicateLinesDetails />} />
         
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />

@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -257,6 +258,15 @@ export const toolsConfig: ToolConfig[] = [
     icon: 'file-text',
     features: ['Side-by-side comparison', 'Difference highlighting', 'Line-by-line analysis', 'Copy results', 'Clear interface'],
     useCases: ['Document version comparison', 'Code diff analysis', 'Proofreading assistance', 'Content revision tracking', 'Quality assurance', 'Academic research', 'Legal document comparison', 'Collaboration workflows']
+  },
+  {
+    id: 'remove-duplicate-lines',
+    name: 'Remove Duplicate Lines',
+    description: 'Remove duplicate lines from text while preserving the original order. Perfect for cleaning up lists, logs, and data.',
+    category: 'Text Processing',
+    icon: 'list',
+    features: ['Duplicate line removal', 'Order preservation', 'Real-time processing', 'Copy to clipboard', 'Line count statistics'],
+    useCases: ['Data cleaning', 'List deduplication', 'Log file processing', 'Text preprocessing', 'Email list cleanup', 'Code cleanup', 'Data validation', 'Content management']
   }
 ];
 

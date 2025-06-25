@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink } from "lucide-react";
 import { downloadSitemap } from "@/utils/sitemapGenerator";
@@ -26,6 +27,7 @@ const SEOManager = () => {
     { name: "URL Encoder/Decoder", path: "/tools/url-encoder-decoder/details" },
     { name: "Unit Converter", path: "/tools/unit-converter/details" },
     { name: "Text Compare Tool", path: "/tools/text-compare/details" },
+    { name: "Remove Duplicate Lines", path: "/tools/remove-duplicate-lines/details" },
   ];
 
   return (
