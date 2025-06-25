@@ -54,11 +54,11 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
   };
 
   const caseButtons = [
-    { type: "lower", label: "lowercase", description: "Convert to all lowercase letters" },
-    { type: "upper", label: "UPPERCASE", description: "Convert to all uppercase letters" },
-    { type: "title", label: "Title Case", description: "Capitalize the first letter of each word" },
-    { type: "camel", label: "camelCase", description: "Convert to camelCase format" },
-    { type: "snake", label: "snake_case", description: "Convert to snake_case format" }
+    { type: "lower", label: "lowercase" },
+    { type: "upper", label: "UPPERCASE" },
+    { type: "title", label: "Title Case" },
+    { type: "camel", label: "camelCase" },
+    { type: "snake", label: "snake_case" }
   ];
 
   return (
@@ -79,19 +79,16 @@ const CaseConverterTool = ({ tool, isDark, onToggleTheme }: ToolComponentProps) 
           className="min-h-[120px] mb-4 bg-gray-800 text-white border-gray-600 overflow-auto break-words"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {caseButtons.map((button) => (
             <Button
               key={button.type}
               onClick={() => handleConvert(button.type)}
               variant={activeCase === button.type ? "default" : "outline"}
-              className="justify-start h-auto p-3 bg-gray-700 text-white hover:bg-gray-600 border-gray-600"
+              className="bg-gray-700 text-white hover:bg-gray-600 border-gray-600"
               disabled={!text.trim()}
             >
-              <div className="text-left">
-                <div className="font-medium">{button.label}</div>
-                <div className="text-xs opacity-70 mt-1">{button.description}</div>
-              </div>
+              {button.label}
             </Button>
           ))}
         </div>
