@@ -7,7 +7,7 @@ const RemoveDuplicateLinesDetails = () => {
   return (
     <>
       <Helmet>
-        <title>Free Remove Duplicate Lines Tool – Clean Text & Lists Online | CodeBoost</title>
+        <title>Free Remove Duplicate Lines Tool – Clean Text & Lists Online | Toolvia</title>
         <meta
           name="description"
           content="Remove duplicate lines from text instantly. Clean up lists, logs, and data while preserving original order. Free online duplicate line remover tool for developers and writers."

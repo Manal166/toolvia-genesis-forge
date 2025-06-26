@@ -16,7 +16,7 @@ const ToolNavigation = ({ isDark, onToggleTheme }: ToolNavigationProps) => {
           <Link to="/" className="flex items-center space-x-2">
             <ArrowLeft className="h-5 w-5 text-gray-600 dark:text-gray-400" />
             <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-            <span className="text-xl font-bold font-mono text-gray-900 dark:text-white">CodeBoost</span>
+            <span className="text-xl font-bold font-mono text-gray-900 dark:text-white">Toolvia</span>
           </Link>
           
           <div className="flex items-center space-x-2">

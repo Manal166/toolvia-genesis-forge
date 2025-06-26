@@ -16,13 +16,7 @@ const SEOManager = () => {
   };
 
   const toolPages = [
-    { name: "Code Explainer", path: "/tools/code-explainer/details" },
-    { name: "AI Code Generator", path: "/tools/ai-code-generator/details" },
-    { name: "Bug Fixer", path: "/tools/bug-fixer/details" },
-    { name: "Regex Generator", path: "/tools/regex-generator/details" },
     { name: "Case Converter", path: "/tools/case-converter/details" },
-    { name: "Code Translator", path: "/tools/code-translator/details" },
-    { name: "Pseudocode Generator", path: "/tools/pseudocode-generator/details" },
     { name: "Password Generator", path: "/tools/password-generator/details" },
     { name: "URL Encoder/Decoder", path: "/tools/url-encoder-decoder/details" },
     { name: "Unit Converter", path: "/tools/unit-converter/details" },

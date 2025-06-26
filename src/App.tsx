@@ -19,24 +19,8 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import FeedbackButton from "./components/FeedbackButton";
 
-// Tool detail pages
-import CodeExplainerDetails from "./pages/tools/CodeExplainerDetails";
-import AICodeGeneratorDetails from "./pages/tools/AICodeGeneratorDetails";
-import BugFixerDetails from "./pages/tools/BugFixerDetails";
-import RegexGeneratorDetails from "./pages/tools/RegexGeneratorDetails";
-import RegexExplainerDetails from "./pages/tools/RegexExplainerDetails";
+// Tool detail pages - only for non-AI tools
 import CaseConverterDetails from "./pages/tools/CaseConverterDetails";
-import CodeTranslatorDetails from "./pages/tools/CodeTranslatorDetails";
-import PseudocodeGeneratorDetails from "./pages/tools/PseudocodeGeneratorDetails";
-import FrontendDebugAssistantDetails from "./pages/tools/FrontendDebugAssistantDetails";
-import SQLQueryGeneratorDetails from "./pages/tools/SQLQueryGeneratorDetails";
-import CodeRefactorDetails from "./pages/tools/CodeRefactorDetails";
-import TextSummarizerDetails from "./pages/tools/TextSummarizerDetails";
-import ColorPaletteExtractorDetails from "./pages/tools/ColorPaletteExtractorDetails";
-import ImageAltTextGeneratorDetails from "./pages/tools/ImageAltTextGeneratorDetails";
-import LivePlaygroundDetails from "./pages/tools/LivePlaygroundDetails";
-import CodeMinifierDetails from "./pages/tools/CodeMinifierDetails";
-import AIInterviewGeneratorDetails from "./pages/tools/AIInterviewGeneratorDetails";
 import PasswordGeneratorDetails from "./pages/tools/PasswordGeneratorDetails";
 import URLEncoderDecoderDetails from "./pages/tools/URLEncoderDecoderDetails";
 import UnitConverterDetails from "./pages/tools/UnitConverterDetails";
@@ -57,24 +41,8 @@ const AppContent = () => {
         <Route path="/tool" element={<Tool />} />
         <Route path="/settings" element={<Settings />} />
         
-        {/* Tool detail pages for SEO */}
-        <Route path="/tools/code-explainer/details" element={<CodeExplainerDetails />} />
-        <Route path="/tools/ai-code-generator/details" element={<AICodeGeneratorDetails />} />
-        <Route path="/tools/bug-fixer/details" element={<BugFixerDetails />} />
-        <Route path="/tools/regex-generator/details" element={<RegexGeneratorDetails />} />
-        <Route path="/tools/regex-explainer/details" element={<RegexExplainerDetails />} />
+        {/* Tool detail pages for SEO - only non-AI tools */}
         <Route path="/tools/case-converter/details" element={<CaseConverterDetails />} />
-        <Route path="/tools/code-translator/details" element={<CodeTranslatorDetails />} />
-        <Route path="/tools/pseudocode-generator/details" element={<PseudocodeGeneratorDetails />} />
-        <Route path="/tools/frontend-debug-assistant/details" element={<FrontendDebugAssistantDetails />} />
-        <Route path="/tools/sql-query-generator/details" element={<SQLQueryGeneratorDetails />} />
-        <Route path="/tools/code-refactor/details" element={<CodeRefactorDetails />} />
-        <Route path="/tools/text-summarizer/details" element={<TextSummarizerDetails />} />
-        <Route path="/tools/color-palette-extractor/details" element={<ColorPaletteExtractorDetails />} />
-        <Route path="/tools/image-alt-text-generator/details" element={<ImageAltTextGeneratorDetails />} />
-        <Route path="/tools/live-playground/details" element={<LivePlaygroundDetails />} />
-        <Route path="/tools/code-minifier/details" element={<CodeMinifierDetails />} />
-        <Route path="/tools/ai-interview-generator/details" element={<AIInterviewGeneratorDetails />} />
         <Route path="/tools/password-generator/details" element={<PasswordGeneratorDetails />} />
         <Route path="/tools/url-encoder-decoder/details" element={<URLEncoderDecoderDetails />} />
         <Route path="/tools/unit-converter/details" element={<UnitConverterDetails />} />
