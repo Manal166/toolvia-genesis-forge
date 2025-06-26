@@ -1,101 +1,75 @@
 
-import { useState } from "react";
-import { Code, Moon, Sun, Settings } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import ToolDirectory from "@/components/ToolDirectory";
-import AdZone from "@/components/AdZone";
 
-const Tools = () => {
-  const [isDark, setIsDark] = useState(true);
+const tools = [
+  {
+    name: "Remove Duplicate Lines",
+    description: "Clean up your text by removing duplicate lines instantly.",
+    path: "/tools/remove-duplicate-lines",
+    category: "Text Tools",
+  },
+  {
+    name: "Text Compare Tool",
+    description: "Compare two blocks of text side by side and highlight differences.",
+    path: "/tools/text-compare",
+    category: "Text Tools",
+  },
+  {
+    name: "Case Converter",
+    description: "Convert your text to lowercase, UPPERCASE, Title Case, camelCase, and more.",
+    path: "/tools/case-converter",
+    category: "Text Tools",
+  },
+  {
+    name: "Unit Converter",
+    description: "Convert length, weight, temperature, and more between metric and imperial units.",
+    path: "/tools/unit-converter",
+    category: "Utility",
+  },
+  {
+    name: "Password Generator",
+    description: "Generate strong, secure, random passwords instantly.",
+    path: "/tools/password-generator",
+    category: "Security",
+  },
+  {
+    name: "URL Encoder / Decoder",
+    description: "Encode or decode URLs safely and easily.",
+    path: "/tools/url-encoder-decoder",
+    category: "Utility",
+  },
+];
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
-
+export default function Tools() {
   return (
-    <div className={`min-h-screen transition-colors duration-300 bg-black`}>
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-2">
-              <Code className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-              <span className="text-xl font-bold font-mono text-white">CodeBoost</span>
-            </Link>
-            
-            <div className="flex items-center space-x-8">
-              <Link to="/" className="text-white hover:text-blue-400 transition-colors">Home</Link>
-              <Link to="/community" className="text-white hover:text-blue-400 transition-colors">Community</Link>
-              <Link to="/about" className="text-white hover:text-blue-400 transition-colors">About</Link>
-              <Link to="/settings">
-                <Button variant="ghost" size="sm" className="text-white hover:text-blue-400">
-                  <Settings className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Button variant="ghost" size="sm" onClick={toggleTheme}>
-                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="bg-[#0d1117] min-h-screen px-4 py-10 text-white">
+      <Helmet>
+        <title>Free Online Tools – Toolvia</title>
+        <meta
+          name="description"
+          content="Explore a collection of free, browser-based tools to boost your productivity. No login, no tracking, just fast and useful tools."
+        />
+      </Helmet>
 
-      {/* Top Banner Ad Zone */}
-      <AdZone 
-        id="tools-banner-top" 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4"
-      />
+      <h1 className="text-3xl font-bold text-center mb-4">All Tools</h1>
+      <p className="text-center text-gray-400 mb-10">
+        Discover free and reliable tools for developers, writers, and students.
+      </p>
 
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Developer Tools
-          </h1>
-          <p className="text-xl text-white max-w-3xl mx-auto">
-            Discover our collection of AI-powered tools designed to accelerate your development workflow.
-          </p>
-          <div className="mt-8">
-            <Link 
-              to="/tools" 
-              className="inline-flex items-center text-white hover:text-blue-400 transition-colors"
-            >
-              View All Tools
-            </Link>
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8">
-          {/* Main Content Area */}
-          <div className="lg:col-span-9">
-            <ToolDirectory />
-          </div>
-          
-          {/* Sidebar Ad Zone */}
-          <div className="lg:col-span-3">
-            <div className="sticky top-8 space-y-6">
-              <AdZone 
-                id="tools-sidebar-primary"
-                className="w-full min-h-[300px]"
-              />
-              <AdZone 
-                id="tools-sidebar-secondary"
-                className="w-full min-h-[250px]"
-              />
-            </div>
-          </div>
-        </div>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        {tools.map((tool) => (
+          <Link
+            key={tool.name}
+            to={tool.path}
+            className="bg-[#161b22] border border-[#30363d] rounded p-5 hover:border-blue-500 transition"
+          >
+            <h2 className="text-xl font-semibold mb-2 text-blue-400">{tool.name}</h2>
+            <p className="text-sm text-gray-400 mb-1">{tool.description}</p>
+            <span className="text-xs text-gray-500">{tool.category}</span>
+          </Link>
+        ))}
       </div>
-
-      {/* Bottom Banner Ad Zone */}
-      <AdZone 
-        id="tools-banner-bottom" 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
-      />
     </div>
   );
-};
-
-export default Tools;
+}
