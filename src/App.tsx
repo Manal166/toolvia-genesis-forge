@@ -49,6 +49,7 @@ const AppContent = () => {
         <Route path="/tools/text-compare/details" element={<TextCompareDetails />} />
         <Route path="/tools/remove-duplicate-lines/details" element={<RemoveDuplicateLinesDetails />} />
         
+        {/* Static pages for AdSense compliance */}
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<BlogPost />} />

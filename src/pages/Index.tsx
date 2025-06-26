@@ -72,6 +72,46 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-800 py-8 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-6">
+            <div>
+              <h4 className="text-white font-semibold mb-3">Toolvia</h4>
+              <p className="text-gray-400 text-sm">
+                Free online tools for students and developers. Privacy-first, no tracking.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-3">Tools</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/tools/remove-duplicate-lines" className="text-gray-400 hover:text-white">Remove Duplicates</Link></li>
+                <li><Link to="/tools/text-compare" className="text-gray-400 hover:text-white">Text Compare</Link></li>
+                <li><Link to="/tools/case-converter" className="text-gray-400 hover:text-white">Case Converter</Link></li>
+                <li><Link to="/tools" className="text-gray-400 hover:text-white">All Tools</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-3">Resources</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/blog" className="text-gray-400 hover:text-white">Blog</Link></li>
+                <li><Link to="/about" className="text-gray-400 hover:text-white">About</Link></li>
+                <li><Link to="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-3">Legal</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 Toolvia. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
