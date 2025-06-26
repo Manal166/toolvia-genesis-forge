@@ -1,34 +1,26 @@
 
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Code, ArrowLeft } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const blogPosts = [
+  {
+    title: "How to Clean and Format Text for Free",
+    excerpt: "Learn how to clean up your text by removing duplicates, fixing casing, and formatting content easily using free tools from Toolvia.",
+    slug: "clean-text-guide",
+  },
   {
     title: "Top 5 Tools Every Student Should Use",
     excerpt: "Discover the most helpful tools for boosting academic productivity.",
     slug: "top-5-student-tools",
-  },
-  {
-    title: "How to Clean and Format Text for Free",
-    excerpt: "Learn how to remove duplicates, fix casing, and clean messy text online.",
-    slug: "clean-text-guide",
   },
 ];
 
 export default function Blog() {
   return (
     <div className="bg-[#0d1117] min-h-screen text-white">
-      {/* Navigation */}
-      <nav className="border-b border-gray-800 px-4 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <ArrowLeft className="h-5 w-5 text-gray-400" />
-            <Code className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold font-mono">Toolvia</span>
-          </Link>
-        </div>
-      </nav>
+      <Header />
 
       <div className="max-w-4xl mx-auto px-4 py-10">
         <Helmet>
@@ -49,6 +41,8 @@ export default function Blog() {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
