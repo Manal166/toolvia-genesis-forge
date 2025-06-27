@@ -9,7 +9,7 @@ import CodeTranslatorTool from '@/tools/code-translator/CodeTranslatorTool';
 import FlowchartTool from '@/tools/flowchart-generator/FlowchartTool';
 import PseudocodeGeneratorTool from '@/tools/pseudocode-generator/PseudocodeGeneratorTool';
 import RegexGeneratorTool from '@/tools/regex-generator/RegexGeneratorTool';
-import UnitTestGeneratorTool from '@/tools/unit-test-generator/UnitTestGeneratorTool';
+import UnitTestTool from '@/tools/unit-test-generator/UnitTestTool';
 import AIInterviewGeneratorTool from '@/tools/ai-interview-generator/AIInterviewGeneratorTool';
 import CodeMinifierTool from '@/tools/code-minifier/CodeMinifierTool';
 import ImageAltTextTool from '@/tools/image-alt-text-generator/ImageAltTextTool';
@@ -42,7 +42,7 @@ const toolComponentMap: Record<string, ToolComponent> = {
   'flowchart-generator': FlowchartTool,
   'pseudocode-generator': PseudocodeGeneratorTool,
   'regex-generator': RegexGeneratorTool,
-  'unit-test-generator': UnitTestGeneratorTool,
+  'unit-test-generator': UnitTestTool,
   'ai-interview-generator': AIInterviewGeneratorTool,
   'code-minifier': CodeMinifierTool,
   'image-alt-text-generator': ImageAltTextTool,
