@@ -72,7 +72,7 @@ const FeedbackButton = ({ toolName = "CodeBoost", variant = "floating" }: Feedba
   };
 
   const buttonClasses = variant === "floating" 
-    ? "fixed bottom-6 right-6 z-50 rounded-full shadow-lg h-12 w-12 p-0"
+    ? "fixed bottom-6 right-6 z-50 rounded-full shadow-lg h-12 w-12 p-0 bg-white text-black hover:bg-gray-100"
     : "";
 
   return (

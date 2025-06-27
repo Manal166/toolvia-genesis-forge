@@ -101,7 +101,7 @@ const RemoveDuplicatesTool = ({ tool, isDark, onToggleTheme }: RemoveDuplicatesT
                   placeholder="Enter your text here, one item per line..."
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
-                  className="mt-2 min-h-[200px] font-mono text-sm"
+                  className="mt-2 min-h-[200px] font-mono text-sm text-white dark:text-white"
                 />
               </div>
               
@@ -115,7 +115,7 @@ const RemoveDuplicatesTool = ({ tool, isDark, onToggleTheme }: RemoveDuplicatesT
                 <Button
                   onClick={handleClear}
                   variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 bg-white text-black hover:bg-gray-100 dark:bg-white dark:text-black dark:hover:bg-gray-100"
                 >
                   <Trash2 className="h-4 w-4" />
                   Clear
