@@ -80,6 +80,15 @@ export const toolsConfig: ToolConfig[] = [
     useCases: ['Programming variable names', 'Document formatting', 'Social media posts', 'API response formatting', 'Documentation standardization', 'Naming conventions', 'Style guide compliance', 'Web development']
   },
   {
+    id: 'word-counter',
+    name: 'Word Counter',
+    description: 'Count words, characters, sentences, and more in real-time with detailed text analysis.',
+    category: 'Text Processing',
+    icon: 'file-text',
+    features: ['Real-time counting', 'Multiple statistics', 'Reading time estimation', 'Character analysis'],
+    useCases: ['Essay writing', 'Content creation', 'Social media posts', 'Academic writing', 'Blog posts', 'Document analysis', 'SEO optimization', 'Character limits']
+  },
+  {
     id: 'code-translator',
     name: 'Code Translator',
     description: 'Convert code between different programming languages while preserving functionality.',
