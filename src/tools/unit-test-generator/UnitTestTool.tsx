@@ -41,14 +41,17 @@ const UnitTestTool = ({ tool, isDark, onToggleTheme }: UnitTestToolProps) => {
       return;
     }
 
+    console.log('Starting test generation...', { code: code.substring(0, 50), language });
     setIsGenerating(true);
+    
     try {
       const testResult = await unitTestService.generateTests(code, language);
+      console.log('Test generation successful:', testResult);
       setResult(testResult);
       toast.success("Unit tests generated successfully!");
     } catch (error) {
       console.error("Test generation error:", error);
-      toast.error("Failed to generate unit tests. Please try again.");
+      toast.error(error instanceof Error ? error.message : "Failed to generate unit tests. Please try again.");
     } finally {
       setIsGenerating(false);
     }
