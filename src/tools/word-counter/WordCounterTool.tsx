@@ -1,55 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ToolComponentProps } from '@/config/toolRoutes.config';
+import { CopyIcon, RefreshCcwIcon } from 'lucide-react';
 
 const WordCounterTool: React.FC<ToolComponentProps> = ({ isDark }) => {
   const [text, setText] = useState('');
-  const [stats, setStats] = useState({
-    words: 0,
-    characters: 0,
-    sentences: 0,
-    paragraphs: 0,
-    readingTime: '0 sec',
-  });
 
-  useEffect(() => {
-    const words = text.trim().split(/\s+/).filter(word => word !== '').length;
-    const characters = text.length;
-    const sentences = (text.match(/[\w|\)][.?!](\s|$)/g) || []).length;
-    const paragraphs = text.split(/\n{2,}/).filter(p => p.trim() !== '').length;
-    const readingTimeSec = Math.ceil(words / 3); // 180 wpm -> approx 3 words/sec
-    const readingTime = readingTimeSec > 60
-      ? `${Math.floor(readingTimeSec / 60)} min ${readingTimeSec % 60} sec`
-      : `${readingTimeSec} sec`;
+  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+  const charCount = text.length;
+  const sentenceCount = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  const paragraphCount = text.split(/\n{2,}/).filter(p => p.trim().length > 0).length;
 
-    setStats({ words, characters, sentences, paragraphs, readingTime });
-  }, [text]);
+  const handleClear = () => setText('');
+  const handleCopy = () => navigator.clipboard.writeText(text);
 
   return (
-    <div className="p-4 max-w-4xl mx-auto text-white">
-      <h1 className="text-2xl font-bold mb-4 text-center">Word Counter Tool</h1>
+    <div className="max-w-4xl mx-auto p-4 text-white">
+      <h1 className="text-3xl font-bold mb-4 text-center">Word Counter</h1>
       <textarea
-        rows={10}
         value={text}
-        onChange={e => setText(e.target.value)}
-        className="w-full p-4 bg-gray-800 text-white border border-gray-600 rounded resize-none"
+        onChange={(e) => setText(e.target.value)}
+        rows={10}
         placeholder="Type or paste your text here..."
+        className="w-full p-4 rounded-md border border-gray-700 bg-gray-900 text-white resize-none"
       />
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 bg-gray-900 p-4 rounded">
-        <StatItem label="Words" value={stats.words} />
-        <StatItem label="Characters" value={stats.characters} />
-        <StatItem label="Sentences" value={stats.sentences} />
-        <StatItem label="Paragraphs" value={stats.paragraphs} />
-        <StatItem label="Reading Time" value={stats.readingTime} />
+      <div className="flex flex-wrap justify-between items-center mt-4 gap-2">
+        <div className="flex gap-4 text-sm sm:text-base">
+          <p><strong>Words:</strong> {wordCount}</p>
+          <p><strong>Characters:</strong> {charCount}</p>
+          <p><strong>Sentences:</strong> {sentenceCount}</p>
+          <p><strong>Paragraphs:</strong> {paragraphCount}</p>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={handleCopy}
+            className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            <CopyIcon className="w-4 h-4" /> Copy
+          </button>
+          <button
+            onClick={handleClear}
+            className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            <RefreshCcwIcon className="w-4 h-4" /> Clear
+          </button>
+        </div>
       </div>
     </div>
   );
 };
-
-const StatItem = ({ label, value }: { label: string; value: string | number }) => (
-  <div className="bg-gray-800 p-4 rounded text-center">
-    <div className="text-lg font-semibold">{value}</div>
-    <div className="text-sm text-gray-400">{label}</div>
-  </div>
-);
 
 export default WordCounterTool;
