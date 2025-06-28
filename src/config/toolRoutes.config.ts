@@ -1,4 +1,3 @@
-
 import { ToolConfig } from './tools.config';
 
 // Tool component imports
@@ -23,7 +22,7 @@ import TextCompareTool from '@/tools/text-compare/TextCompareTool';
 import RemoveDuplicatesTool from '@/tools/remove-duplicate-lines/RemoveDuplicatesTool';
 import PasswordGeneratorTool from '@/tools/password-generator/PasswordGeneratorTool';
 import URLEncoderDecoderTool from '@/tools/url-encoder-decoder/URLEncoderDecoderTool';
-import WordCounterTool from '@/tools/word-counter/WordCounterTool';
+import WordCounterTool from '@/tools/word-counter/WordCounterTool'; // ✅ تمت إضافته هنا
 
 export interface ToolComponentProps {
   tool: ToolConfig;
@@ -56,7 +55,7 @@ const toolComponentMap: Record<string, ToolComponent> = {
   'remove-duplicate-lines': RemoveDuplicatesTool,
   'password-generator': PasswordGeneratorTool,
   'url-encoder-decoder': URLEncoderDecoderTool,
-  'word-counter': WordCounterTool,
+  'word-counter': WordCounterTool, // ✅ إدخال الأداة هنا
 };
 
 export const getToolComponent = (toolId: string): ToolComponent => {
