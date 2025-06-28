@@ -1,48 +1,38 @@
 import React, { useState } from 'react';
-import { ToolComponentProps } from '@/config/toolRoutes.config';
-import { CopyIcon, RefreshCcwIcon } from 'lucide-react';
 
-const WordCounterTool: React.FC<ToolComponentProps> = ({ isDark }) => {
+const WordCounterTool: React.FC = () => {
   const [text, setText] = useState('');
 
-  const wordCount = text.trim().split(/\s+/).filter(Boolean).length;
+  const wordCount = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
   const charCount = text.length;
-  const sentenceCount = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-  const paragraphCount = text.split(/\n{2,}/).filter(p => p.trim().length > 0).length;
-
-  const handleClear = () => setText('');
-  const handleCopy = () => navigator.clipboard.writeText(text);
+  const sentenceCount = text.split(/[.!?]+/).filter(Boolean).length;
+  const paragraphCount = text.split(/\n{2,}/).filter(Boolean).length;
 
   return (
-    <div className="max-w-4xl mx-auto p-4 text-white">
+    <div className="max-w-3xl mx-auto p-6 text-white">
       <h1 className="text-3xl font-bold mb-4 text-center">Word Counter</h1>
       <textarea
+        className="w-full h-48 p-4 bg-gray-800 text-white border border-gray-600 rounded"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        rows={10}
-        placeholder="Type or paste your text here..."
-        className="w-full p-4 rounded-md border border-gray-700 bg-gray-900 text-white resize-none"
+        placeholder="Enter your text here..."
       />
-      <div className="flex flex-wrap justify-between items-center mt-4 gap-2">
-        <div className="flex gap-4 text-sm sm:text-base">
-          <p><strong>Words:</strong> {wordCount}</p>
-          <p><strong>Characters:</strong> {charCount}</p>
-          <p><strong>Sentences:</strong> {sentenceCount}</p>
-          <p><strong>Paragraphs:</strong> {paragraphCount}</p>
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div className="bg-gray-700 p-4 rounded">
+          <h2 className="text-lg font-semibold">Words</h2>
+          <p className="text-xl">{wordCount}</p>
         </div>
-        <div className="flex gap-2">
-          <button
-            onClick={handleCopy}
-            className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            <CopyIcon className="w-4 h-4" /> Copy
-          </button>
-          <button
-            onClick={handleClear}
-            className="flex items-center gap-1 px-4 py-2 text-sm font-medium bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            <RefreshCcwIcon className="w-4 h-4" /> Clear
-          </button>
+        <div className="bg-gray-700 p-4 rounded">
+          <h2 className="text-lg font-semibold">Characters</h2>
+          <p className="text-xl">{charCount}</p>
+        </div>
+        <div className="bg-gray-700 p-4 rounded">
+          <h2 className="text-lg font-semibold">Sentences</h2>
+          <p className="text-xl">{sentenceCount}</p>
+        </div>
+        <div className="bg-gray-700 p-4 rounded">
+          <h2 className="text-lg font-semibold">Paragraphs</h2>
+          <p className="text-xl">{paragraphCount}</p>
         </div>
       </div>
     </div>
