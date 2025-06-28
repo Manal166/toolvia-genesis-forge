@@ -1,9 +1,10 @@
 
+import { useState } from "react";
+import { Copy, RotateCcw, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Copy, Download, RefreshCw, TestTube, CheckCircle, AlertCircle, Zap } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface TestCase {
   name: string;
@@ -33,110 +34,68 @@ const UnitTestOutput = ({
   onCopyToClipboard,
   onRegenerate
 }: UnitTestOutputProps) => {
-  const handleDownload = () => {
-    if (!result) return;
-    
-    const fileName = `tests.${result.language === 'python' ? 'py' : result.language === 'java' ? 'java' : 'js'}`;
-    const blob = new Blob([result.testCode], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  const getTestTypeIcon = (type: TestCase['type']) => {
-    switch (type) {
-      case 'positive':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'negative':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
-      case 'edge':
-        return <Zap className="h-4 w-4 text-yellow-500" />;
-      case 'boundary':
-        return <TestTube className="h-4 w-4 text-blue-500" />;
-      default:
-        return <TestTube className="h-4 w-4 text-gray-500" />;
-    }
-  };
-
-  const getTestTypeBadgeColor = (type: TestCase['type']) => {
-    switch (type) {
-      case 'positive':
-        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-      case 'negative':
-        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
-      case 'edge':
-        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'boundary':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
-    }
-  };
-
   if (!result) {
     return (
       <Card className="h-full">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <TestTube className="h-5 w-5" />
+            <CheckCircle className="h-5 w-5" />
             Generated Tests
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
-            <TestTube className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>Generated unit tests will appear here</p>
-            <p className="text-sm mt-2">Enter your code and click "Generate Unit Tests" to begin</p>
+          <div className="flex items-center justify-center h-64 text-gray-500 dark:text-gray-400">
+            <div className="text-center">
+              <CheckCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>Your generated unit tests will appear here</p>
+            </div>
           </div>
         </CardContent>
       </Card>
     );
   }
 
+  const getTestTypeColor = (type: string) => {
+    switch (type) {
+      case 'positive': return 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400';
+      case 'negative': return 'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400';
+      case 'edge': return 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400';
+      case 'boundary': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400';
+      default: return 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400';
+    }
+  };
+
   return (
     <Card className="h-full">
       <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <TestTube className="h-5 w-5" />
-            Generated Tests
-            <Badge variant="outline">{result.framework}</Badge>
-          </CardTitle>
+        <CardTitle className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5" />
+            Generated Tests ({result.framework})
+          </div>
           <div className="flex gap-2">
             <Button
-              variant="outline"
-              size="sm"
-              onClick={onCopyToClipboard}
-              className="flex items-center gap-1"
-            >
-              <Copy className="h-4 w-4" />
-              {copied ? "Copied!" : "Copy"}
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleDownload}
-              className="flex items-center gap-1"
-            >
-              <Download className="h-4 w-4" />
-              Download
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
               onClick={onRegenerate}
-              className="flex items-center gap-1"
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
             >
-              <RefreshCw className="h-4 w-4" />
+              <RotateCcw className="h-4 w-4" />
               Regenerate
             </Button>
+            <Button
+              onClick={onCopyToClipboard}
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <Copy className="h-4 w-4" />
+              {copied ? 'Copied!' : 'Copy Tests'}
+            </Button>
           </div>
-        </div>
+        </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
         <Tabs defaultValue="tests" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="tests">Test Code</TabsTrigger>
@@ -144,51 +103,38 @@ const UnitTestOutput = ({
             <TabsTrigger value="explanation">Explanation</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="tests" className="mt-4">
-            <div className="space-y-4">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                <pre className="text-sm overflow-x-auto whitespace-pre-wrap">
-                  <code>{result.testCode}</code>
-                </pre>
-              </div>
+          <TabsContent value="tests" className="space-y-4">
+            <div className="bg-gray-900 rounded-lg p-4 max-h-96 overflow-auto">
+              <pre className="text-green-400 text-sm whitespace-pre-wrap font-mono">
+                {result.testCode}
+              </pre>
             </div>
           </TabsContent>
           
-          <TabsContent value="cases" className="mt-4">
+          <TabsContent value="cases" className="space-y-4">
             <div className="space-y-3">
-              <h3 className="font-semibold text-sm">Test Cases Coverage:</h3>
-              <div className="grid gap-3">
-                {result.testCases.map((testCase, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
-                  >
-                    {getTestTypeIcon(testCase.type)}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-medium text-sm truncate">{testCase.name}</h4>
-                        <Badge className={`text-xs ${getTestTypeBadgeColor(testCase.type)}`}>
-                          {testCase.type}
-                        </Badge>
-                      </div>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        {testCase.description}
-                      </p>
-                    </div>
+              {result.testCases.map((testCase, index) => (
+                <div key={index} className="p-3 border rounded-lg dark:border-gray-700">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="font-medium text-sm">{testCase.name}</h4>
+                    <Badge className={getTestTypeColor(testCase.type)}>
+                      {testCase.type}
+                    </Badge>
                   </div>
-                ))}
-              </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {testCase.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </TabsContent>
           
-          <TabsContent value="explanation" className="mt-4">
-            <div className="space-y-4">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
-                <div className="prose prose-sm dark:prose-invert max-w-none">
-                  <div className="whitespace-pre-wrap text-sm">
-                    {result.explanation}
-                  </div>
-                </div>
+          <TabsContent value="explanation" className="space-y-4">
+            <div className="prose prose-sm max-w-none dark:prose-invert">
+              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <p className="text-sm whitespace-pre-wrap">
+                  {result.explanation}
+                </p>
               </div>
             </div>
           </TabsContent>
