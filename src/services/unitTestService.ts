@@ -1,5 +1,5 @@
 
-import { openaiService } from './openaiService';
+import { openaiService } from './openai/index';
 
 interface UnitTestResult {
   originalCode: string;
