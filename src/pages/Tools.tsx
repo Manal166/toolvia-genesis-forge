@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 
 const tools = [
   {
+    name: "Unit Test Generator",
+    description: "Generate comprehensive unit tests for your functions and classes automatically.",
+    path: "/tools/unit-test-generator",
+    category: "Testing",
+  },
+  {
     name: "Remove Duplicate Lines",
     description: "Clean up your text by removing duplicate lines instantly.",
     path: "/tools/remove-duplicate-lines",
@@ -40,12 +46,6 @@ const tools = [
     description: "Encode or decode URLs safely and easily.",
     path: "/tools/url-encoder-decoder",
     category: "Utility",
-  },
-  {
-    name: "Unit Test Generator",
-    description: "Generate comprehensive unit tests for your functions and classes automatically.",
-    path: "/tools/unit-test-generator",
-    category: "Testing",
   },
 ];
 
