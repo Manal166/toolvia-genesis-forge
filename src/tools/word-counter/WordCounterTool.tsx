@@ -1,51 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ToolComponentProps } from '@/config/toolRoutes.config';
 
-const WordCounterTool = () => {
+const WordCounterTool: React.FC<ToolComponentProps> = ({ isDark }) => {
   const [text, setText] = useState('');
+  const [stats, setStats] = useState({
+    words: 0,
+    characters: 0,
+    sentences: 0,
+    paragraphs: 0,
+    readingTime: '0 sec',
+  });
 
-  const countWords = (text: string) =>
-    text.trim().split(/\s+/).filter(word => word).length;
+  useEffect(() => {
+    const words = text.trim().split(/\s+/).filter(word => word !== '').length;
+    const characters = text.length;
+    const sentences = (text.match(/[\w|\)][.?!](\s|$)/g) || []).length;
+    const paragraphs = text.split(/\n{2,}/).filter(p => p.trim() !== '').length;
+    const readingTimeSec = Math.ceil(words / 3); // 180 wpm -> approx 3 words/sec
+    const readingTime = readingTimeSec > 60
+      ? `${Math.floor(readingTimeSec / 60)} min ${readingTimeSec % 60} sec`
+      : `${readingTimeSec} sec`;
 
-  const countCharacters = (text: string) =>
-    text.length;
-
-  const countCharactersNoSpaces = (text: string) =>
-    text.replace(/\s+/g, '').length;
-
-  const countSentences = (text: string) =>
-    (text.match(/[\w|\)][.?!](\s|$)/g) || []).length;
-
-  const countParagraphs = (text: string) =>
-    text.trim().split(/\n{2,}/).filter(p => p).length;
+    setStats({ words, characters, sentences, paragraphs, readingTime });
+  }, [text]);
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-white">Word Counter Tool</h1>
-
+    <div className="p-4 max-w-4xl mx-auto text-white">
+      <h1 className="text-2xl font-bold mb-4 text-center">Word Counter Tool</h1>
       <textarea
+        rows={10}
         value={text}
         onChange={e => setText(e.target.value)}
-        placeholder="Enter your text here..."
-        rows={10}
-        className="w-full p-4 rounded-md bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-blue-500"
+        className="w-full p-4 bg-gray-800 text-white border border-gray-600 rounded resize-none"
+        placeholder="Type or paste your text here..."
       />
-
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-white">
-        <div>Words: <strong>{countWords(text)}</strong></div>
-        <div>Characters: <strong>{countCharacters(text)}</strong></div>
-        <div>No-Spaces: <strong>{countCharactersNoSpaces(text)}</strong></div>
-        <div>Sentences: <strong>{countSentences(text)}</strong></div>
-        <div>Paragraphs: <strong>{countParagraphs(text)}</strong></div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 bg-gray-900 p-4 rounded">
+        <StatItem label="Words" value={stats.words} />
+        <StatItem label="Characters" value={stats.characters} />
+        <StatItem label="Sentences" value={stats.sentences} />
+        <StatItem label="Paragraphs" value={stats.paragraphs} />
+        <StatItem label="Reading Time" value={stats.readingTime} />
       </div>
-
-      <button
-        onClick={() => setText('')}
-        className="mt-4 px-4 py-2 bg-white text-gray-900 rounded hover:bg-gray-200"
-      >
-        Clear
-      </button>
     </div>
   );
 };
+
+const StatItem = ({ label, value }: { label: string; value: string | number }) => (
+  <div className="bg-gray-800 p-4 rounded text-center">
+    <div className="text-lg font-semibold">{value}</div>
+    <div className="text-sm text-gray-400">{label}</div>
+  </div>
+);
 
 export default WordCounterTool;
