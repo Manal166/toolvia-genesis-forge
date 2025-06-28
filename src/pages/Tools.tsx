@@ -41,6 +41,12 @@ const tools = [
     path: "/tools/url-encoder-decoder",
     category: "Utility",
   },
+  {
+    name: "Unit Test Generator",
+    description: "Generate comprehensive unit tests for your functions and classes automatically.",
+    path: "/tools/unit-test-generator",
+    category: "Testing",
+  },
 ];
 
 export default function Tools() {
