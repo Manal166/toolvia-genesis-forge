@@ -69,7 +69,7 @@ const Settings = () => {
             <Link to="/" className="flex items-center space-x-2">
               <ArrowLeft className="h-5 w-5 text-gray-400" />
               <Code className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold font-mono text-white">CodeBoost</span>
+              <span className="text-xl font-bold font-mono text-white">Toolvia</span>
             </Link>
           </div>
         </div>
@@ -83,7 +83,7 @@ const Settings = () => {
             Settings
           </h1>
           <p className="text-gray-400">
-            Configure your API keys and preferences for CodeBoost tools.
+            Configure your API keys and preferences for Toolvia tools.
           </p>
         </div>
 
