@@ -1,4 +1,5 @@
 
+
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -46,6 +47,12 @@ const tools = [
     description: "Encode or decode URLs safely and easily.",
     path: "/tools/url-encoder-decoder",
     category: "Utility",
+  },
+  {
+    name: "Word Counter",
+    description: "Count words, characters, sentences, and paragraphs in your text.",
+    path: "/tools/word-counter",
+    category: "Text Tools",
   },
 ];
 

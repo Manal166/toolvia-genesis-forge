@@ -1,3 +1,4 @@
+
 export interface ToolConfig {
   id: string;
   name: string;
@@ -68,11 +69,11 @@ export const toolsConfig: ToolConfig[] = [
   {
     id: 'word-counter',
     name: 'Word Counter',
-    description: 'Count words, characters, sentences, and paragraphs in your text.',
+    description: 'Count words, characters, sentences, and paragraphs in your text. Perfect for essays, articles, and content creation.',
     category: 'Text Tools',
     icon: 'file-text',
-    features: ['Real-time counting', 'Multiple statistics', 'Reading time'],
-    useCases: ['Blogging', 'Academic writing', 'SEO']
+    features: ['Real-time counting', 'Multiple statistics', 'Reading time estimation', 'Character count with/without spaces'],
+    useCases: ['Essay writing', 'Content creation', 'Social media posts', 'SEO optimization', 'Academic writing']
   }
 ];
 
