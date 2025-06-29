@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -59,10 +60,10 @@ function App() {
             {/* Blog posts */}
             <Route path="/blog/clean-text-guide" element={<CleanTextGuide />} />
             
-            {/* Tool pages */}
+            {/* Dynamic tool pages - this should come before specific tool detail pages */}
             <Route path="/tools/:toolId" element={<Tool />} />
             
-            {/* Tool detail pages */}
+            {/* Tool detail pages - these are separate marketing/info pages */}
             <Route path="/tools/remove-duplicate-lines/details" element={<RemoveDuplicateLinesDetails />} />
             <Route path="/tools/text-compare/details" element={<TextCompareDetails />} />
             <Route path="/tools/case-converter/details" element={<CaseConverterDetails />} />

@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Code, Zap, Bug, Wrench, Regex, FileText, BookOpen } from "lucide-react";
+import { Code, Zap, Bug, Wrench, Regex, FileText, BookOpen, Calculator, Shield, Type, List } from "lucide-react";
 import { ToolConfig } from "@/config/tools.config";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -16,6 +16,11 @@ const iconMap = {
   tool: Wrench,
   regex: Regex,
   'book-open': BookOpen,
+  calculator: Calculator,
+  shield: Shield,
+  type: Type,
+  list: List,
+  link: FileText, // fallback for link icon
 };
 
 const ToolCard = ({ tool }: ToolCardProps) => {
@@ -23,14 +28,14 @@ const ToolCard = ({ tool }: ToolCardProps) => {
 
   return (
     <Link to={`/tools/${tool.id}`} className="block group">
-      <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1 group-hover:border-blue-300 dark:group-hover:border-blue-600">
+      <Card className="h-full transition-all duration-200 hover:shadow-lg hover:-translate-y-1 group-hover:border-blue-300 dark:group-hover:border-blue-600 bg-[#161b22] border-[#30363d] hover:border-blue-500">
         <CardHeader className="pb-4">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
               <IconComponent className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <CardTitle className="text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <CardTitle className="text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-blue-400">
                 {tool.name}
               </CardTitle>
               <span className="inline-block px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full">
@@ -40,7 +45,7 @@ const ToolCard = ({ tool }: ToolCardProps) => {
           </div>
         </CardHeader>
         <CardContent>
-          <CardDescription className="text-gray-600 dark:text-gray-300">
+          <CardDescription className="text-gray-600 dark:text-gray-300 text-gray-400">
             {tool.description}
           </CardDescription>
           {tool.languages && (
