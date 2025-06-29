@@ -33,19 +33,24 @@ const ToolDetailsLayout = ({
   return (
     <>
       <Helmet>
-        <title>{title}</title>
+        <title>{title} | Toolvia</title>
         <meta name="description" content={metaDescription} />
+        <meta name="author" content="Toolvia" />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={currentUrl} />
         
         {/* Open Graph tags for social sharing */}
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={`${title} | Toolvia`} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Toolvia" />
         
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:title" content={`${title} | Toolvia`} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={ogImage} />
       </Helmet>
@@ -58,7 +63,7 @@ const ToolDetailsLayout = ({
               <Link to="/" className="flex items-center space-x-2">
                 <Code className="h-8 w-8 text-blue-600" />
                 <span className="text-xl font-bold text-gray-900 dark:text-white">
-                  CodeBoost
+                  Toolvia
                 </span>
               </Link>
               <div className="flex items-center space-x-4">
@@ -149,7 +154,7 @@ const ToolDetailsLayout = ({
                     </div>
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Input</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      Paste your code or describe what you need
+                      Enter your data or describe what you need
                     </p>
                   </div>
                   <div className="text-center">
@@ -158,7 +163,7 @@ const ToolDetailsLayout = ({
                     </div>
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Process</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      AI analyzes and generates the output
+                      Our tool processes your input instantly
                     </p>
                   </div>
                   <div className="text-center">
@@ -180,7 +185,7 @@ const ToolDetailsLayout = ({
                     Explore More Tools
                   </h2>
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    Discover our complete collection of developer tools to boost your productivity.
+                    Discover our complete collection of free online tools to boost your productivity.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/tools">
@@ -204,7 +209,7 @@ const ToolDetailsLayout = ({
                   Ready to Get Started?
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  Join thousands of developers who trust CodeBoost for their coding needs.
+                  Join thousands of users who trust Toolvia for their daily productivity needs.
                 </p>
                 <Link to={`/tools/${toolId}`}>
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
